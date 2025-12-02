@@ -24,18 +24,32 @@
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;}
+    body{margin:0; background:#000;}
 
     .ls{
       margin:0;
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
       line-height:1.5;
-      background:radial-gradient(circle at top, #f5f3ff 0, #f9fafb 40%, #e5e7eb 100%);
       padding-bottom:max(80px,var(--safe));
       color:#111827;
+      position:relative;
+      z-index:0;
     }
 
-    /* ===== HEADER ===== */
+    /* ===== VIDEO DE FONDO PARA TODAS LAS SECCIONES ===== */
+    .bg-sections{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      z-index:-3;
+      opacity:0.55;           /* si lo querés más fuerte, subí este valor */
+      pointer-events:none;
+    }
+
+    /* ===== HEADER (usa hero.mp4 independiente) ===== */
     .ls header{
       position:relative;
       min-height:100vh;
@@ -429,6 +443,11 @@
 <body>
 
   <div class="ls">
+    <!-- VIDEO DE FONDO GENERAL (para todas las secciones) -->
+    <video class="bg-sections" autoplay muted loop playsinline>
+      <source src="fondo.mp4" type="video/mp4">
+    </video>
+
     <!-- Si luego tienen logo, reemplazar src="logo-lectura.png" y borrar si no lo usan -->
     <!-- <img src="logo-lectura.png" alt="Logo Lectura Saludable" class="logo-sticky"> -->
 
@@ -461,9 +480,9 @@
 
     <!-- HERO -->
     <header>
-      <!-- Ahora usando fondo.mp4 como video de fondo -->
+      <!-- hero.mp4 es el video principal del hero -->
       <video autoplay muted loop playsinline poster="poster.jpg">
-        <source src="fondo.mp4" type="video/mp4">
+        <source src="hero.mp4" type="video/mp4">
       </video>
 
       <h1>Lectura Saludable</h1>
