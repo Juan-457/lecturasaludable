@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lectura Saludable · Ponemos palabras a tus sueños</title>
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Lectura Saludable te acompaña a escribir: talleres de textos y poesía, y libros personalizados para casamientos, fiestas y momentos importantes. Ponemos palabras a tus sueños.">
+
+  <!-- ====================== GOOGLE TAG MANAGER / ANALYTICS ======================
+       Aquí podrás agregar GTM / GA4 cuando lo necesites.
+  ===================================================================== -->
+
+  <style>
+    :root{
+      --primario:#4b5563;         /* gris cálido */
+      --acento:#7c3aed;           /* violeta suave */
+      --acento-suave:#ede9fe;
+      --bgCard: rgba(255,255,255,.96);
+      --shadow:0 4px 10px rgba(15,23,42,.08);
+      --radius:14px;
+      --safe: env(safe-area-inset-bottom);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;}
+
+    .ls{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.5;
+      background:radial-gradient(circle at top, #f5f3ff 0, #f9fafb 40%, #e5e7eb 100%);
+      padding-bottom:max(80px,var(--safe));
+      color:#111827;
+    }
+
+    /* ===== HEADER ===== */
+    .ls header{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      overflow:hidden;
+      isolation:isolate;
+      padding:0 16px;
+      padding-top:80px; /* espacio para el nav fijo */
+    }
+    .ls header video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      z-index:-2;
+    }
+    .ls header::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      background:linear-gradient(to bottom, rgba(15,23,42,.55), rgba(15,23,42,.18));
+    }
+    .ls header h1{
+      color:#f9fafb;
+      margin:24px 12px 6px;
+      font-size:clamp(30px,5.2vw,52px);
+      font-weight:800;
+      letter-spacing:.02em;
+      text-shadow:0 2px 14px rgba(0,0,0,.45);
+    }
+    .ls header .hero-slogan{
+      color:#e5e7eb;
+      margin:0 12px 16px;
+      font-size:clamp(16px,3.3vw,20px);
+      font-weight:500;
+    }
+    .ls header .hero-subtitle{
+      color:#e5e7eb;
+      max-width:640px;
+      margin:0 auto 22px;
+      font-size:clamp(14px,3.1vw,18px);
+      font-weight:400;
+      text-shadow:0 2px 10px rgba(0,0,0,.45);
+    }
+    .ls header .hero-cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin-bottom:42px;
+    }
+
+    /* ===== LOGO ABAJO IZQUIERDA (opcional) ===== */
+    .ls .logo-sticky{
+      position:fixed;
+      bottom:24px;
+      left:18px;
+      height:56px;
+      opacity:.7;
+      z-index:900;
+      border-radius:999px;
+      box-shadow:0 4px 14px rgba(15,23,42,.35);
+      transition:transform .2s ease, opacity .2s ease;
+    }
+    .ls .logo-sticky:hover{
+      opacity:1;
+      transform:scale(1.03);
+    }
+
+    /* ===== BOTONES ===== */
+    .ls .btn-primaria,
+    .ls .btn-secundaria{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 22px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:15px;
+      text-decoration:none;
+      cursor:pointer;
+      border:2px solid transparent;
+      transition:background .15s ease, color .15s ease, transform .1s ease, box-shadow .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .ls .btn-primaria{
+      background:#22c55e;
+      color:#f9fafb;
+      box-shadow:0 6px 18px rgba(22,163,74,.45);
+    }
+    .ls .btn-primaria:hover{
+      transform:translateY(-1px);
+      box-shadow:0 9px 24px rgba(22,163,74,.55);
+    }
+
+    .ls .btn-secundaria{
+      background:rgba(15,23,42,.12);
+      color:#e5e7eb;
+      border-color:rgba(249,250,251,.28);
+      backdrop-filter:blur(4px);
+    }
+    .ls .btn-secundaria:hover{
+      background:rgba(15,23,42,.2);
+      transform:translateY(-1px);
+    }
+
+    .ls .marquesina{
+      position:absolute;
+      bottom:16px;
+      left:50%;
+      transform:translateX(-50%);
+      background:rgba(17,24,39,.7);
+      color:#f9fafb;
+      padding:8px 16px;
+      border-radius:999px;
+      backdrop-filter:blur(6px);
+      max-width:92%;
+      font-weight:500;
+      font-size:clamp(13px,3.2vw,16px);
+    }
+
+    /* ===== NAV ARRIBA ===== */
+    .ls nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1200;
+      background:rgba(249,250,251,.9);
+      box-shadow:0 2px 12px rgba(15,23,42,.12);
+      backdrop-filter:blur(18px);
+    }
+
+    .ls nav .nav-inner{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+      padding:10px 12px 10px;
+    }
+
+    .ls nav .brand{
+      color:#111827;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-size:13px;
+      margin-left:6px;
+    }
+
+    .ls nav .links{
+      display:flex;
+      gap:22px;
+      list-style:none;
+      margin:0;
+      padding:0;
+      font-weight:500;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+    .ls nav .links a{
+      color:#111827;
+      padding:8px 6px;
+      border-radius:999px;
+      text-decoration:none;
+      opacity:.8;
+      transition:opacity .15s ease, background .15s ease, transform .1s ease, color .15s ease;
+    }
+    .ls nav .links a:hover{
+      opacity:1;
+      background:rgba(148,163,184,.16);
+      color:#111827;
+      transform:translateY(-1px);
+    }
+
+    .ls nav .hamburger{
+      display:none;
+      cursor:pointer;
+      border:0;
+      background:rgba(243,244,246,1);
+      color:#111827;
+      padding:8px;
+      border-radius:999px;
+      margin-left:8px;
+      box-shadow:0 2px 6px rgba(15,23,42,.16);
+    }
+    .ls nav .hamburger svg{
+      width:24px;
+      height:24px;
+    }
+
+    /* ===== MENÚ MOBILE ===== */
+    .ls .links.mobile{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      position:absolute;
+      left:0;
+      right:0;
+      top:100%;
+      background:#f9fafb;
+      border-radius:0 0 16px 16px;
+      box-shadow:0 16px 30px rgba(15,23,42,.2);
+      padding:10px 16px 14px;
+      z-index:1202;
+    }
+    .ls .links.mobile[hidden]{display:none!important}
+    .ls .links.mobile a{
+      padding:10px 0;
+      border-radius:10px;
+      color:#111827;
+      border-bottom:1px solid rgba(209,213,219,.7);
+    }
+    .ls .links.mobile a:last-child{
+      border-bottom:none;
+    }
+
+    /* ===== SECCIONES ===== */
+    .ls section{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      padding:36px 16px;
+    }
+    .ls .seccion{
+      width:min(920px,92%);
+      background:var(--bgCard);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:clamp(18px,3.6vw,26px);
+    }
+    .ls .seccion h2{
+      text-align:center;
+      margin-top:0;
+      margin-bottom:12px;
+      font-size:clamp(22px,3.4vw,26px);
+      color:#111827;
+    }
+    .ls .seccion p{
+      margin-top:0;
+      margin-bottom:10px;
+      color:#374151;
+      font-size:15px;
+    }
+
+    /* ===== CARDS ===== */
+    .servicios-grid{
+      display:grid;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media (min-width:720px){
+      .servicios-grid{
+        grid-template-columns:1.2fr 1fr;
+      }
+    }
+    .servicio-card{
+      border-radius:var(--radius);
+      border:1px solid rgba(209,213,219,.9);
+      padding:16px 14px 14px;
+      background:#f9fafb;
+    }
+    .servicio-card h3{
+      margin:0 0 6px;
+      font-size:16px;
+      color:#111827;
+    }
+    .servicio-card p{
+      font-size:14px;
+      margin-bottom:8px;
+    }
+    .servicio-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      color:#6b7280;
+      margin-bottom:6px;
+    }
+    .servicio-tag span{
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:#22c55e;
+    }
+
+    .pill{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:11px;
+      background:var(--acento-suave);
+      color:#4c1d95;
+      margin-top:4px;
+    }
+
+    /* ===== LISTA PASOS LIBRO ===== */
+    .pasos{
+      list-style:none;
+      margin:14px 0 6px;
+      padding:0;
+      font-size:14px;
+      color:#374151;
+    }
+    .pasos li{
+      display:flex;
+      gap:8px;
+      margin-bottom:6px;
+    }
+    .pasos li span.bullet{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:18px;
+      height:18px;
+      border-radius:999px;
+      background:#e5e7eb;
+      font-size:11px;
+      color:#111827;
+      flex-shrink:0;
+    }
+
+    /* ===== FRASE CENTRAL ===== */
+    .quote{
+      text-align:center;
+      font-style:italic;
+      color:#4b5563;
+      font-size:15px;
+      margin:10px 0 0;
+    }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .whatsapp-float{
+      position:fixed;
+      right:20px;
+      bottom:24px;
+      z-index:1300;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:60px;
+      height:60px;
+      background:#22c55e;
+      border-radius:50%;
+      box-shadow:0 6px 16px rgba(22,163,74,.45);
+      text-decoration:none;
+      transition:transform .15s ease;
+    }
+    .whatsapp-float img{width:32px;height:32px}
+    .whatsapp-float:hover{transform:scale(1.06)}
+
+    /* ===== DESKTOP: centrar menú ===== */
+    @media (min-width:900px){
+      .ls nav .brand{
+        display:block;
+      }
+      .ls nav .nav-inner{
+        justify-content:space-between;
+      }
+    }
+
+    @media (max-width:700px){
+      .ls nav .hamburger{display:block}
+      .ls nav .links:not(.mobile){display:none}
+      .ls .seccion{background:#ffffff;}
+    }
+
+    /* PEQUEÑO FOOTER */
+    footer{
+      text-align:center;
+      padding:10px 12px 16px;
+      font-size:12px;
+      color:#6b7280;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="ls">
+    <!-- Si luego tienen logo, reemplazar src="logo-lectura.png" y borrar si no lo usan -->
+    <!-- <img src="logo-lectura.png" alt="Logo Lectura Saludable" class="logo-sticky"> -->
+
+    <!-- NAV -->
+    <nav>
+      <div class="nav-inner">
+        <div class="brand">Lectura Saludable</div>
+
+        <ul class="links" id="desktopLinks">
+          <li><a href="#talleres">Talleres</a></li>
+          <li><a href="#libros">Libros a medida</a></li>
+          <li><a href="#sobre">Sobre nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+
+        <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="links mobile" id="mobileMenu" hidden>
+        <a href="#talleres">Talleres</a>
+        <a href="#libros">Libros a medida</a>
+        <a href="#sobre">Sobre nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header>
+      <!-- Reemplazar hero.mp4 y poster.jpg por tu material (o usar una imagen fija si querés) -->
+      <video autoplay muted loop playsinline poster="poster.jpg">
+        <source src="hero.mp4" type="video/mp4">
+      </video>
+
+      <h1>Lectura Saludable</h1>
+      <p class="hero-slogan">Ponemos palabras a tus sueños.</p>
+      <p class="hero-subtitle">
+        Te acompañamos a escribir mejores textos, a encontrar tu propia voz
+        y a transformar momentos importantes en libros que se guardan para siempre.
+      </p>
+
+      <div class="hero-cta">
+        <a href="https://wa.me/549XXXXXXXXXX" class="btn-primaria" target="_blank" rel="noopener">
+          ✍️ Quiero más información
+        </a>
+        <a href="#libros" class="btn-secundaria">
+          Ver el servicio de libros personalizados
+        </a>
+      </div>
+
+      <div class="marquesina">
+        Talleres de escritura y poesía · Libros personalizados para casamientos, fiestas y momentos únicos.
+      </div>
+    </header>
+
+    <!-- SECCIÓN: ¿QUÉ ES LECTURA SALUDABLE? / TALLERES -->
+    <section id="talleres">
+      <div class="seccion">
+        <h2>✍️ Talleres de escritura y poesía</h2>
+        <p>
+          En <strong>Lectura Saludable</strong> creemos que escribir también es una forma de cuidarse.
+          Creamos espacios simples y cálidos para que puedas explorar ideas, emociones y recuerdos
+          a través de la palabra.
+        </p>
+        <p>
+          No necesitás experiencia previa: solo ganas de escribir, leer y compartir.
+        </p>
+
+        <div class="servicios-grid">
+          <div class="servicio-card">
+            <div class="servicio-tag"><span></span> Talleres regulares</div>
+            <h3>Escritura creativa</h3>
+            <p>
+              Encuentros pensados para destrabar la página en blanco, jugar con consignas
+              y descubrir tu propia forma de contar.
+            </p>
+            <ul class="pasos">
+              <li><span class="bullet">1</span>Calentamiento de escritura y lectura breve.</li>
+              <li><span class="bullet">2</span>Consignas simples, paso a paso.</li>
+              <li><span class="bullet">3</span>Espacio de intercambio y comentarios cuidados.</li>
+            </ul>
+            <span class="pill">Ideal para comenzar</span>
+          </div>
+
+          <div class="servicio-card">
+            <div class="servicio-tag"><span></span> Poesía y experimentación</div>
+            <h3>Taller de poesía</h3>
+            <p>
+              Un espacio para quienes quieren acercarse al poema, leer autores
+              y animarse a escribir sus propios textos.
+            </p>
+            <p style="margin-bottom:4px;">
+              Trabajamos ritmo, imágenes y la música de las palabras sin tecnicismos
+              ni exigencias académicas.
+            </p>
+            <span class="pill">Grupos pequeños y cercanos</span>
+          </div>
+        </div>
+
+        <p class="quote">
+          “A veces solo hace falta que alguien nos escuche leer en voz alta lo que ya
+          veníamos escribiendo en silencio.”
+        </p>
+
+        <p style="margin-top:16px; text-align:center;">
+          <a href="https://wa.me/549XXXXXXXXXX" class="btn-primaria" target="_blank" rel="noopener">
+            📅 Consultar días, horarios y aranceles
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: LIBROS A MEDIDA -->
+    <section id="libros">
+      <div class="seccion">
+        <h2>📖 Libros personalizados para momentos importantes</h2>
+        <p>
+          Hay historias que merecen algo más que un mensaje de WhatsApp o una tarjeta rápida.
+          Por eso creamos un servicio especial: <strong>armamos con vos un libro</strong> para
+          casamientos, fiestas, aniversarios u otros momentos que quieras guardar.
+        </p>
+
+        <div class="servicios-grid">
+          <div class="servicio-card">
+            <div class="servicio-tag"><span></span> Servicio destacado</div>
+            <h3>Un libro para esa persona o ese día</h3>
+            <p>
+              Trabajamos juntos para que el libro tenga tu tono, tus anécdotas y las voces de
+              quienes forman parte de la historia.
+            </p>
+            <ul class="pasos">
+              <li><span class="bullet">1</span>Conversación inicial para entender el evento y la idea.</li>
+              <li><span class="bullet">2</span>Recolección de recuerdos, mensajes y fotos.</li>
+              <li><span class="bullet">3</span>Redacción y organización del relato.</li>
+              <li><span class="bullet">4</span>Revisión conjunta y ajustes de estilo.</li>
+            </ul>
+            <p style="margin-top:6px;">
+              Podés elegir desde un recuerdo breve hasta un libro más extenso que acompañe la fiesta.
+            </p>
+          </div>
+
+          <div class="servicio-card">
+            <h3>¿Para qué ocasiones?</h3>
+            <p style="margin-bottom:6px;">
+              Algunos ejemplos donde este servicio funciona muy bien:
+            </p>
+            <ul class="pasos">
+              <li><span class="bullet">♡</span>Regalo de casamiento o aniversario.</li>
+              <li><span class="bullet">★</span>Cumpleaños especiales (18, 30, 50, 80…).</li>
+              <li><span class="bullet">∞</span>Historias familiares para dejar a hijos y nietos.</li>
+              <li><span class="bullet">✉︎</span>Cartas largas transformadas en un libro.</li>
+            </ul>
+            <p style="margin-top:8px;">
+              Nos ocupamos de la parte difícil: ordenar, escribir y darle forma.
+              Vos traés la historia, nosotros ponemos las palabras.
+            </p>
+          </div>
+        </div>
+
+        <p style="margin-top:18px; text-align:center;">
+          <a href="https://wa.me/549XXXXXXXXXX" class="btn-primaria" target="_blank" rel="noopener">
+            💌 Quiero que me ayuden a crear un libro
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: SOBRE NOSOTROS -->
+    <section id="sobre">
+      <div class="seccion">
+        <h2>🌱 Sobre Lectura Saludable</h2>
+        <p>
+          Lectura Saludable nace de la idea de que escribir puede ser un espacio de cuidado,
+          de pausa y de juego. Trabajamos con grupos reducidos y con acompañamiento cercano,
+          respetando los tiempos y procesos de cada persona.
+        </p>
+        <p>
+          Nuestro enfoque es simple: <strong>lenguaje claro, escucha atenta y textos con sentido</strong>.
+          No buscamos perfección técnica sino historias que se sientan verdaderas.
+        </p>
+        <p>
+          Si tenés una idea dando vueltas, un recuerdo que no querés que se pierda
+          o solo ganas de escribir acompañado, podemos ayudarte a darle forma.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: CONTACTO -->
+    <section id="contacto">
+      <div class="seccion">
+        <h2>📬 Hablemos</h2>
+        <p style="text-align:center;">
+          Podés escribirnos por WhatsApp para:
+        </p>
+        <ul class="pasos" style="max-width:420px; margin:0 auto 10px;">
+          <li><span class="bullet">1</span>Recibir información de talleres y próximos inicios.</li>
+          <li><span class="bullet">2</span>Consultar por el servicio de libro personalizado.</li>
+          <li><span class="bullet">3</span>Contarnos una idea y ver juntos cómo convertirla en texto.</li>
+        </ul>
+
+        <p style="text-align:center; margin-top:14px;">
+          <a href="https://wa.me/549XXXXXXXXXX" class="btn-primaria" target="_blank" rel="noopener">
+            💬 Escribir por WhatsApp
+          </a>
+        </p>
+        <p style="text-align:center; font-size:13px; color:#6b7280; margin-top:6px;">
+          (Reemplazar el número por el WhatsApp oficial de Lectura Saludable)
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      Lectura Saludable · Ponemos palabras a tus sueños.
+    </footer>
+  </div>
+
+  <!-- ========= WhatsApp flotante ========= -->
+  <a class="whatsapp-float" href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Lectura Saludable" />
+  </a>
+
+  <!-- ========= JS Menú Mobile ========= -->
+  <script>
+    (function(){
+      const btn = document.querySelector('.ls .hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      btn?.addEventListener('click', () => {
+        const isOpen = !mobileMenu.hasAttribute('hidden');
+        if (isOpen) {
+          mobileMenu.setAttribute('hidden','');
+          btn.setAttribute('aria-expanded','false');
+        } else {
+          mobileMenu.removeAttribute('hidden');
+          btn.setAttribute('aria-expanded','true');
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
