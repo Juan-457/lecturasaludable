@@ -111,7 +111,7 @@
       text-shadow:0 2px 10px rgba(0,0,0,.45);
     }
 
-    /* ===== CTA ===== */
+    /* ===== CTA HERO: BOTONES ===== */
     .hero-cta{
       display:flex;
       flex-wrap:wrap;
@@ -126,7 +126,7 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:10px 22px;
+      padding:11px 26px;
       border-radius:999px;
       font-weight:600;
       font-size:15px;
@@ -134,18 +134,24 @@
       cursor:pointer;
       border:2px solid transparent;
       white-space:nowrap;
-      transition:.15s ease;
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
     }
     .ls .btn-primaria{
-      background:#22c55e;
+      background:linear-gradient(135deg,#22c55e,#16a34a);
       color:#f9fafb;
-      box-shadow:0 6px 18px rgba(22,163,74,.45);
+      border-color:#16a34a;
+      box-shadow:0 10px 24px rgba(22,163,74,.55);
     }
     .ls .btn-secundaria{
-      background:rgba(15,23,42,.12);
-      color:#e5e7eb;
-      border-color:rgba(249,250,251,.32);
-      backdrop-filter:blur(4px);
+      background:linear-gradient(135deg,#f97316,#ea580c);
+      color:#fff7ed;
+      border-color:#ea580c;
+      box-shadow:0 10px 24px rgba(234,88,12,.5);
+    }
+    .ls .btn-primaria:hover,
+    .ls .btn-secundaria:hover{
+      transform:translateY(-1px) scale(1.02);
+      box-shadow:0 14px 30px rgba(15,23,42,.35);
     }
 
     /* Marquesina */
@@ -206,6 +212,11 @@
       font-size:12px;
     }
 
+    .ls nav .links a{
+      text-decoration:none;
+      color:#111827;
+    }
+
     /* MENÚ MOBILE */
     .ls nav .hamburger{
       display:none;
@@ -250,13 +261,20 @@
       padding:clamp(18px,3.6vw,26px);
     }
 
+    /* Títulos centrados */
+    .ls h2,
+    .ls h3{
+      text-align:center;
+      margin-top:0;
+    }
+
     /* ===== CARRUSEL ===== */
     .libros-carousel{
       margin-top:18px;
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:10px;
+      gap:14px;
     }
 
     .libros-main{
@@ -281,19 +299,21 @@
     .libros-thumbs button{
       opacity:.6;
       transition:.15s ease;
-      border:0;
+      border:none;
       padding:0;
-      background:none;
+      background:transparent;
       cursor:pointer;
+      border-radius:10px;
+      overflow:hidden;
     }
-    .libros-thumbs button img{
+    .libros-thumbs img{
       display:block;
-      height:90px;
-      border-radius:8px;
+      width:90px;
     }
     .libros-thumbs button.active{
       opacity:1;
       transform:scale(1.03);
+      box-shadow:0 6px 16px rgba(15,23,42,.25);
     }
 
     /* ===== RESEÑAS ===== */
@@ -305,33 +325,33 @@
     .resenas-grid{
       display:flex;
       flex-wrap:wrap;
-      gap:14px;
-      justify-content:space-between;
-      margin-top:10px;
+      gap:12px;
+      justify-content:center;
     }
     .resena-card{
       background:#ffffff;
       padding:12px 14px;
       border-radius:12px;
       border:1px solid #e5e7eb;
-      flex:1;
-      min-width:220px;
+      max-width:260px;
+      font-size:14px;
     }
 
     /* ===== MOMENTOS ESPECIALES ===== */
     .momentos-especiales{
-      margin-top:0;
-      padding:18px 16px 20px;
+      margin-top:34px;
+      padding:18px 16px 22px;
       border-radius:16px;
       background:var(--acento-suave);
       border:1px solid rgba(124,58,237,.35);
     }
-    .momentos-especiales-cta{
-      text-align:center;
-      margin-top:16px;
+    .momentos-especiales ul{
+      padding-left:20px;
     }
-    .momentos-especiales .btn-primaria{
-      margin-top:0;
+    .cta-momentos{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
     }
 
     /* FOOTER */
@@ -364,7 +384,7 @@
       border-radius:4px;
     }
 
-    /* ===== BOTÓN WHATSAPP ===== */
+    /* ===== BOTÓN WHATSAPP FLOTANTE ===== */
     .whatsapp-float{
       position:fixed;
       right:18px;
@@ -400,7 +420,7 @@
       }
       .hero-cta a{
         font-size:14px;
-        padding:9px 18px;
+        padding:9px 20px;
       }
       .marquesina{
         bottom:22px;
@@ -408,6 +428,10 @@
       }
       .ls nav .links{display:none;}
       .ls nav .hamburger{display:block;}
+      .resenas-grid{
+        flex-direction:column;
+        align-items:center;
+      }
     }
 
     /* ===== ESCRITORIO: OCULTAR BRAND Y CENTRAR LINKS ===== */
@@ -491,37 +515,20 @@
   <section id="talleres">
     <div class="seccion">
       <h2>✍️ Talleres de escritura y poesía</h2>
-      <p>Escribir también es una forma de cuidarse. Talleres grupales y acompañamientos personalizados.</p>
+      <p style="text-align:left;">
+        Escribir también es una forma de cuidarse. En Lectura Saludable vas a encontrar talleres grupales y
+        propuestas de acompañamiento para que puedas explorar tu voz, tu sensibilidad y tu creatividad.
+      </p>
     </div>
   </section>
 
-  <!-- LIBROS PARA MOMENTOS ESPECIALES (violeta) -->
-  <section id="momentos">
-    <div class="seccion">
-      <div class="momentos-especiales">
-        <h3>💌 Libros para momentos que se guardan para siempre</h3>
-        <p>Además de los libros publicados, Mabel te acompaña a convertir tu propia historia en un libro único: un objeto hermoso que queda para siempre en tu familia.</p>
-        <ul>
-          <li>Relatos de casamientos, aniversarios y bodas de plata u oro.</li>
-          <li>Cuentos para fiestas de 15, bautismos y cumpleaños especiales.</li>
-          <li>Historias de vida para regalar a mamás, papás y abuelos.</li>
-        </ul>
-        <p>Juntas trabajan recuerdos, anécdotas y fotos para armar un libro que tiene tu voz y tu estilo, con la ayuda de una escritora que sabe escuchar y poner en palabras lo que sentís.</p>
-
-        <div class="momentos-especiales-cta">
-          <a href="https://wa.me/549XXXXXXXXXX?text=Quiero+contar+mi+historia+en+un+libro" class="btn-primaria" target="_blank" rel="noopener">
-            💚 Quiero contar mi historia en un libro
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NUESTROS LIBROS + CARRUSEL + RESEÑAS -->
+  <!-- NUESTROS LIBROS + CARRUSEL + RESEÑAS + MOMENTOS ESPECIALES -->
   <section id="libros">
     <div class="seccion">
       <h2>📖 Nuestros libros</h2>
-      <p>Libros de Mabel Padilla llenos de poesía, refugio y luz.</p>
+      <p style="text-align:left;">
+        Libros de Mabel Padilla llenos de poesía, refugio y luz. Palabras que acompañan, abrazan e inspiran.
+      </p>
 
       <!-- CARRUSEL -->
       <div class="libros-carousel">
@@ -565,11 +572,41 @@
           </div>
         </div>
 
-        <p style="margin-top:12px; text-align:center;">
-          <a href="https://www.amazon.com/product-reviews/B0BG11RY5N/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews" target="_blank">Ver reseñas del libro 1</a> ·
-          <a href="https://www.amazon.com/Versos-libres-para-PERSISTIR-comunicARTE-ebook/dp/B0FR3XKSXS?ref_=ast_author_dp&th=1&psc=1#customerReviews" target="_blank">Ver reseñas del libro 2</a>
+        <p style="margin-top:16px; text-align:center; font-size:14px;">
+          <a href="https://www.amazon.com/product-reviews/B0BG11RY5N/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews" target="_blank">
+            Ver reseñas del libro 1
+          </a>
+          ·
+          <a href="https://www.amazon.com/Versos-libres-para-PERSISTIR-comunicARTE-ebook/dp/B0FR3XKSXS?ref_=ast_author_dp&th=1&psc=1#customerReviews" target="_blank">
+            Ver reseñas del libro 2
+          </a>
         </p>
       </div>
+
+      <!-- MOMENTOS ESPECIALES -->
+      <div class="momentos-especiales">
+        <h3>💌 Libros para momentos que se guardan para siempre</h3>
+        <p>
+          Además de los libros publicados, Mabel te acompaña a convertir tu propia historia en un libro único:
+          un objeto hermoso que queda para siempre en tu familia.
+        </p>
+        <ul>
+          <li>Relatos de casamientos, aniversarios y bodas de plata u oro.</li>
+          <li>Cuentos para fiestas de 15, bautismos y cumpleaños especiales.</li>
+          <li>Historias de vida para regalar a mamás, papás y abuelos.</li>
+        </ul>
+        <p>
+          Juntas trabajan recuerdos, anécdotas y fotos para armar un libro que tiene tu voz y tu estilo,
+          con la ayuda de una escritora que sabe escuchar y poner en palabras lo que sentís.
+        </p>
+
+        <div class="cta-momentos">
+          <a href="https://wa.me/549XXXXXXXXXX?text=Quiero+contar+mi+historia+en+un+libro" class="btn-primaria" target="_blank" rel="noopener">
+            💚 Quiero contar mi historia en un libro
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -577,7 +614,10 @@
   <section id="sobre">
     <div class="seccion">
       <h2>🌱 Sobre Lectura Saludable</h2>
-      <p>Un espacio creado por Mabel Padilla donde escribir es sanar, recordar y celebrar. Lectura Saludable es un refugio para quienes buscan palabras que abracen.</p>
+      <p style="text-align:left;">
+        Lectura Saludable es un espacio creado por Mabel Padilla donde escribir es sanar, recordar y celebrar.
+        Un refugio para quienes buscan palabras que abracen, acompañen y enciendan esperanza.
+      </p>
     </div>
   </section>
 
