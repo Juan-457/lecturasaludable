@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lectura Saludable · Ponemos palabras a tus sueños</title>
   <meta name="color-scheme" content="light dark" />
-  <meta name="description" content="Talleres de escritura, poesía, libros personalizados y redacción de historias especiales. Lectura Saludable te ayuda a encontrar tu voz y transformarla en textos inolvidables.">
+  <meta name="description" content="Lectura Saludable te acompaña a escribir: talleres de textos y poesía, y libros personalizados para casamientos, fiestas y momentos importantes. Ponemos palabras a tus sueños.">
 
   <style>
     :root{
@@ -20,238 +20,417 @@
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:#000;}
+    body{margin:0; background:#000;}
 
     .ls{
       margin:0;
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
       line-height:1.5;
       padding-bottom:max(80px,var(--safe));
-      position:relative;
       color:#111827;
+      position:relative;
       z-index:0;
     }
 
+    /* ===== VIDEO DE FONDO GENERAL ===== */
     .bg-sections{
       position:fixed;
       inset:0;
       width:100%;
       height:100%;
       object-fit:cover;
-      opacity:0.45;
+      object-position:center;
       z-index:-3;
+      opacity:0.55;
       pointer-events:none;
     }
 
-    /* NAV */
-    .ls nav{
-      position:fixed;
-      top:0;left:0;right:0;
-      z-index:1200;
-      background:rgba(249,250,251,.9);
-      box-shadow:0 2px 12px rgba(15,23,42,.12);
-      backdrop-filter:blur(18px);
-    }
-    .nav-inner{
-      max-width:1100px;
-      margin:0 auto;
-      padding:10px 12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .brand{
-      font-weight:700;
-      font-size:13px;
-      letter-spacing:.06em;
-    }
-    .links{
-      display:flex;
-      gap:22px;
-      list-style:none;
-      margin:0;
-      padding:0;
-      text-transform:uppercase;
-      font-size:12px;
-    }
-
-    .hamburger{
-      display:none;
-      cursor:pointer;
-      background:#f3f4f6;
-      padding:8px;
-      border-radius:999px;
-    }
-    .links.mobile{
-      flex-direction:column;
-      gap:8px;
-      position:absolute;
-      left:0;right:0;top:100%;
-      background:#fff;
-      padding:10px 16px 14px;
-      border-radius:0 0 16px 16px;
-      box-shadow:0 10px 25px rgba(0,0,0,.2);
-    }
-    .links.mobile[hidden]{display:none!important}
-
-    /* HERO */
-    header{
+    /* ===== HEADER / HERO ===== */
+    .ls header{
+      position:relative;
       min-height:100vh;
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:center;
-      padding:90px 16px 0;
       text-align:center;
-      position:relative;
       overflow:hidden;
+      isolation:isolate;
+      padding:0 16px;
+      padding-top:70px;
     }
-    header video{
+    .ls header video{
       position:absolute;
       inset:0;
-      width:100%;height:100%;
+      width:100%;
+      height:100%;
       object-fit:cover;
+      object-position:center;
       z-index:-2;
     }
-    header::before{
+    .ls header::before{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(to bottom,rgba(15,23,42,.60),rgba(15,23,42,.18));
       z-index:-1;
+      background:linear-gradient(to bottom, rgba(15,23,42,.55), rgba(15,23,42,.18));
     }
 
+    /* ===== BURBUJAS ===== */
     .hero-bubble{
-      background:rgba(17,24,39,.42);
-      backdrop-filter:blur(8px);
-      padding:6px 16px;
-      border-radius:16px;
-      display:inline-block;
-      box-shadow:0 4px 14px rgba(0,0,0,.25);
+      background: rgba(17,24,39,.42);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 16px;
+      display: inline-block;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,.25);
     }
 
-    h1{
-      color:#fff;
-      font-size:clamp(30px,5vw,52px);
-      margin:10px 0;
+    /* ===== TEXTOS HERO ===== */
+    .ls header h1{
+      color:#f9fafb;
+      margin:14px 12px 8px;
+      font-size:clamp(28px,5.2vw,50px);
       font-weight:800;
+      letter-spacing:.02em;
+      text-shadow:0 2px 14px rgba(0,0,0,.45);
     }
-    .hero-slogan{
+    .ls header .hero-slogan{
       color:#e5e7eb;
-      margin:0 0 8px;
-      font-size:clamp(15px,3vw,20px);
+      font-size:clamp(15px,3.3vw,20px);
+      font-weight:500;
+      margin:0 0 6px;
     }
-    .hero-subtitle{
-      max-width:650px;
+    .ls header .hero-subtitle{
       color:#e5e7eb;
+      max-width:640px;
+      margin:10px auto 22px;
       font-size:clamp(14px,3vw,18px);
-      margin-bottom:22px;
+      font-weight:400;
+      text-shadow:0 2px 10px rgba(0,0,0,.45);
     }
 
+    /* ===== CTA ===== */
     .hero-cta{
       display:flex;
-      gap:14px;
       flex-wrap:wrap;
+      gap:14px;
       justify-content:center;
-      margin-bottom:40px;
+      margin-top:10px;
+      margin-bottom:42px;
     }
-    .btn-primaria,.btn-secundaria{
+
+    .ls .btn-primaria,
+    .ls .btn-secundaria{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       padding:10px 22px;
       border-radius:999px;
       font-weight:600;
       font-size:15px;
       text-decoration:none;
-      display:inline-flex;
-      align-items:center;
       cursor:pointer;
+      border:2px solid transparent;
+      white-space:nowrap;
+      transition:.15s ease;
     }
-    .btn-primaria{
+    .ls .btn-primaria{
       background:#22c55e;
-      color:#fff;
-      box-shadow:0 6px 18px rgba(22,163,74,.4);
+      color:#f9fafb;
+      box-shadow:0 6px 18px rgba(22,163,74,.45);
     }
-    .btn-secundaria{
-      background:rgba(255,255,255,.15);
-      color:#fff;
+    .ls .btn-primaria:hover{
+      transform:translateY(-1px);
+      box-shadow:0 8px 20px rgba(22,163,74,.5);
+    }
+    .ls .btn-secundaria{
+      background:rgba(15,23,42,.12);
+      color:#e5e7eb;
+      border-color:rgba(249,250,251,.32);
       backdrop-filter:blur(4px);
-      border:1px solid rgba(255,255,255,.25);
     }
 
-    .marquesina{
-      margin-top:20px;
-      background:rgba(0,0,0,.45);
-      padding:8px 18px;
+    /* Marquesina */
+    .ls .marquesina{
+      position:absolute;
+      bottom:16px;
+      left:50%;
+      transform:translateX(-50%);
+      background:rgba(17,24,39,.7);
+      color:#f9fafb;
+      padding:8px 16px;
       border-radius:999px;
-      color:#fff;
-      font-size:14px;
       backdrop-filter:blur(6px);
+      max-width:92%;
+      font-weight:500;
+      font-size:clamp(13px,3vw,16px);
     }
 
-    /* SECCIONES GENERALES */
-    section{
+    /* NAV */
+    .ls nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1200;
+      background:rgba(249,250,251,.9);
+      box-shadow:0 2px 12px rgba(15,23,42,.12);
+      backdrop-filter:blur(18px);
+    }
+
+    .ls nav .nav-inner{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+      padding:10px 12px 10px;
+    }
+
+    .ls nav .brand{
+      color:#111827;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-size:13px;
+    }
+
+    .ls nav .links{
+      display:flex;
+      gap:22px;
+      list-style:none;
+      margin:0;
+      padding:0;
+      font-weight:500;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+    .ls nav .links a{
+      color:#111827;
+      text-decoration:none;
+      padding:6px 0;
+    }
+
+    /* MENÚ MOBILE */
+    .ls nav .hamburger{
+      display:none;
+      cursor:pointer;
+      border:0;
+      background:rgba(243,244,246,1);
+      color:#111827;
+      padding:8px;
+      border-radius:999px;
+      margin-left:8px;
+      box-shadow:0 2px 6px rgba(15,23,42,.16);
+    }
+    .ls nav .hamburger svg{
+      width:24px;
+      height:24px;
+      display:block;
+    }
+    .ls .links.mobile{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      position:absolute;
+      left:0;
+      right:0;
+      top:100%;
+      background:#f9fafb;
+      border-radius:0 0 16px 16px;
+      box-shadow:0 16px 30px rgba(15,23,42,.2);
+      padding:10px 16px 14px;
+    }
+    .ls .links.mobile[hidden]{display:none!important}
+    .ls .links.mobile a{
+      text-decoration:none;
+      color:#111827;
+      padding:8px 0;
+      border-bottom:1px solid #e5e7eb;
+    }
+    .ls .links.mobile a:last-child{border-bottom:none;}
+
+    /* SECCIONES */
+    .ls section{
       display:flex;
       justify-content:center;
-      padding:60px 16px;
+      align-items:center;
+      flex-direction:column;
+      padding:36px 16px;
     }
-    .seccion{
+    .ls .seccion{
       width:min(920px,92%);
       background:var(--bgCard);
-      padding:28px;
       border-radius:var(--radius);
       box-shadow:var(--shadow);
+      padding:clamp(18px,3.6vw,26px);
+    }
+    .ls .seccion h2{
+      margin-top:0;
     }
 
-    /* CARRUSEL LIBROS */
-    .carrusel{
+    /* ===== CARRUSEL DE LIBROS ===== */
+    .libros-carousel{
+      margin-top:18px;
       display:flex;
-      gap:14px;
-      overflow-x:auto;
-      padding-bottom:10px;
-      scroll-behavior:smooth;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
     }
-    .carrusel img{
-      height:180px;
-      border-radius:10px;
-      box-shadow:0 3px 10px rgba(0,0,0,.18);
+    .libros-main{
+      width:100%;
+      max-width:420px;
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 10px 26px rgba(15,23,42,.18);
+      background:#111827;
     }
-
-    /* SECCIÓN ESPECIAL */
-    .especial{
+    .libros-main img{
+      width:100%;
+      display:block;
+    }
+    .libros-caption{
+      margin:8px 0 4px;
       text-align:center;
-      padding:40px 16px;
+      font-size:0.95rem;
+      color:#4b5563;
+      font-weight:500;
     }
-    .especial h2{
-      font-size:28px;
-      margin-bottom:12px;
+    .libros-thumbs{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:8px;
+      margin-top:4px;
     }
-    .especial p{
-      font-size:18px;
-      max-width:700px;
-      margin:0 auto 20px;
+    .libros-thumbs button{
+      border:2px solid transparent;
+      background:transparent;
+      padding:0;
+      border-radius:8px;
+      overflow:hidden;
+      cursor:pointer;
+      opacity:.6;
+      box-shadow:0 3px 10px rgba(15,23,42,.18);
+      transition:opacity .15s ease, transform .1s ease, border-color .15s ease;
+    }
+    .libros-thumbs button.active{
+      opacity:1;
+      transform:translateY(-1px);
+      border-color:var(--acento);
+    }
+    .libros-thumbs img{
+      width:80px;
+      height:110px;
+      object-fit:cover;
+      display:block;
     }
 
-    /* WHATSAPP FLOAT */
-    .whatsapp-float{
-      position:fixed;
-      bottom:25px;right:25px;
-      z-index:2000;
+    /* ===== RESEÑAS ===== */
+    .resenas-libros{
+      margin-top:26px;
+      padding-top:18px;
+      border-top:1px solid #e5e7eb;
     }
-    .whatsapp-float img{
-      width:48px;
-      height:48px;
-      filter:drop-shadow(0 4px 10px rgba(0,0,0,.4));
-      border-radius:50%;
+    .resenas-libros h3{
+      text-align:center;
+      margin-top:0;
+      margin-bottom:8px;
+    }
+    .resenas-intro{
+      text-align:center;
+      font-size:0.95rem;
+      color:#4b5563;
+      margin-bottom:18px;
+    }
+    .resenas-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+    }
+    .resena-card{
+      flex:1 1 220px;
+      max-width:320px;
+      background:#f9fafb;
+      border-radius:12px;
+      border:1px solid #e5e7eb;
+      padding:12px 14px;
+      font-size:0.9rem;
+      color:#374151;
+      box-shadow:0 2px 8px rgba(15,23,42,.04);
+    }
+    .resena-stars{
+      color:#f59e0b;
+      font-size:0.9rem;
+      margin-bottom:4px;
+    }
+    .resena-card strong{
+      display:block;
+      margin-bottom:4px;
+    }
+    .resena-meta{
+      font-size:0.8rem;
+      color:#6b7280;
+      margin-top:4px;
+    }
+    .resenas-links{
+      margin-top:16px;
+      text-align:center;
+    }
+    .btn-amazon{
+      display:inline-block;
+      margin:4px 6px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid #111827;
+      background:#ffffff;
+      color:#111827;
+      font-size:0.86rem;
+      font-weight:600;
+      text-decoration:none;
+      transition:background .15s ease, color .15s ease, transform .1s ease, box-shadow .15s ease;
+    }
+    .btn-amazon:hover{
+      background:#111827;
+      color:#f9fafb;
+      transform:translateY(-1px);
+      box-shadow:0 6px 14px rgba(15,23,42,.3);
+    }
+
+    /* ===== SECCIÓN ESPECIAL MOMENTOS ===== */
+    .momentos-especiales{
+      margin-top:26px;
+      padding:18px 16px;
+      border-radius:16px;
+      background:var(--acento-suave);
+      border:1px solid rgba(124,58,237,.35);
+    }
+    .momentos-especiales h3{
+      margin-top:0;
+      margin-bottom:8px;
+      color:#4c1d95;
+    }
+    .momentos-especiales ul{
+      margin:10px 0 12px 18px;
+      padding:0;
+      color:#4b5563;
+      font-size:0.95rem;
     }
 
     /* FOOTER */
-    footer{
+    .footer-umanoai{
+      padding:22px 16px;
       background:#f3f4f6;
-      padding:25px 16px;
       text-align:center;
-      margin-top:20px;
-      border-top:1px solid rgba(0,0,0,.1);
+      border-top:1px solid rgba(0,0,0,.06);
+      margin-top:40px;
     }
-    .fu-inner{
+    .footer-umanoai .fu-inner{
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -259,18 +438,74 @@
       font-size:13px;
       color:#4b5563;
     }
-    .fu-logo{
+    .footer-umanoai .fu-link{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      text-decoration:none;
+      color:#4b5563;
+      font-weight:600;
+    }
+    .footer-umanoai .fu-logo{
       height:16px;
+      width:auto;
+      border-radius:4px;
     }
 
-    @media(max-width:768px){
-      header{padding-top:110px;}
-      h1{font-size:34px;}
-      .hero-subtitle{font-size:15px;}
-      .carrusel img{height:150px;}
-      .hamburger{display:block;}
-      .links{display:none;}
+    /* ===== BOTÓN WHATSAPP FLOTANTE ===== */
+    .whatsapp-float{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      background:#22c55e;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 6px 18px rgba(0,0,0,.3);
+      z-index:1500;
+      text-decoration:none;
     }
+    .whatsapp-float img{
+      width:30px;
+      height:30px;
+      display:block;
+    }
+
+    /* ===== MOBILE OPTIMIZADO ===== */
+    @media (max-width:768px){
+
+      .ls header{
+        padding-top:90px;
+      }
+
+      .ls header h1{
+        font-size:34px;
+        margin-top:4px;
+      }
+
+      .hero-subtitle{
+        font-size:15px !important;
+        margin-top:12px;
+      }
+
+      .hero-cta a{
+        font-size:14px;
+        padding:9px 18px;
+      }
+
+      .marquesina{
+        bottom:22px;
+        font-size:13px;
+      }
+
+      .ls nav .links{display:none;}
+      .ls nav .hamburger{display:block;}
+      .resena-card{max-width:100%;}
+    }
+
   </style>
 </head>
 
@@ -278,6 +513,7 @@
 
 <div class="ls">
 
+  <!-- Video de fondo -->
   <video class="bg-sections" autoplay muted loop playsinline>
     <source src="fondo.mp4" type="video/mp4">
   </video>
@@ -289,78 +525,208 @@
 
       <ul class="links" id="desktopLinks">
         <li><a href="#talleres">Talleres</a></li>
-        <li><a href="#libros">Mis libros</a></li>
-        <li><a href="#historia">Tu historia</a></li>
+        <li><a href="#libros">Libros a medida</a></li>
+        <li><a href="#sobre">Sobre nosotros</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
 
-      <button class="hamburger" aria-controls="mobileMenu">
-        <svg width="24" height="24"><path stroke="#111" stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
       </button>
     </div>
 
     <div class="links mobile" id="mobileMenu" hidden>
       <a href="#talleres">Talleres</a>
-      <a href="#libros">Mis libros</a>
-      <a href="#historia">Tu historia</a>
+      <a href="#libros">Libros a medida</a>
+      <a href="#sobre">Sobre nosotros</a>
       <a href="#contacto">Contacto</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <header>
-    <video autoplay muted loop playsinline>
+    <video autoplay muted loop playsinline poster="poster.jpg">
       <source src="hero.mp4" type="video/mp4">
     </video>
 
     <h1><span class="hero-bubble">Lectura Saludable</span></h1>
 
-    <p class="hero-slogan"><span class="hero-bubble">Ponemos palabras a tus sueños.</span></p>
+    <p class="hero-slogan">
+      <span class="hero-bubble">Ponemos palabras a tus sueños.</span>
+    </p>
 
-    <p class="hero-subtitle"><span class="hero-bubble">
-      Talleres, lecturas, escritura y libros personalizados para que tu historia quede guardada para siempre.
-    </span></p>
+    <p class="hero-subtitle">
+      <span class="hero-bubble">
+        Te acompañamos a escribir mejores textos, a encontrar tu propia voz
+        y a transformar momentos importantes en libros que se guardan para siempre.
+      </span>
+    </p>
 
     <div class="hero-cta">
-      <a href="https://wa.me/5491138171669" class="btn-primaria">✍️ Quiero más información</a>
-      <a href="#historia" class="btn-secundaria">Crear mi libro especial</a>
+      <a href="https://wa.me/549XXXXXXXXXX" class="btn-primaria" target="_blank" rel="noopener">
+        ✍️ Quiero más información
+      </a>
+      <a href="#libros" class="btn-secundaria">
+        Ver el servicio de libros personalizados
+      </a>
     </div>
 
-    <div class="marquesina">Talleres · Libros · Escritura personalizada</div>
+    <div class="marquesina">
+      Talleres de escritura y poesía · Libros personalizados para casamientos, fiestas y momentos únicos.
+    </div>
   </header>
 
   <!-- TALLERES -->
   <section id="talleres">
     <div class="seccion">
       <h2>✍️ Talleres de escritura y poesía</h2>
-      <p>Un espacio para escribir mejor, encontrar tu voz y compartir textos.</p>
+      <p>
+        Escribir también es una forma de cuidarse. En los talleres de Lectura Saludable
+        trabajamos textos, poesía y ejercicios creativos en un espacio cuidado, cercano
+        y amoroso.
+      </p>
+      <p>
+        Hay propuestas para quienes recién empiezan y para quienes ya escriben y quieren
+        profundizar. Podés sumarte a talleres grupales o a acompañamientos más
+        personalizados.
+      </p>
     </div>
   </section>
 
-  <!-- MIS LIBROS -->
+  <!-- LIBROS + CARRUSEL + RESEÑAS + MOMENTOS ESPECIALES -->
   <section id="libros">
     <div class="seccion">
-      <h2>📚 Mis libros publicados</h2>
-      <p>Estas son algunas de las obras escritas por la creadora de Lectura Saludable.</p>
+      <h2>📖 Libros personalizados</h2>
+      <p>
+        Lectura Saludable también es una colección de libros escritos por Mabel Padilla,
+        donde la poesía se vuelve refugio, compañía y alimento para el alma.
+      </p>
 
-      <div class="carrusel">
-        <img src="libro1.jpg">
-        <img src="libro2.jpg">
-        <img src="libro3.jpg">
+      <!-- Carrusel de libros -->
+      <div class="libros-carousel">
+        <div class="libros-main">
+          <!-- portada principal (cambiá los archivos por los tuyos) -->
+          <img src="libro1.jpg" alt="Lectura Saludable – Te cambia el estado de ánimo" id="libroMain">
+        </div>
+        <p class="libros-caption" id="libroCaption">
+          “Te cambia el estado de ánimo y te da esperanza, felicidad y paz”.
+        </p>
+
+        <div class="libros-thumbs">
+          <button class="active"
+                  data-src="libro1.jpg"
+                  data-title="Te cambia el estado de ánimo y te da esperanza, felicidad y paz">
+            <img src="libro1.jpg" alt="Portada libro 1">
+          </button>
+
+          <button
+                  data-src="libro2.jpg"
+                  data-title="Lectura saludable es la carta del restaurante del alma">
+            <img src="libro2.jpg" alt="Portada libro 2">
+          </button>
+
+          <button
+                  data-src="libro3.jpg"
+                  data-title="En este libro la poesía invita a no rendirse nunca">
+            <img src="libro3.jpg" alt="Portada libro 3">
+          </button>
+        </div>
+      </div>
+
+      <!-- Reseñas -->
+      <div class="resenas-libros">
+        <h3>⭐ Lo que dicen quienes ya leyeron</h3>
+        <p class="resenas-intro">
+          Los libros de Lectura Saludable ya llegaron a lectoras y lectores de distintos países.
+          Algunas palabras que se repiten: paz, esperanza, coraje y compañía.
+        </p>
+
+        <div class="resenas-grid">
+          <article class="resena-card">
+            <div class="resena-stars">★★★★★</div>
+            <strong>“Te cambia el estado de ánimo y te da esperanza, felicidad y paz”</strong>
+            <p>
+              “Tuve la enorme bendición de poder leer la poesía de esta gran escritora durante la
+              pandemia y soy testigo del poder de las palabras para resolver problemas, levantar
+              el ánimo y emocionarnos por la vida y más…”
+            </p>
+            <div class="resena-meta">Fatima – Estados Unidos</div>
+          </article>
+
+          <article class="resena-card">
+            <div class="resena-stars">★★★★★</div>
+            <strong>“Salud y sanación”</strong>
+            <p>
+              “Lectura Saludable es la carta del restaurante del alma. Es celebrar la vida,
+              sanar con poesía, ingenio y esperanza. Un abrazo por este legado.”
+            </p>
+            <div class="resena-meta">Glamflor – España</div>
+          </article>
+
+          <article class="resena-card">
+            <div class="resena-stars">★★★★★</div>
+            <strong>“La poesía invita a no rendirse nunca”</strong>
+            <p>
+              “Cada página es un menú para el alma: palabras que nutren, versos que acarician
+              y emociones que invitan a seguir creando y a nunca rendirse.”
+            </p>
+            <div class="resena-meta">Mi Millán – México</div>
+          </article>
+        </div>
+
+        <div class="resenas-links">
+          <p style="margin-bottom:8px;">Podés leer más reseñas completas en Amazon:</p>
+          <a class="btn-amazon"
+             href="https://www.amazon.com/product-reviews/B0BG11RY5N/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews"
+             target="_blank" rel="noopener">
+            Ver reseñas del libro “Lectura Saludable”
+          </a>
+          <a class="btn-amazon"
+             href="https://www.amazon.com/Versos-libres-para-PERSISTIR-comunicARTE-ebook/dp/B0FR3XKSXS?ref_=ast_author_dp&th=1&psc=1#customerReviews"
+             target="_blank" rel="noopener">
+            Ver reseñas de “Versos libres para persistir”
+          </a>
+        </div>
+      </div>
+
+      <!-- Sección especial momentos -->
+      <div class="momentos-especiales">
+        <h3>💌 Libros para momentos que se guardan para siempre</h3>
+        <p>
+          Además de los libros publicados, Mabel te acompaña a convertir <strong>tu propia historia</strong>
+          en un libro único: un objeto hermoso que queda para siempre en tu familia.
+        </p>
+        <ul>
+          <li>Relatos de casamientos, aniversarios y bodas de plata u oro.</li>
+          <li>Cuentos para fiestas de 15, bautismos y cumpleaños especiales.</li>
+          <li>Historias de vida para regalar a mamás, papás y abuelos.</li>
+        </ul>
+        <p>
+          Juntas trabajan recuerdos, anécdotas y fotos para armar un libro que tiene tu voz
+          y tu estilo, con la ayuda de una escritora que sabe escuchar y poner en palabras
+          lo que sentís.
+        </p>
+        <p style="margin-top:10px;">
+          <a href="https://wa.me/549XXXXXXXXXX?text=Hola%2C+quiero+que+me+ayudes+a+escribir+un+libro+para+un+momento+especial"
+             class="btn-primaria" target="_blank" rel="noopener">
+            💌 Quiero contar mi historia en un libro
+          </a>
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- TU HISTORIA -->
-  <section id="historia">
-    <div class="seccion especial">
-      <h2>💗 Tu historia, tu libro</h2>
+  <!-- SOBRE NOSOTROS -->
+  <section id="sobre">
+    <div class="seccion">
+      <h2>🌱 Sobre Lectura Saludable</h2>
       <p>
-        Casamientos, fiestas de 15, bautismos, aniversarios y momentos únicos.  
-        Te ayudo a convertir esas emociones en un libro inolvidable para vos o para regalar.
+        Lectura Saludable es un espacio creado por Mabel Padilla para cuidar el alma
+        a través de la escritura. Talleres, poesía, acompañamientos y libros que
+        abrazan, inspiran y acompañan.
       </p>
-
-      <a href="https://wa.me/5491138171669" class="btn-primaria">💌 Quiero contar mi historia</a>
     </div>
   </section>
 
@@ -368,39 +734,81 @@
   <section id="contacto">
     <div class="seccion">
       <h2>📬 Hablemos</h2>
-      <p style="text-align:center;">Consultá por WhatsApp para más info.</p>
+      <p style="text-align:center;">
+        Si querés sumarte a un taller, conseguir un libro o empezar a escribir
+        tu propia historia, escribinos por WhatsApp.
+      </p>
 
       <p style="text-align:center;">
-        <a href="https://wa.me/5491138171669" class="btn-primaria">💬 Escribir por WhatsApp</a>
+        <a href="https://wa.me/549XXXXXXXXXX" class="btn-primaria" target="_blank" rel="noopener">
+          💬 Escribir por WhatsApp
+        </a>
       </p>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
+  <footer class="footer-umanoai">
     <div class="fu-inner">
       <span>© 2025 Lectura Saludable · Todos los derechos reservados.</span>
 
-      <a href="https://umanoai.com" class="fu-link" target="_blank">
-        <img src="umanoai.jpg" class="fu-logo" alt="UmanoAI">
+      <a href="https://umanoai.com" target="_blank" rel="noopener" class="fu-link">
+        <img src="umanoai.png" alt="UmanoAI" class="fu-logo">
         Diseñado por UmanoAI
       </a>
     </div>
   </footer>
+
 </div>
 
 <!-- WhatsApp flotante -->
-<a class="whatsapp-float" href="https://wa.me/5491138171669" target="_blank">
+<a class="whatsapp-float" href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Lectura Saludable" />
 </a>
 
+<!-- JS menú mobile -->
 <script>
-  const btn = document.querySelector(".hamburger");
-  const menu = document.getElementById("mobileMenu");
-  btn.onclick = () => {
-    if(menu.hidden){menu.hidden=false;}
-    else{menu.hidden=true;}
-  };
+  (function(){
+    const btn = document.querySelector('.ls .hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => {
+      const isOpen = !mobileMenu.hasAttribute('hidden');
+      if (isOpen) {
+        mobileMenu.setAttribute('hidden','');
+        btn.setAttribute('aria-expanded','false');
+      } else {
+        mobileMenu.removeAttribute('hidden');
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  })();
+</script>
+
+<!-- JS carrusel de libros -->
+<script>
+  (function(){
+    const mainImg = document.getElementById('libroMain');
+    const caption = document.getElementById('libroCaption');
+    const buttons = document.querySelectorAll('.libros-thumbs button');
+
+    if(!mainImg || !buttons.length) return;
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const src = btn.getAttribute('data-src');
+        const title = btn.getAttribute('data-title') || '';
+
+        if(src) mainImg.src = src;
+        if(title){
+          mainImg.alt = title;
+          caption.textContent = '“' + title + '”.';
+        }
+      });
+    });
+  })();
 </script>
 
 </body>
