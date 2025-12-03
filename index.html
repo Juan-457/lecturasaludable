@@ -299,11 +299,12 @@
       border-radius:12px;
       border:1px solid #e5e7eb;
       max-width:320px;
+      margin-bottom:8px;
     }
 
     /* ===== MOMENTOS ESPECIALES ===== */
     .momentos-especiales{
-      margin-top:60px; /* ← SEPARACIÓN AMPLIA */
+      margin-top:60px;
       padding:18px 16px;
       border-radius:16px;
       background:var(--acento-suave);
@@ -317,6 +318,27 @@
       text-align:center;
       border-top:1px solid rgba(0,0,0,.06);
       margin-top:40px;
+    }
+    .footer-umanoai .fu-inner{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+      font-size:13px;
+      color:#4b5563;
+    }
+    .footer-umanoai .fu-link{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      text-decoration:none;
+      color:#4b5563;
+      font-weight:600;
+    }
+    .footer-umanoai .fu-logo{
+      height:16px;
+      width:auto;
+      border-radius:4px;
     }
 
     /* ===== BOTÓN WHATSAPP ===== */
@@ -340,6 +362,41 @@
       height:30px;
     }
 
+    /* ===== MOBILE OPTIMIZADO ===== */
+    @media (max-width:768px){
+      .ls header{
+        padding-top:90px;
+      }
+      .ls header h1{
+        font-size:34px;
+        margin-top:4px;
+      }
+      .hero-subtitle{
+        font-size:15px !important;
+        margin-top:12px;
+      }
+      .hero-cta a{
+        font-size:14px;
+        padding:9px 18px;
+      }
+      .marquesina{
+        bottom:22px;
+        font-size:13px;
+      }
+      .ls nav .links{display:none;}
+      .ls nav .hamburger{display:block;}
+    }
+
+    /* ===== ESCRITORIO: OCULTAR BRAND Y CENTRAR LINKS ===== */
+    @media (min-width:769px){
+      .ls nav .brand{
+        display:none;
+      }
+      .ls nav .nav-inner{
+        justify-content:center;
+      }
+    }
+
   </style>
 </head>
 
@@ -359,12 +416,12 @@
 
       <ul class="links" id="desktopLinks">
         <li><a href="#talleres">Talleres</a></li>
-        <li><a href="#libros">Libros a medida</a></li>
+        <li><a href="#libros">Nuestros libros</a></li>
         <li><a href="#sobre">Sobre nosotros</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
 
-      <button class="hamburger" aria-label="Abrir menú">
+      <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6h18M3 12h18M3 18h18"/>
         </svg>
@@ -374,7 +431,7 @@
     <!-- Mobile -->
     <div class="links mobile" id="mobileMenu" hidden>
       <a href="#talleres">Talleres</a>
-      <a href="#libros">Libros a medida</a>
+      <a href="#libros">Nuestros libros</a>
       <a href="#sobre">Sobre nosotros</a>
       <a href="#contacto">Contacto</a>
     </div>
@@ -382,7 +439,7 @@
 
   <!-- HERO -->
   <header>
-    <video autoplay muted loop playsinline>
+    <video autoplay muted loop playsinline poster="poster.jpg">
       <source src="hero.mp4" type="video/mp4">
     </video>
 
@@ -390,16 +447,22 @@
     <p class="hero-slogan"><span class="hero-bubble">Ponemos palabras a tus sueños.</span></p>
 
     <p class="hero-subtitle">
-      <span class="hero-bubble">Te acompañamos a escribir mejores textos y a transformar recuerdos en libros que se guardan para siempre.</span>
+      <span class="hero-bubble">
+        Te acompañamos a escribir mejores textos y a transformar recuerdos en libros que se guardan para siempre.
+      </span>
     </p>
 
     <div class="hero-cta">
-      <a href="https://wa.me/549XXXXXXXXXX" class="btn-primaria">✍️ Quiero más información</a>
-      <a href="#libros" class="btn-secundaria">Ver libros personalizados</a>
+      <a href="https://wa.me/549XXXXXXXXXX" class="btn-primaria" target="_blank" rel="noopener">
+        ✍️ Quiero más información
+      </a>
+      <a href="#libros" class="btn-secundaria">
+        Ver nuestros libros
+      </a>
     </div>
 
     <div class="marquesina">
-      Talleres · Poesía · Libros personalizados para momentos únicos.
+      Talleres de escritura y poesía · Libros personalizados para casamientos, fiestas y momentos únicos.
     </div>
   </header>
 
@@ -411,29 +474,29 @@
     </div>
   </section>
 
-  <!-- LIBROS + CARRUSEL + RESEÑAS -->
+  <!-- NUESTROS LIBROS + CARRUSEL + RESEÑAS -->
   <section id="libros">
     <div class="seccion">
-      <h2>📖 Libros personalizados</h2>
+      <h2>📖 Nuestros libros</h2>
       <p>Libros de Mabel Padilla llenos de poesía, refugio y luz.</p>
 
       <!-- CARRUSEL -->
       <div class="libros-carousel">
         <div class="libros-main">
-          <img src="libro1.jpg" id="libroMain">
+          <img src="libro1.jpg" id="libroMain" alt="Libro de Mabel Padilla">
         </div>
 
         <div class="libros-thumbs">
           <button class="active" data-src="libro1.jpg" data-title="Te cambia el estado de ánimo y te da esperanza">
-            <img src="libro1.jpg">
+            <img src="libro1.jpg" alt="Libro 1">
           </button>
 
           <button data-src="libro2.jpg" data-title="Lectura saludable es la carta del alma">
-            <img src="libro2.jpg">
+            <img src="libro2.jpg" alt="Libro 2">
           </button>
 
           <button data-src="libro3.jpg" data-title="La poesía invita a no rendirse jamás">
-            <img src="libro3.jpg">
+            <img src="libro3.jpg" alt="Libro 3">
           </button>
         </div>
       </div>
@@ -466,15 +529,15 @@
       <!-- MOMENTOS ESPECIALES -->
       <div class="momentos-especiales">
         <h3>💌 Libros para momentos que se guardan para siempre</h3>
-        <p>Convertí tu propia historia en un libro único: casamientos, fiestas de 15, aniversarios, bautismos.</p>
+        <p>Además de los libros publicados, Mabel te acompaña a convertir tu propia historia en un libro único: un objeto hermoso que queda para siempre en tu familia.</p>
         <ul>
-          <li>Casamientos y bodas de plata/oro</li>
-          <li>Cuentos para fiestas de 15</li>
-          <li>Historias de vida para regalar</li>
+          <li>Relatos de casamientos, aniversarios y bodas de plata u oro.</li>
+          <li>Cuentos para fiestas de 15, bautismos y cumpleaños especiales.</li>
+          <li>Historias de vida para regalar a mamás, papás y abuelos.</li>
         </ul>
-        <p>Trabajamos recuerdos, anécdotas y fotos para crear un libro con tu voz y tu estilo.</p>
+        <p>Juntas trabajan recuerdos, anécdotas y fotos para armar un libro que tiene tu voz y tu estilo, con la ayuda de una escritora que sabe escuchar y poner en palabras lo que sentís.</p>
 
-        <a href="https://wa.me/549XXXXXXXXXX?text=Quiero+contar+mi+historia+en+un+libro" class="btn-primaria">
+        <a href="https://wa.me/549XXXXXXXXXX?text=Quiero+contar+mi+historia+en+un+libro" class="btn-primaria" target="_blank" rel="noopener">
           💚 Quiero contar mi historia en un libro
         </a>
       </div>
@@ -482,11 +545,11 @@
     </div>
   </section>
 
-  <!-- SOBRE -->
+  <!-- SOBRE NOSOTROS -->
   <section id="sobre">
     <div class="seccion">
       <h2>🌱 Sobre Lectura Saludable</h2>
-      <p>Un espacio creado por Mabel Padilla donde escribir es sanar, recordar y celebrar.</p>
+      <p>Un espacio creado por Mabel Padilla donde escribir es sanar, recordar y celebrar. Lectura Saludable es un refugio para quienes buscan palabras que abracen.</p>
     </div>
   </section>
 
@@ -494,39 +557,54 @@
   <section id="contacto">
     <div class="seccion">
       <h2>📬 Hablemos</h2>
-      <p>Consultá por WhatsApp para más info.</p>
-      <a href="https://wa.me/549XXXXXXXXXX" class="btn-primaria">💬 Escribir por WhatsApp</a>
+      <p style="text-align:center;">Consultá por WhatsApp para más info.</p>
+
+      <p style="text-align:center;">
+        <a href="https://wa.me/549XXXXXXXXXX" class="btn-primaria" target="_blank" rel="noopener">
+          💬 Escribir por WhatsApp
+        </a>
+      </p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer-umanoai">
     <div class="fu-inner">
-      © 2025 Lectura Saludable · Todos los derechos reservados.<br>
-      <a href="https://umanoai.com" class="fu-link" target="_blank">
-        <img src="umanoai.png" class="fu-logo"> Diseñado por UmanoAI
+      <span>© 2025 Lectura Saludable · Todos los derechos reservados.</span>
+
+      <a href="https://umanoai.com" target="_blank" rel="noopener" class="fu-link">
+        <img src="umanoai.png" alt="UmanoAI" class="fu-logo">
+        Diseñado por UmanoAI
       </a>
     </div>
   </footer>
 
 </div>
 
-<!-- BOTÓN WHATSAPP -->
-<a class="whatsapp-float" href="https://wa.me/549XXXXXXXXXX">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+<!-- WhatsApp flotante -->
+<a class="whatsapp-float" href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Lectura Saludable" />
 </a>
 
-<!-- JS MENÚ -->
+<!-- JS menú mobile -->
 <script>
-  const btn = document.querySelector('.hamburger');
-  const mobile = document.getElementById('mobileMenu');
-
-  btn.addEventListener('click', ()=>{
-    mobile.toggleAttribute('hidden');
-  });
+  (function(){
+    const btn = document.querySelector('.ls .hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => {
+      const isOpen = !mobileMenu.hasAttribute('hidden');
+      if (isOpen) {
+        mobileMenu.setAttribute('hidden','');
+        btn.setAttribute('aria-expanded','false');
+      } else {
+        mobileMenu.removeAttribute('hidden');
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  })();
 </script>
 
-<!-- JS CARRUSEL -->
+<!-- JS carrusel -->
 <script>
   const main = document.getElementById('libroMain');
   const thumbs = document.querySelectorAll('.libros-thumbs button');
@@ -543,4 +621,3 @@
 
 </body>
 </html>
-
