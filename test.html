@@ -355,6 +355,105 @@
       font-size:14px;
     }
 
+    /* 🛒 MINI TIENDA */
+    .tienda{
+      margin-top:26px;
+      padding:18px 16px 20px;
+      border-radius:18px;
+      background:#f9fafb;
+      border:1px solid #e5e7eb;
+    }
+    .tienda h3{
+      margin-bottom:8px;
+    }
+    .tienda p{
+      margin-top:0;
+      font-size:14px;
+      text-align:center;
+    }
+    .tienda-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      margin-top:14px;
+    }
+    .tienda-libros{
+      flex:1 1 220px;
+      min-width:0;
+    }
+    .tienda-libros ul{
+      list-style:none;
+      padding-left:0;
+      margin:0;
+      font-size:14px;
+    }
+    .tienda-libros li{
+      padding:6px 0;
+      border-bottom:1px dashed #e5e7eb;
+    }
+    .tag-pdf{
+      display:inline-block;
+      font-size:11px;
+      padding:2px 7px;
+      border-radius:999px;
+      background:#dbeafe;
+      color:#1d4ed8;
+      margin-left:6px;
+    }
+    .tienda-form{
+      flex:1 1 260px;
+      min-width:0;
+      background:#ffffff;
+      border-radius:14px;
+      padding:14px 16px 16px;
+      border:1px solid #e5e7eb;
+      box-shadow:0 4px 10px rgba(15,23,42,.06);
+    }
+    .tienda-form label{
+      display:block;
+      font-size:13px;
+      margin-bottom:4px;
+      color:#374151;
+    }
+    .tienda-form input,
+    .tienda-form select{
+      width:100%;
+      padding:8px 10px;
+      border-radius:10px;
+      border:1px solid #d1d5db;
+      font-size:14px;
+      margin-bottom:10px;
+      font-family:inherit;
+    }
+    .tienda-form small{
+      display:block;
+      font-size:11px;
+      color:#6b7280;
+      margin-top:4px;
+    }
+    .tienda-form button{
+      width:100%;
+      margin-top:6px;
+    }
+    .tienda-alerta{
+      display:none;
+      margin-top:10px;
+      font-size:13px;
+      text-align:center;
+    }
+    .tienda-alerta.ok{
+      color:#16a34a;
+    }
+    .tienda-alerta.error{
+      color:#b91c1c;
+    }
+
+    @media (max-width:720px){
+      .tienda-grid{
+        flex-direction:column;
+      }
+    }
+
     /* FOOTER */
     footer{
       text-align:center;
@@ -584,6 +683,66 @@
           Ver reseñas del libro 2
         </a>
       </p>
+
+      <!-- 🛒 MINI TIENDA DIGITAL -->
+      <div class="tienda">
+        <h3>🛒 Comprá los libros en formato digital (PDF)</h3>
+        <p>
+          Elegí el libro, cargá tu correo y vas a ser redirigido a Mercado Pago. Una vez aprobado el pago,
+          recibirás el PDF en tu mail de forma automática.
+        </p>
+
+        <div class="tienda-grid">
+          <!-- Lista de libros -->
+          <div class="tienda-libros">
+            <ul>
+              <li>
+                Libro 1 – “Te cambia el estado de ánimo y te da paz”
+                <span class="tag-pdf">PDF</span>
+              </li>
+              <li>
+                Libro 2 – “Salud y sanación”
+                <span class="tag-pdf">PDF</span>
+              </li>
+              <li>
+                Libro 3 – “Nunca rendirse”
+                <span class="tag-pdf">PDF</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Formulario -->
+          <div class="tienda-form">
+            <form id="formCompraLibro">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" placeholder="tunombre@correo.com" required />
+
+              <label for="libro">¿Qué libro querés comprar?</label>
+              <select id="libro" name="libroId" required>
+                <option value="" disabled selected>Elegí una opción</option>
+                <option value="LIBRO1">Libro 1 – Te cambia el estado de ánimo y te da paz</option>
+                <option value="LIBRO2">Libro 2 – Salud y sanación</option>
+                <option value="LIBRO3">Libro 3 – Nunca rendirse</option>
+              </select>
+
+              <small>
+                Al continuar vas a ir a Mercado Pago. Guardamos tu correo solo para enviarte el libro
+                y el comprobante.
+              </small>
+
+              <button type="submit" class="btn-secundaria">
+                💳 Comprar con Mercado Pago
+              </button>
+
+              <div id="tiendaMensaje" class="tienda-alerta"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -615,7 +774,7 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Lectura Saludable">
 </a>
 
-<!-- JS menú mobile + carrusel + animaciones scroll -->
+<!-- JS menú mobile + carrusel + animaciones scroll + tienda -->
 <script>
   // Menú mobile
   (function(){
@@ -668,7 +827,66 @@
     }, {threshold:0.18});
     els.forEach(e=>obs.observe(e));
   })();
+
+  // 🛒 Lógica mini tienda -> llama a Power Automate para crear el pago
+  (function(){
+    const form = document.getElementById('formCompraLibro');
+    const msg = document.getElementById('tiendaMensaje');
+    if(!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!msg) return;
+
+      msg.style.display = 'block';
+      msg.className = 'tienda-alerta';
+      msg.textContent = 'Creando el enlace de pago...';
+
+      const nombre = document.getElementById('nombre')?.value?.trim();
+      const email = document.getElementById('email')?.value?.trim();
+      const libroId = document.getElementById('libro')?.value;
+
+      if(!nombre || !email || !libroId){
+        msg.classList.add('error');
+        msg.textContent = 'Por favor completá todos los datos.';
+        return;
+      }
+
+      try{
+        const res = await fetch('PON_AQUI_LA_URL_DE_TU_FLOW', {
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify({
+            nombre,
+            email,
+            libroId
+          })
+        });
+
+        if(!res.ok){
+          throw new Error('Error HTTP ' + res.status);
+        }
+
+        const data = await res.json();
+        if(data && data.init_point){
+          msg.classList.add('ok');
+          msg.textContent = 'Redirigiendo a Mercado Pago...';
+          window.location.href = data.init_point;
+        } else {
+          msg.classList.add('error');
+          msg.textContent = 'No pudimos generar el enlace de pago. Intentalo de nuevo más tarde.';
+        }
+      } catch(err){
+        console.error(err);
+        msg.classList.add('error');
+        msg.textContent = 'Ocurrió un error al conectar con el sistema de pagos.';
+      }
+    });
+  })();
 </script>
 
 </body>
 </html>
+
