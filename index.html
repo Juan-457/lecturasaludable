@@ -141,6 +141,34 @@
       box-shadow:0 14px 30px rgba(0,0,0,.35);
     }
 
+    /* MARQUESINA HERO ABAJO */
+    .marquesina{
+      position:absolute;
+      left:50%;
+      bottom:22px;
+      transform:translateX(-50%);
+      background:rgba(15,23,42,.85);
+      color:#f9fafb;
+      padding:8px 18px;
+      border-radius:999px;
+      font-size:13px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      box-shadow:0 8px 22px rgba(0,0,0,.45);
+      backdrop-filter:blur(10px);
+      max-width:92%;
+      white-space:nowrap;
+    }
+    @media (max-width:600px){
+      .marquesina{
+        font-size:12px;
+        padding:7px 14px;
+        white-space:normal;
+        text-align:center;
+      }
+    }
+
     /* NAV */
     nav{
       position:fixed;
@@ -447,10 +475,10 @@
     <p class="hero-slogan"><span class="hero-bubble">Ponemos palabras a tus sueños.</span></p>
 
     <p class="hero-subtitle">
-  <span class="hero-bubble" style="display:inline-block; max-width:650px; white-space:normal; padding:8px 14px;">
-    Lectura Saludable te acompaña a escribir: talleres de textos y poesía, y libros personalizados para casamientos, fiestas y momentos importantes. Ponemos palabras a tus sueños.
-  </span>
-</p>
+      <span class="hero-bubble" style="display:inline-block; max-width:650px; white-space:normal; padding:8px 14px;">
+        Lectura Saludable te acompaña a escribir: talleres de textos y poesía, y libros personalizados para casamientos, fiestas y momentos importantes. Ponemos palabras a tus sueños.
+      </span>
+    </p>
 
     <div class="hero-cta">
       <a href="https://wa.me/+5491138171669" class="btn-primaria" target="_blank" rel="noopener">
@@ -459,9 +487,11 @@
       <a href="#libros" class="btn-secundaria">
         Ver nuestros libros
       </a>
-   <div class="marquesina">
-  ✍️ Escribir para sanar · 📚 Libros que abrazan · 💖 Historias para siempre
-</div>
+    </div>
+
+    <div class="marquesina">
+      ✍️ Escribir para sanar · 📚 Libros que abrazan · 💖 Historias para siempre
+    </div>
   </header>
 
   <!-- TALLERES -->
