@@ -281,6 +281,15 @@
     .libros-thumbs button{
       opacity:.6;
       transition:.15s ease;
+      border:0;
+      padding:0;
+      background:none;
+      cursor:pointer;
+    }
+    .libros-thumbs button img{
+      display:block;
+      height:90px;
+      border-radius:8px;
     }
     .libros-thumbs button.active{
       opacity:1;
@@ -293,22 +302,36 @@
       padding-top:18px;
       border-top:1px solid #e5e7eb;
     }
+    .resenas-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      justify-content:space-between;
+      margin-top:10px;
+    }
     .resena-card{
       background:#ffffff;
       padding:12px 14px;
       border-radius:12px;
       border:1px solid #e5e7eb;
-      max-width:320px;
-      margin-bottom:8px;
+      flex:1;
+      min-width:220px;
     }
 
     /* ===== MOMENTOS ESPECIALES ===== */
     .momentos-especiales{
       margin-top:0;
-      padding:18px 16px;
+      padding:18px 16px 20px;
       border-radius:16px;
       background:var(--acento-suave);
       border:1px solid rgba(124,58,237,.35);
+    }
+    .momentos-especiales-cta{
+      text-align:center;
+      margin-top:16px;
+    }
+    .momentos-especiales .btn-primaria{
+      margin-top:0;
     }
 
     /* FOOTER */
@@ -418,7 +441,6 @@
         <li><a href="#talleres">Talleres</a></li>
         <li><a href="#libros">Nuestros libros</a></li>
         <li><a href="#sobre">Sobre nosotros</a></li>
-        <li><a href="#contacto">Contacto</a></li>
       </ul>
 
       <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
@@ -433,7 +455,6 @@
       <a href="#talleres">Talleres</a>
       <a href="#libros">Nuestros libros</a>
       <a href="#sobre">Sobre nosotros</a>
-      <a href="#contacto">Contacto</a>
     </div>
   </nav>
 
@@ -453,7 +474,7 @@
     </p>
 
     <div class="hero-cta">
-      <a href="https://wa.me/5491138171669" class="btn-primaria" target="_blank" rel="noopener">
+      <a href="https://wa.me/549XXXXXXXXXX" class="btn-primaria" target="_blank" rel="noopener">
         ✍️ Quiero más información
       </a>
       <a href="#libros" class="btn-secundaria">
@@ -474,7 +495,7 @@
     </div>
   </section>
 
-  <!-- MOMENTOS ESPECIALES (VIOLETA) -->
+  <!-- LIBROS PARA MOMENTOS ESPECIALES (violeta) -->
   <section id="momentos">
     <div class="seccion">
       <div class="momentos-especiales">
@@ -487,9 +508,11 @@
         </ul>
         <p>Juntas trabajan recuerdos, anécdotas y fotos para armar un libro que tiene tu voz y tu estilo, con la ayuda de una escritora que sabe escuchar y poner en palabras lo que sentís.</p>
 
-        <a href="https://wa.me/5491138171669?text=Quiero+contar+mi+historia+en+un+libro" class="btn-primaria" target="_blank" rel="noopener">
-          💚 Quiero contar mi historia en un libro
-        </a>
+        <div class="momentos-especiales-cta">
+          <a href="https://wa.me/549XXXXXXXXXX?text=Quiero+contar+mi+historia+en+un+libro" class="btn-primaria" target="_blank" rel="noopener">
+            💚 Quiero contar mi historia en un libro
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -525,19 +548,21 @@
       <div class="resenas-libros">
         <h3>⭐ Lo que dicen quienes leyeron</h3>
 
-        <div class="resena-card">
-          <strong>“Te cambia el estado de ánimo y te da paz”</strong>
-          <p>“Una poesía que tiene algo especial que no puedo describir. Me llenó de paz.”</p>
-        </div>
+        <div class="resenas-grid">
+          <div class="resena-card">
+            <strong>“Te cambia el estado de ánimo y te da paz”</strong>
+            <p>“Una poesía que tiene algo especial que no puedo describir. Me llenó de paz.”</p>
+          </div>
 
-        <div class="resena-card">
-          <strong>“Salud y sanación”</strong>
-          <p>“Es celebrar la vida, sanar el alma y recibir amor. Un abrazo en forma de libro.”</p>
-        </div>
+          <div class="resena-card">
+            <strong>“Salud y sanación”</strong>
+            <p>“Es celebrar la vida, sanar el alma y recibir amor. Un abrazo en forma de libro.”</p>
+          </div>
 
-        <div class="resena-card">
-          <strong>“Nunca rendirse”</strong>
-          <p>“Un arte que inspira y acompaña. Cada página nutre el alma.”</p>
+          <div class="resena-card">
+            <strong>“Nunca rendirse”</strong>
+            <p>“Un arte que inspira y acompaña. Cada página nutre el alma.”</p>
+          </div>
         </div>
 
         <p style="margin-top:12px; text-align:center;">
@@ -545,7 +570,6 @@
           <a href="https://www.amazon.com/Versos-libres-para-PERSISTIR-comunicARTE-ebook/dp/B0FR3XKSXS?ref_=ast_author_dp&th=1&psc=1#customerReviews" target="_blank">Ver reseñas del libro 2</a>
         </p>
       </div>
-
     </div>
   </section>
 
@@ -554,20 +578,6 @@
     <div class="seccion">
       <h2>🌱 Sobre Lectura Saludable</h2>
       <p>Un espacio creado por Mabel Padilla donde escribir es sanar, recordar y celebrar. Lectura Saludable es un refugio para quienes buscan palabras que abracen.</p>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contacto">
-    <div class="seccion">
-      <h2>📬 Hablemos</h2>
-      <p style="text-align:center;">Consultá por WhatsApp para más info.</p>
-
-      <p style="text-align:center;">
-        <a href="https://wa.me/5491138171669X" class="btn-primaria" target="_blank" rel="noopener">
-          💬 Escribir por WhatsApp
-        </a>
-      </p>
     </div>
   </section>
 
@@ -586,7 +596,7 @@
 </div>
 
 <!-- WhatsApp flotante -->
-<a class="whatsapp-float" href="https://wa.me/5491138171669" target="_blank" rel="noopener">
+<a class="whatsapp-float" href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Lectura Saludable" />
 </a>
 
