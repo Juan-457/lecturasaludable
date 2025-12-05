@@ -480,15 +480,32 @@
         text-align:left;
       }
     }//// toque aca para los links de redes
-    .social-links a {
+    .social-links{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.social-links a{
   display:flex;
   align-items:center;
   gap:8px;
+  font-size:14px;
+  font-weight:600;
+  text-decoration:none;
+  color:#7c3aed;
+  background:#ede9fe;
+  padding:8px 16px;
+  border-radius:999px;
+  border:1px solid rgba(124,58,237,.5);
+  transition:.18s ease;
 }
 
-.social-links img {
-  width:22px;
-  height:22px;
+.social-links a:hover{
+  background:#7c3aed;
+  color:#fff;
 }
   </style>
 </head>
@@ -699,9 +716,15 @@
       <h2>Tambien podes encontrarnos en:</h2>
 <div class="social-links">
   <a href="https://www.tiktok.com/@lecturasaludable?_r=1&_t=ZM-91yLuzdyC5r" target="_blank" rel="noopener">
-  <img src="https://seeklogo.com/images/T/tiktok-logo-1F4A0972D8-seeklogo.com.png" alt="TikTok" />
-  TikTok
-</a>
+    <svg viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;">
+      <!-- fondo círculo -->
+      <circle cx="12" cy="12" r="11" fill="#000000" />
+      <!-- nota musical simple en blanco -->
+      <path d="M14 5v6.5a3 3 0 1 1-1.8-2.8V7.2h2.2V5z"
+            fill="#ffffff" />
+    </svg>
+    TikTok
+  </a>
 
   <a href="https://www.instagram.com/lecturasaludable/" target="_blank" rel="noopener">
     <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" />
