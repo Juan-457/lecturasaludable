@@ -33,7 +33,7 @@
       z-index:0;
     }
 
-    /* VIDEO FONDO */
+    /* VIDEO FONDO GENERAL */
     .bg-sections{
       position:fixed;
       inset:0;
@@ -45,9 +45,10 @@
       pointer-events:none;
     }
 
-    /* HEADER HERO */
+    /* HEADER HERO – pantalla completa */
     .ls header{
       min-height:100vh;
+      height:100vh;
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -55,7 +56,8 @@
       text-align:center;
       position:relative;
       padding:0 16px;
-      padding-top:80px;
+      padding-top:80px; /* espacio nav */
+      box-sizing:border-box;
     }
     .ls header video{
       position:absolute;
@@ -73,7 +75,7 @@
       background:linear-gradient(to bottom, rgba(15,23,42,.55), rgba(15,23,42,.18));
     }
 
-    /* BURBUJAS */
+    /* BURBUJAS HERO */
     .hero-bubble{
       background: rgba(17,24,39,.42);
       padding:6px 14px;
@@ -304,7 +306,7 @@
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:12px;
+      gap:16px;
       margin-top:18px;
     }
     .libros-main img{
@@ -319,6 +321,7 @@
       gap:8px;
       justify-content:center;
       flex-wrap:wrap;
+      margin-top:4px;
     }
     .libros-thumbs button{
       border:none;
@@ -336,6 +339,24 @@
       width:90px;
       border-radius:10px;
       box-shadow:0 4px 8px rgba(0,0,0,.2);
+    }
+
+    /* INFO DETALLE LIBRO */
+    .libro-info{
+      margin-top:8px;
+      max-width:540px;
+      text-align:left;
+    }
+    .libro-info h3{
+      margin:6px 0;
+      text-align:left;
+      font-size:18px;
+      color:#111827;
+    }
+    .libro-info p{
+      margin:4px 0;
+      font-size:14px;
+      color:#374151;
     }
 
     /* RESEÑAS HORIZONTAL */
@@ -424,6 +445,9 @@
       .resena-card{
         max-width:100%;
       }
+      .libro-info{
+        text-align:left;
+      }
     }
   </style>
 </head>
@@ -432,7 +456,7 @@
 
 <div class="ls">
 
-  <!-- Fondo -->
+  <!-- Fondo general -->
   <video class="bg-sections" autoplay muted loop playsinline>
     <source src="fondo.mp4" type="video/mp4">
   </video>
@@ -539,18 +563,48 @@
       <!-- CARRUSEL -->
       <div class="libros-carousel">
         <div class="libros-main">
-          <img src="libro1.jpg" id="libroMain" alt="Libro de Mabel Padilla">
+          <!-- Imagen principal vinculada a Libro1.png -->
+          <img src="Libro1.png" id="libroMain" alt="Lectura Saludable">
         </div>
 
+        <!-- Info dinámica del libro seleccionado -->
+        <div class="libro-info">
+          <h3 id="libroTitle">Lectura Saludable</h3>
+          <p id="libroDesc">
+            Este libro presenta un menú de poesías de amor propio, empoderamiento femenino, arte y cultura y felicidad espiritual. Incluye actividades para realizar en grupo y compromisos para ser trabajados en clubes de lectura o reuniones con grupos.
+          </p>
+          <p id="libroMeta">
+            Editorial: Grupo de Escritores Argentinos · ISBN: 978-987-757-050-2
+          </p>
+        </div>
+
+        <!-- Miniaturas -->
         <div class="libros-thumbs">
-          <button class="active" data-src="libro1.jpg" data-title="Te cambia el estado de ánimo y te da paz">
-            <img src="libro1.jpg" alt="Libro 1">
+          <!-- Libro 1: Lectura Saludable -->
+          <button class="active"
+                  data-src="Libro1.png"
+                  data-title="Lectura Saludable"
+                  data-desc="Este libro presenta un menú de poesías de amor propio, empoderamiento femenino, arte y cultura y felicidad espiritual. Incluye actividades para realizar en grupo y compromisos para ser trabajados en clubes de lectura o reuniones con grupos."
+                  data-meta="Editorial: Grupo de Escritores Argentinos · ISBN: 978-987-757-050-2">
+            <img src="Libro1.png" alt="Lectura Saludable">
           </button>
-          <button data-src="libro2.jpg" data-title="Salud y sanación">
-            <img src="libro2.jpg" alt="Libro 2">
+
+          <!-- Libro 2 (puede ser el de Amazon existente, lo dejamos más genérico) -->
+          <button
+            data-src="libro2.jpg"
+            data-title="Versos libres para persistir"
+            data-desc="Un libro de poesía y reflexión que celebra la vida, la sanación y la persistencia en los momentos difíciles."
+            data-meta="Disponible en Amazon en formato digital y papel.">
+            <img src="libro2.jpg" alt="Versos libres para persistir">
           </button>
-          <button data-src="libro3.jpg" data-title="Nunca rendirse">
-            <img src="libro3.jpg" alt="Libro 3">
+
+          <!-- Libro 3: Del dicho al derecho en salud -->
+          <button
+            data-src="Libro3.PNG"
+            data-title="Del dicho al derecho en salud"
+            data-desc="Incluye un decálogo del educador para la salud como emprendedor y la incorporación de la perspectiva de los derechos humanos universales a ámbitos como la Universidad y las organizaciones públicas."
+            data-meta="Editorial: Bellas Alas · ISBN: 978-987-45665-1-5 · Año: 2014">
+            <img src="Libro3.PNG" alt="Del dicho al derecho en salud">
           </button>
         </div>
       </div>
@@ -603,7 +657,7 @@
     © 2025 Lectura Saludable · Todos los derechos reservados.
     <br />
     Diseñado por
-    <a href="https://umanoai.com" target="_blank" rel="noopener">
+    <a href="https://umanoai.com.ar" target="_blank" rel="noopener">
       UmanoAI <img src="umanoai.png" alt="UmanoAI">
     </a>
   </footer>
@@ -635,18 +689,27 @@
     });
   })();
 
-  // Carrusel de libros
+  // Carrusel de libros + info dinámica
   (function(){
     const main = document.getElementById('libroMain');
     const thumbs = document.querySelectorAll('.libros-thumbs button');
+    const titleEl = document.getElementById('libroTitle');
+    const descEl  = document.getElementById('libroDesc');
+    const metaEl  = document.getElementById('libroMeta');
+
     if(!main || !thumbs.length) return;
 
     thumbs.forEach(b=>{
       b.addEventListener('click', ()=>{
         thumbs.forEach(x=>x.classList.remove('active'));
         b.classList.add('active');
-        main.src = b.dataset.src;
+
+        if (b.dataset.src)  main.src = b.dataset.src;
         if (b.dataset.title) main.alt = b.dataset.title;
+
+        if (titleEl) titleEl.textContent = b.dataset.title || '';
+        if (descEl)  descEl.textContent  = b.dataset.desc  || '';
+        if (metaEl)  metaEl.textContent  = b.dataset.meta  || '';
       });
     });
   })();
