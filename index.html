@@ -33,14 +33,12 @@
       z-index:0;
     }
 
-    /* LOGO FIJO CENTRADO EN EL HERO Y RESPONSIVE */
+    /* LOGO CENTRADO, SIN POSITION: SE MUEVE JUNTO CON EL HERO */
     .logo-fijo-centro{
-      position:fixed;
-      top:clamp(96px,16vh,180px);   /* siempre bien arriba, debajo del nav */
-      left:50%;
-      transform:translateX(-50%);
-      width:clamp(120px,18vw,210px); /* escala según el ancho de pantalla */
-      z-index:20;
+      display:block;
+      margin:0 auto 18px;
+      width:clamp(140px,20vw,230px);
+      max-width:60%;
       opacity:0.95;
       pointer-events:none;
     }
@@ -63,12 +61,11 @@
       height:100vh;
       display:flex;
       flex-direction:column;
-      justify-content:center;
+      justify-content:flex-start;   /* contenido “pegado” arriba del hero */
       align-items:center;
       text-align:center;
       position:relative;
-      padding:0 16px;
-      padding-top:80px; /* espacio nav */
+      padding:140px 16px 60px;      /* espacio para nav + logo + textos */
       box-sizing:border-box;
     }
     .ls header video{
@@ -102,7 +99,7 @@
       color:#fff;
       font-size:clamp(28px,5vw,50px);
       text-shadow:0 2px 14px rgba(0,0,0,.45);
-      margin:14px 0 6px;
+      margin:10px 0 6px;
     }
     .hero-slogan{
       color:#e5e7eb;
@@ -442,7 +439,8 @@
       }
 
       .ls header{
-        padding-top:90px;
+        padding-top:130px;
+        padding-bottom:50px;
       }
       .hero-cta{
         flex-direction:column;
@@ -459,12 +457,6 @@
       }
       .libro-info{
         text-align:left;
-      }
-
-      /* Logo ajustado en mobile (un poco más chico y algo más abajo si hace falta) */
-      .logo-fijo-centro{
-        top:clamp(90px,14vh,150px);
-        width:clamp(110px,32vw,170px);
       }
     }
   </style>
@@ -509,7 +501,7 @@
 
   <!-- HERO -->
   <header>
-    <!-- LOGO FIJO CENTRADO DENTRO DEL HERO -->
+    <!-- LOGO CENTRADO DENTRO DEL HERO -->
     <img class="logo-fijo-centro" src="logo.jpg" alt="Lectura Saludable">
 
     <video autoplay muted loop playsinline poster="poster.jpg">
@@ -756,4 +748,3 @@
 
 </body>
 </html>
-
