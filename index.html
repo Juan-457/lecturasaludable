@@ -33,6 +33,18 @@
       z-index:0;
     }
 
+    /* LOGO FIJO CENTRADO */
+    .logo-fijo-centro{
+      position:fixed;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:160px;
+      z-index:2000;
+      opacity:0.9;
+      pointer-events:none; /* no bloquea clics en nada */
+    }
+
     /* VIDEO FONDO GENERAL */
     .bg-sections{
       position:fixed;
@@ -448,11 +460,19 @@
       .libro-info{
         text-align:left;
       }
+
+      /* Logo un poco más chico en mobile */
+      .logo-fijo-centro{
+        width:130px;
+      }
     }
   </style>
 </head>
 
 <body>
+
+<!-- LOGO FIJO CENTRADO -->
+<img class="logo-fijo-centro" src="logo.png" alt="Lectura Saludable">
 
 <div class="ls">
 
@@ -735,3 +755,4 @@
 
 </body>
 </html>
+
