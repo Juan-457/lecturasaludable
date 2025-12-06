@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lectura Saludable · Ponemos palabras a tus sueños</title>
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Lectura saludable te ayuda a conectar con tu parte creativa a traves de talleres de escritura, poesía, libros personalizados para aniversarios, casamientos, fiestas y momentos importantes de tu vida, tus seres queridos.">
+
+  <style>
+    :root{
+      --primario:#4b5563;
+      --acento:#7c3aed;
+      --acento-suave:#ede9fe;
+      --bgCard: rgba(255,255,255,.96);
+      --shadow:0 4px 10px rgba(15,23,42,.08);
+      --radius:14px;
+      --safe: env(safe-area-inset-bottom);
+      --naranja:#f97316;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; background:#000;}
+
+    .ls{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.5;
+      padding-bottom:max(80px,var(--safe));
+      color:#111827;
+      position:relative;
+      z-index:0;
+    }
+
+    /* LOGO CENTRADO EN EL HERO (en flujo normal) */
+    .logo-fijo-centro{
+      display:block;
+      margin:0 auto 18px;
+      width:clamp(160px,22vw,260px);
+      max-width:60%;
+      opacity:0.95;
+      pointer-events:none;
+    }
+
+    /* VIDEO FONDO GENERAL (fijo para todo el sitio) */
+    .bg-sections{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:-3;
+      opacity:0.55;
+      pointer-events:none;
+    }
+
+    /* HERO A PANTALLA COMPLETA */
+    .ls header{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:120px 16px 80px; /* espacio para nav arriba y aire abajo */
+      box-sizing:border-box;
+      overflow:hidden;
+    }
+    .ls header video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:-2;
+    }
+    .ls header::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      background:linear-gradient(to bottom, rgba(15,23,42,.7), rgba(15,23,42,.25));
+    }
+
+    /* BURBUJAS HERO */
+    .hero-bubble{
+      background: rgba(17,24,39,.42);
+      padding:6px 14px;
+      border-radius:16px;
+      backdrop-filter:blur(8px);
+      box-shadow:0 4px 14px rgba(0,0,0,.25);
+      display:inline-block;
+    }
+
+    /* TEXTOS HERO */
+    .ls header h1{
+      color:#fff;
+      font-size:clamp(28px,5vw,50px);
+      text-shadow:0 2px 14px rgba(0,0,0,.45);
+      margin:10px 0 6px;
+    }
+    .hero-slogan{
+      color:#e5e7eb;
+      margin:0 0 8px;
+    }
+    .hero-subtitle{
+      max-width:640px;
+      margin:10px auto 22px;
+      color:#e5e7eb;
+      text-shadow:0 2px 10px rgba(0,0,0,.45);
+      font-size:clamp(14px,3vw,18px);
+    }
+
+    /* BOTONES HERO */
+    .hero-cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+      margin-bottom:18px;
+    }
+    .btn-primaria,
+    .btn-secundaria{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:11px 26px;
+      border-radius:999px;
+      font-weight:600;
+      border:2px solid transparent;
+      cursor:pointer;
+      text-decoration:none;
+      font-size:15px;
+      white-space:nowrap;
+      transition:.18s ease;
+    }
+    .btn-primaria{
+      background:linear-gradient(135deg,#22c55e,#16a34a);
+      color:white;
+      box-shadow:0 10px 24px rgba(22,163,74,.55);
+    }
+    .btn-secundaria{
+      background:linear-gradient(135deg,var(--naranja),#ea580c);
+      color:white;
+      box-shadow:0 10px 24px rgba(234,88,12,.45);
+    }
+    .btn-primaria:hover,
+    .btn-secundaria:hover{
+      transform:translateY(-2px) scale(1.02);
+      box-shadow:0 14px 30px rgba(0,0,0,.35);
+    }
+
+    /* MARQUESINA DENTRO DEL HERO (SIN SUPERPONER) */
+    .marquesina{
+      margin-top:10px;
+      background:rgba(15,23,42,.9);
+      color:#f9fafb;
+      padding:8px 18px;
+      border-radius:999px;
+      font-size:13px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      box-shadow:0 8px 22px rgba(0,0,0,.45);
+      backdrop-filter:blur(10px);
+      max-width:92%;
+      text-wrap:balance;
+    }
+    @media (max-width:600px){
+      .marquesina{
+        font-size:12px;
+        padding:7px 14px;
+        white-space:normal;
+        text-align:center;
+      }
+    }
+
+    /* NAV */
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      background:rgba(255,255,255,.9);
+      backdrop-filter:blur(18px);
+      z-index:1200;
+      box-shadow:0 2px 10px rgba(0,0,0,.1);
+    }
+    nav .nav-inner{
+      max-width:1100px;
+      margin:0 auto;
+      padding:10px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+    }
+
+    .brand{
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-size:12px;
+      color:#111827;
+      display:none; /* oculto en escritorio */
+    }
+
+    .links{
+      display:flex;
+      gap:24px;
+      list-style:none;
+      padding:0;
+      margin:0;
+      font-size:12px;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+    }
+    .links a{
+      text-decoration:none;
+      color:#111827;
+      position:relative;
+    }
+    .links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-3px;
+      width:0;
+      height:2px;
+      background:#111827;
+      transition:.18s ease;
+    }
+    .links a:hover::after{
+      width:100%;
+    }
+
+    /* Hamburguesa */
+    .hamburger{
+      display:none;
+      border:0;
+      background:#e5e7eb;
+      border-radius:999px;
+      padding:6px 8px;
+      cursor:pointer;
+    }
+    .hamburger svg{
+      width:20px;
+      height:20px;
+    }
+
+    /* Menú mobile desplegable */
+    .links.mobile{
+      display:none;
+      flex-direction:column;
+      gap:8px;
+      padding:10px 16px 14px;
+      background:#f9fafb;
+      border-radius:0 0 16px 16px;
+      box-shadow:0 16px 30px rgba(0,0,0,.18);
+    }
+    .links.mobile a{
+      padding:4px 0;
+    }
+
+    /* SECCIONES GENERALES */
+    section{
+      display:flex;
+      justify-content:center;
+      padding:40px 16px;
+    }
+    .seccion{
+      width:min(920px,92%);
+      background:var(--bgCard);
+      padding:clamp(20px,3vw,28px);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    /* TITULOS CENTRADOS */
+    h2,h3{
+      text-align:center;
+      margin-top:0;
+    }
+
+    /* ANIMACIONES SCROLL */
+    .reveal{
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* MOMENTOS ESPECIALES */
+    .momentos-especiales{
+      background:var(--acento-suave);
+      border:1px solid rgba(124,58,237,.35);
+      border-radius:16px;
+    }
+    .cta-momentos{
+      display:flex;
+      justify-content:center;
+      margin-top:18px;
+    }
+
+    /* CARRUSEL LIBROS */
+    .libros-carousel{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:16px;
+      margin-top:18px;
+    }
+    .libros-main img{
+      width:100%;
+      max-width:420px;
+      border-radius:16px;
+      box-shadow:0 10px 24px rgba(0,0,0,.25);
+      display:block;
+    }
+    .libros-thumbs{
+      display:flex;
+      gap:8px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:4px;
+    }
+    .libros-thumbs button{
+      border:none;
+      background:none;
+      cursor:pointer;
+      opacity:.6;
+      transition:.15s ease;
+      padding:0;
+    }
+    .libros-thumbs button.active{
+      opacity:1;
+      transform:scale(1.03);
+    }
+    .libros-thumbs img{
+      width:90px;
+      border-radius:10px;
+      box-shadow:0 4px 8px rgba(0,0,0,.2);
+    }
+
+    /* INFO DETALLE LIBRO */
+    .libro-info{
+      margin-top:8px;
+      max-width:540px;
+      text-align:left;
+    }
+    .libro-info h3{
+      margin:6px 0;
+      text-align:left;
+      font-size:18px;
+      color:#111827;
+    }
+    .libro-info p{
+      margin:4px 0;
+      font-size:14px;
+      color:#374151;
+    }
+
+    /* RESEÑAS HORIZONTAL */
+    .resenas-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+      margin-top:14px;
+    }
+    .resena-card{
+      max-width:260px;
+      background:#ffffff;
+      border-radius:12px;
+      padding:12px 14px;
+      border:1px solid #e5e7eb;
+      font-size:14px;
+    }
+
+    /* 🌱 REDES SOCIALES EN SOBRE NOSOTROS */
+    .social-links{
+      margin-top:20px;
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .social-links a{
+      font-size:14px;
+      font-weight:600;
+      text-decoration:none;
+      color:#7c3aed;
+      background:#ede9fe;
+      padding:8px 16px;
+      border-radius:999px;
+      border:1px solid rgba(124,58,237,.5);
+      transition:.18s ease;
+    }
+    .social-links a:hover{
+      background:#7c3aed;
+      color:#fff;
+    }
+
+    /* FOOTER */
+    footer{
+      text-align:center;
+      padding:24px 16px;
+      background:#f3f4f6;
+      margin-top:40px;
+      font-size:13px;
+      color:#4b5563;
+    }
+
+    footer img{
+      height:16px;
+      vertical-align:middle;
+      margin-left:4px;
+      border-radius:4px;
+    }
+
+    /* WHATSAPP FLOTANTE */
+    .whatsapp-float{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      width:52px;
+      height:52px;
+      border-radius:50%;
+      background:#22c55e;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 8px 20px rgba(0,0,0,.35);
+      z-index:1500;
+      text-decoration:none;
+    }
+    .whatsapp-float img{
+      width:28px;
+      height:28px;
+    }
+
+    /* MOBILE */
+    @media (max-width:768px){
+      nav .nav-inner{
+        justify-content:space-between;
+      }
+      .brand{
+        display:block;
+      }
+      .links.desktop{
+        display:none;
+      }
+      .hamburger{
+        display:block;
+      }
+
+      .ls header{
+        padding-top:130px;
+        padding-bottom:60px;
+      }
+      .hero-cta{
+        flex-direction:column;
+        align-items:center;
+      }
+      .btn-primaria,
+      .btn-secundaria{
+        width:100%;
+        max-width:280px;
+      }
+
+      .resena-card{
+        max-width:100%;
+      }
+      .libro-info{
+        text-align:left;
+      }
+    }//// toque aca para los links de redes
+   .social-links{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.social-links a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  font-weight:600;
+  text-decoration:none;
+  color:#7c3aed;
+  background:#ede9fe;
+  padding:8px 16px;
+  border-radius:999px;
+  border:1px solid rgba(124,58,237,.5);
+  transition:.18s ease;
+}
+
+/* 👇 clave: mismo tamaño para IMG y SVG */
+.social-links img,
+.social-links svg{
+  width:22px;
+  height:22px;
+  flex-shrink:0;
+}
+
+.social-links a:hover{
+  background:#7c3aed;
+  color:#fff;
+}
+
+  </style>
+</head>
+
+<body>
+
+<div class="ls">
+
+  <!-- Fondo general -->
+  <video class="bg-sections" autoplay muted loop playsinline>
+    <source src="fondo.mp4" type="video/mp4">
+  </video>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="brand">LECTURA SALUDABLE</div>
+
+      <ul class="links desktop">
+        <li><a href="#talleres">Talleres</a></li>
+        <li><a href="#momentos">Momentos especiales</a></li>
+        <li><a href="#libros">Nuestros libros</a></li>
+        <li><a href="#sobre">Sobre nosotros</a></li>
+      </ul>
+
+      <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menú mobile -->
+    <div class="links mobile" id="mobileMenu" hidden>
+      <a href="#talleres">Talleres</a>
+      <a href="#momentos">Momentos especiales</a>
+      <a href="#libros">Nuestros libros</a>
+      <a href="#sobre">Sobre nosotros</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <!-- LOGO CENTRADO DENTRO DEL HERO -->
+    <img class="logo-fijo-centro" src="logo.png" alt="Lectura Saludable">
+
+    <video autoplay muted loop playsinline poster="poster.png">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+
+    <h1><span class="hero-bubble">Lectura Saludable</span></h1>
+    <p class="hero-slogan"><span class="hero-bubble">Ponemos palabras a tus sueños.</span></p>
+
+    <p class="hero-subtitle">
+      <span class="hero-bubble" style="display:inline-block; max-width:650px; white-space:normal; padding:8px 14px;">
+        Lectura saludable te ayuda a conectar con tu parte creativa a traves de talleres de escritura, poesía, libros personalizados para aniversarios, casamientos, fiestas y momentos importantes de tu vida, tus seres queridos.
+      </span>
+    </p>
+
+    <div class="hero-cta">
+      <a href="https://wa.me/+5491138171669" class="btn-primaria" target="_blank" rel="noopener">
+        ✍️ Quiero más información
+      </a>
+      <a href="#libros" class="btn-secundaria">
+        Ver nuestros libros
+      </a>
+    </div>
+
+    <!-- MARQUESINA EN EL FLUJO, SIN SUPERPOSICIÓN -->
+    <div class="marquesina">
+      ✍️ Escribir para sanar · 📚 Libros que abrazan · 💖 Historias para siempre
+    </div>
+  </header>
+
+  <!-- TALLERES -->
+  <section id="talleres">
+    <div class="seccion reveal">
+      <h2>✍️ Talleres de escritura y poesía</h2>
+      <p style="text-align:center;">
+        Espacios de creatividad para escribir mejor, explorar tu voz y dejar fluir tu sensibilidad a tu propio ritmo.
+      </p>
+    </div>
+  </section>
+
+  <!-- MOMENTOS ESPECIALES (VIOLETA) -->
+  <section id="momentos">
+    <div class="seccion momentos-especiales reveal">
+      <h3>💌 Libros para momentos que se guardan para siempre</h3>
+      <p>
+        Además de los libros publicados, Mabel te acompaña a convertir tu propia historia en un libro único: un objeto hermoso que queda para siempre en tu familia.
+      </p>
+      <ul>
+        <li>Relatos de casamientos, aniversarios y bodas de plata u oro.</li>
+        <li>Cuentos para fiestas de 15, bautismos y cumpleaños especiales.</li>
+        <li>Historias de vida para regalar a mamás, papás y abuelos.</li>
+      </ul>
+      <p>
+        Juntas trabajan recuerdos, anécdotas y fotos para armar un libro que tiene tu voz y tu estilo, con la ayuda de una escritora que sabe escuchar y poner en palabras lo que sentís.
+      </p>
+
+      <div class="cta-momentos">
+        <a href="https://wa.me/+5491138171669?text=Quiero+contar+mi+historia+en+un+libro" class="btn-primaria" target="_blank" rel="noopener">
+          💚 Quiero contar mi historia en un libro
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUESTROS LIBROS + CARRUSEL + RESEÑAS -->
+  <section id="libros">
+    <div class="seccion reveal">
+      <h2>📖 Nuestros libros</h2>
+      <p style="text-align:center;">
+        Libros de Mabel Padilla llenos de poesía, refugio y luz para acompañar tu día a día.
+      </p>
+
+      <!-- CARRUSEL -->
+      <div class="libros-carousel">
+        <div class="libros-main">
+          <!-- Imagen principal libro1.png -->
+          <img src="libro1.jpg" id="libroMain" alt="Lectura Saludable">
+        </div>
+
+        <!-- Info dinámica del libro seleccionado -->
+        <div class="libro-info">
+          <h3 id="libroTitle">Lectura Saludable</h3>
+          <p id="libroDesc">
+            Este libro presenta un menú de poesías de amor propio, empoderamiento femenino, arte y cultura y felicidad espiritual. Incluye actividades para realizar en grupo y compromisos para ser trabajados en clubes de lectura o reuniones con grupos.
+          </p>
+          <p id="libroMeta">
+            Editorial: Grupo de Escritores Argentinos · ISBN: 978-987-757-050-2
+          </p>
+        </div>
+
+        <!-- Miniaturas -->
+        <div class="libros-thumbs">
+          <!-- Libro 1: Lectura Saludable -->
+          <button class="active"
+                  data-src="libro1.jpg"
+                  data-title="Lectura Saludable"
+                  data-desc="Este libro presenta un menú de poesías de amor propio, empoderamiento femenino, arte y cultura y felicidad espiritual. Incluye actividades para realizar en grupo y compromisos para ser trabajados en clubes de lectura o reuniones con grupos."
+                  data-meta="Editorial: Grupo de Escritores Argentinos · ISBN: 978-987-757-050-2">
+            <img src="libro1.jpg" alt="Lectura Saludable">
+          </button>
+
+          <!-- Libro 2 -->
+          <button
+            data-src="libro2.jpg"
+            data-title="Versos libres para persistir"
+            data-desc="Un libro de poesía y reflexión que celebra la vida, la sanación y la persistencia en los momentos difíciles."
+            data-meta="Disponible en Amazon en formato digital y papel.">
+            <img src="libro2.jpg" alt="Versos libres para persistir">
+          </button>
+
+          <!-- Libro 3: Del dicho al derecho en salud -->
+          <button
+            data-src="libro3.jpg"
+            data-title="Del dicho al derecho en salud"
+            data-desc="Incluye un decálogo del educador para la salud como emprendedor y la incorporación de la perspectiva de los derechos humanos universales a ámbitos como la Universidad y las organizaciones públicas."
+            data-meta="Editorial: Bellas Alas · ISBN: 978-987-45665-1-5 · Año: 2014">
+            <img src="libro3.jpg" alt="Del dicho al derecho en salud">
+          </button>
+        </div>
+      </div>
+
+      <!-- RESEÑAS -->
+      <h3 style="margin-top:28px;">⭐ Lo que dicen quienes leyeron</h3>
+
+      <div class="resenas-grid">
+        <div class="resena-card">
+          <strong>“Te cambia el estado de ánimo y te da paz”</strong>
+          <p>“Una poesía que tiene algo especial que no puedo describir. Me llenó de paz.”</p>
+        </div>
+
+        <div class="resena-card">
+          <strong>“Salud y sanación”</strong>
+          <p>“Es celebrar la vida, sanar el alma y recibir amor. Un abrazo en forma de libro.”</p>
+        </div>
+
+        <div class="resena-card">
+          <strong>“Nunca rendirse”</strong>
+          <p>“Un arte que inspira y acompaña. Cada página nutre el alma.”</p>
+        </div>
+      </div>
+
+      <p style="margin-top:14px; text-align:center; font-size:14px;">
+        <a href="https://www.amazon.com/product-reviews/B0BG11RY5N/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews" target="_blank">
+          Ver reseñas Lectura Saludable
+        </a>
+        ·
+        <a href="https://www.amazon.com/Versos-libres-para-PERSISTIR-comunicARTE-ebook/dp/B0FR3XKSXS?ref_=ast_author_dp&th=1&psc=1#customerReviews" target="_blank">
+          Ver reseñas Versos libres para persistir
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="sobre">
+    <div class="seccion reveal">
+      <h2>🌱 Sobre Lectura Saludable</h2>
+      <p style="text-align:center;">
+        Lectura Saludable es un espacio creado por Mabel Padilla donde escribir es sanar, recordar y celebrar.
+        Un refugio para quienes buscan palabras que abracen.
+      </p>
+
+      <!-- Redes sociales -->
+      <h2>Tambien podes encontrarnos en:</h2>
+<div class="social-links">
+  <!-- TikTok con SVG inline -->
+  <a href="https://www.tiktok.com/@lecturasaludable?_r=1&_t=ZM-91yLuzdyC5r" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="11" fill="#000000" />
+      <path d="M14 5v6.5a3 3 0 1 1-1.8-2.8V7.2h2.2V5z" fill="#ffffff" />
+    </svg>
+    TikTok
+  </a>
+
+  <a href="https://www.instagram.com/lecturasaludable/" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" />
+    Instagram
+  </a>
+
+  <a href="https://wa.me/5491138171669" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    WhatsApp
+  </a>
+</div>
+
+  </footer>
+
+</div>
+
+<!-- WHATSAPP FLOTANTE -->
+<a class="whatsapp-float" href="https://wa.me/+5491138171669" target="_blank" rel="noopener">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Lectura Saludable">
+</a>
+
+<!-- JS menú mobile + carrusel + animaciones scroll -->
+<script>
+  // Menú mobile
+  (function(){
+    const btn = document.querySelector('.hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(!btn || !mobileMenu) return;
+
+    btn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.hasAttribute('hidden');
+      if (isOpen) {
+        mobileMenu.setAttribute('hidden','');
+        btn.setAttribute('aria-expanded','false');
+      } else {
+        mobileMenu.removeAttribute('hidden');
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  })();
+
+  // Carrusel de libros + info dinámica
+  (function(){
+    const main = document.getElementById('libroMain');
+    const thumbs = document.querySelectorAll('.libros-thumbs button');
+    const titleEl = document.getElementById('libroTitle');
+    const descEl  = document.getElementById('libroDesc');
+    const metaEl  = document.getElementById('libroMeta');
+
+    if(!main || !thumbs.length) return;
+
+    thumbs.forEach(b=>{
+      b.addEventListener('click', ()=>{
+        thumbs.forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+
+        if (b.dataset.src)  main.src = b.dataset.src;
+        if (b.dataset.title) main.alt = b.dataset.title;
+
+        if (titleEl) titleEl.textContent = b.dataset.title || '';
+        if (descEl)  descEl.textContent  = b.dataset.desc  || '';
+        if (metaEl)  metaEl.textContent  = b.dataset.meta  || '';
+      });
+    });
+  })();
+
+  // Animaciones on scroll
+  (function(){
+    const els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window) || !els.length){
+      els.forEach(e=>e.classList.add('visible'));
+      return;
+    }
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.18});
+    els.forEach(e=>obs.observe(e));
+  })();
+</script>
+
+</body>
+</html>
