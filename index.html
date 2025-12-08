@@ -64,7 +64,7 @@
       justify-content:center;
       align-items:center;
       text-align:center;
-      padding:120px 16px 80px; /* espacio para nav arriba y aire abajo */
+      padding:120px 16px 80px;
       box-sizing:border-box;
       overflow:hidden;
     }
@@ -152,7 +152,7 @@
       box-shadow:0 14px 30px rgba(0,0,0,.35);
     }
 
-    /* MARQUESINA DENTRO DEL HERO (SIN SUPERPONER) */
+    /* MARQUESINA */
     .marquesina{
       margin-top:10px;
       background:rgba(15,23,42,.9);
@@ -204,7 +204,7 @@
       text-transform:uppercase;
       font-size:12px;
       color:#111827;
-      display:none; /* oculto en escritorio */
+      display:none;
     }
 
     .links{
@@ -236,7 +236,6 @@
       width:100%;
     }
 
-    /* Hamburguesa */
     .hamburger{
       display:none;
       border:0;
@@ -250,7 +249,6 @@
       height:20px;
     }
 
-    /* Menú mobile desplegable */
     .links.mobile{
       display:none;
       flex-direction:column;
@@ -278,13 +276,11 @@
       box-shadow:var(--shadow);
     }
 
-    /* TITULOS CENTRADOS */
     h2,h3{
       text-align:center;
       margin-top:0;
     }
 
-    /* ANIMACIONES SCROLL */
     .reveal{
       opacity:0;
       transform:translateY(18px);
@@ -295,7 +291,6 @@
       transform:translateY(0);
     }
 
-    /* MOMENTOS ESPECIALES */
     .momentos-especiales{
       background:var(--acento-suave);
       border:1px solid rgba(124,58,237,.35);
@@ -347,7 +342,6 @@
       box-shadow:0 4px 8px rgba(0,0,0,.2);
     }
 
-    /* INFO DETALLE LIBRO */
     .libro-info{
       margin-top:8px;
       max-width:540px;
@@ -365,7 +359,6 @@
       color:#374151;
     }
 
-    /* RESEÑAS HORIZONTAL */
     .resenas-grid{
       display:flex;
       flex-wrap:wrap;
@@ -382,7 +375,40 @@
       font-size:14px;
     }
 
-    /* 🌱 REDES SOCIALES EN SOBRE NOSOTROS */
+    /* BIBLIOTECA SALUDABLE */
+    .biblio-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      justify-content:center;
+      margin-top:18px;
+    }
+    .biblio-item{
+      width:min(160px,44vw);
+      background:#ffffff;
+      border-radius:12px;
+      padding:10px;
+      box-shadow:0 6px 14px rgba(15,23,42,.12);
+      font-size:13px;
+      text-align:center;
+    }
+    .biblio-item img{
+      width:100%;
+      border-radius:10px;
+      margin-bottom:8px;
+      display:block;
+    }
+    .biblio-item strong{
+      display:block;
+      margin-bottom:4px;
+      color:#111827;
+    }
+    .biblio-item span{
+      display:block;
+      color:#6b7280;
+    }
+
+    /* Redes sociales */
     .social-links{
       margin-top:20px;
       display:flex;
@@ -391,6 +417,9 @@
       flex-wrap:wrap;
     }
     .social-links a{
+      display:flex;
+      align-items:center;
+      gap:8px;
       font-size:14px;
       font-weight:600;
       text-decoration:none;
@@ -400,6 +429,12 @@
       border-radius:999px;
       border:1px solid rgba(124,58,237,.5);
       transition:.18s ease;
+    }
+    .social-links img,
+    .social-links svg{
+      width:22px;
+      height:22px;
+      flex-shrink:0;
     }
     .social-links a:hover{
       background:#7c3aed;
@@ -414,13 +449,6 @@
       margin-top:40px;
       font-size:13px;
       color:#4b5563;
-    }
-
-    footer img{
-      height:16px;
-      vertical-align:middle;
-      margin-left:4px;
-      border-radius:4px;
     }
 
     /* WHATSAPP FLOTANTE */
@@ -479,43 +507,7 @@
       .libro-info{
         text-align:left;
       }
-    }//// toque aca para los links de redes
-   .social-links{
-  margin-top:20px;
-  display:flex;
-  justify-content:center;
-  gap:16px;
-  flex-wrap:wrap;
-}
-
-.social-links a{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:14px;
-  font-weight:600;
-  text-decoration:none;
-  color:#7c3aed;
-  background:#ede9fe;
-  padding:8px 16px;
-  border-radius:999px;
-  border:1px solid rgba(124,58,237,.5);
-  transition:.18s ease;
-}
-
-/* 👇 clave: mismo tamaño para IMG y SVG */
-.social-links img,
-.social-links svg{
-  width:22px;
-  height:22px;
-  flex-shrink:0;
-}
-
-.social-links a:hover{
-  background:#7c3aed;
-  color:#fff;
-}
-
+    }
   </style>
 </head>
 
@@ -537,6 +529,7 @@
         <li><a href="#talleres">Talleres</a></li>
         <li><a href="#momentos">Momentos especiales</a></li>
         <li><a href="#libros">Nuestros libros</a></li>
+        <li><a href="#biblioteca">Biblioteca saludable</a></li>
         <li><a href="#sobre">Sobre nosotros</a></li>
       </ul>
 
@@ -552,13 +545,13 @@
       <a href="#talleres">Talleres</a>
       <a href="#momentos">Momentos especiales</a>
       <a href="#libros">Nuestros libros</a>
+      <a href="#biblioteca">Biblioteca saludable</a>
       <a href="#sobre">Sobre nosotros</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <header>
-    <!-- LOGO CENTRADO DENTRO DEL HERO -->
     <img class="logo-fijo-centro" src="logo.png" alt="Lectura Saludable">
 
     <video autoplay muted loop playsinline poster="poster.png">
@@ -583,7 +576,6 @@
       </a>
     </div>
 
-    <!-- MARQUESINA EN EL FLUJO, SIN SUPERPOSICIÓN -->
     <div class="marquesina">
       ✍️ Escribir para sanar · 📚 Libros que abrazan · 💖 Historias para siempre
     </div>
@@ -592,14 +584,20 @@
   <!-- TALLERES -->
   <section id="talleres">
     <div class="seccion reveal">
-      <h2>✍️ Talleres de escritura y poesía</h2>
+      <h2>✍️ "Encuentros para transformar rutina en inspiración."</h2>
       <p style="text-align:center;">
-        Espacios de creatividad para escribir mejor, explorar tu voz y dejar fluir tu sensibilidad a tu propio ritmo.
+        En un mundo que nos empuja a vivir en automático, te invito a detenerte, respirar y volver a encontrarte con vos mismo.
+Mis encuentros de escritura y lectura son espacios grupales para aflojar tensiones, conectar con tus emociones y transformar el día en algo más consciente y luminoso.
+
+No se trata de escribir bien ni de ser escritor:
+se trata de disfrutar el momento, compartir con otros y descubrir el poder de las palabras como refugio, desahogo e inspiración.
+
+Un tiempo para vos, lejos de la vorágine, donde escribir es sanar, leer es conectar, y el encuentro se vuelve descanso.
       </p>
     </div>
   </section>
 
-  <!-- MOMENTOS ESPECIALES (VIOLETA) -->
+  <!-- MOMENTOS ESPECIALES -->
   <section id="momentos">
     <div class="seccion momentos-especiales reveal">
       <h3>💌 Libros para momentos que se guardan para siempre</h3>
@@ -623,7 +621,7 @@
     </div>
   </section>
 
-  <!-- NUESTROS LIBROS + CARRUSEL + RESEÑAS -->
+  <!-- NUESTROS LIBROS -->
   <section id="libros">
     <div class="seccion reveal">
       <h2>📖 Nuestros libros</h2>
@@ -631,14 +629,11 @@
         Libros de Mabel Padilla llenos de poesía, refugio y luz para acompañar tu día a día.
       </p>
 
-      <!-- CARRUSEL -->
       <div class="libros-carousel">
         <div class="libros-main">
-          <!-- Imagen principal libro1.png -->
           <img src="libro1.jpg" id="libroMain" alt="Lectura Saludable">
         </div>
 
-        <!-- Info dinámica del libro seleccionado -->
         <div class="libro-info">
           <h3 id="libroTitle">Lectura Saludable</h3>
           <p id="libroDesc">
@@ -649,9 +644,7 @@
           </p>
         </div>
 
-        <!-- Miniaturas -->
         <div class="libros-thumbs">
-          <!-- Libro 1: Lectura Saludable -->
           <button class="active"
                   data-src="libro1.jpg"
                   data-title="Lectura Saludable"
@@ -660,7 +653,6 @@
             <img src="libro1.jpg" alt="Lectura Saludable">
           </button>
 
-          <!-- Libro 2 -->
           <button
             data-src="libro2.jpg"
             data-title="Versos libres para persistir"
@@ -669,7 +661,6 @@
             <img src="libro2.jpg" alt="Versos libres para persistir">
           </button>
 
-          <!-- Libro 3: Del dicho al derecho en salud -->
           <button
             data-src="libro3.jpg"
             data-title="Del dicho al derecho en salud"
@@ -677,10 +668,10 @@
             data-meta="Editorial: Bellas Alas · ISBN: 978-987-45665-1-5 · Año: 2014">
             <img src="libro3.jpg" alt="Del dicho al derecho en salud">
           </button>
+
         </div>
       </div>
 
-      <!-- RESEÑAS -->
       <h3 style="margin-top:28px;">⭐ Lo que dicen quienes leyeron</h3>
 
       <div class="resenas-grid">
@@ -712,40 +703,93 @@
     </div>
   </section>
 
+  <!-- BIBLIOTECA SALUDABLE (NUEVA SECCIÓN) -->
+  <section id="biblioteca">
+    <div class="seccion reveal">
+      <h2>📚 Biblioteca saludable</h2>
+      <p style="text-align:center;">
+        Una selección de libros donde Mabel participa como autora, coautora, prologuista o poeta invitada.
+        Una biblioteca para volver cuando necesites palabras que acompañen.
+      </p>
+
+      <div class="biblio-grid">
+        <div class="biblio-item">
+          <img src="lectura-saludable.jpeg" alt="Lectura saludable">
+          <strong>Lectura saludable</strong>
+          <span>Libro de poesía y actividades. Autora: Mabel Padilla.</span>
+        </div>
+
+        <div class="biblio-item">
+          <img src="del dicho al derecho en salud.jpeg" alt="Del dicho al derecho en salud - Bellas Alas">
+          <strong>Del dicho al derecho en salud</strong>
+          <span>Educación para la salud y derechos humanos. Autora: Mabel Padilla.</span>
+        </div>
+
+        <div class="biblio-item">
+          <img src="del dicho al derecho en salud 2.jpeg" alt="Del dicho al derecho en salud - EAE">
+          <strong>Del dicho al derecho en salud</strong>
+          <span>Edición académica española. Investigación y educación ciudadana.</span>
+        </div>
+
+        <div class="biblio-item">
+          <img src="cartas para cuando ya sea demasiado tarde.jpeg" alt="Cartas para cuando ya sea demasiado tarde">
+          <strong>Cartas para cuando ya sea demasiado tarde</strong>
+          <span>Prólogo de Mabel Padilla en la compilación de Hernán Casciari.</span>
+        </div>
+
+        <div class="biblio-item">
+          <img src="palabra-provocadora.jpeg" alt="La palabra provocada">
+          <strong>La palabra provocada</strong>
+          <span>Antología poética argentina. Participación de Mabel como poeta.</span>
+        </div>
+
+        <div class="biblio-item">
+          <img src="entrelineas.jpeg" alt="Entre líneas">
+          <strong>Entre líneas</strong>
+          <span>Antología literaria de la SADE Zona Norte con textos de Mabel.</span>
+        </div>
+
+        <!-- NUEVO LIBRO EN BIBLIOTECA SALUDABLE -->
+        <div class="biblio-item">
+          <img src="literpazunaccc.jpeg" alt="Literpaz">
+          <strong>Literpazunaccc</strong>
+          <span>Obra colectiva sobre paz, lectura y salud emocional. Participación de Mabel como coautora.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SOBRE NOSOTROS -->
   <section id="sobre">
     <div class="seccion reveal">
       <h2>🌱 Sobre Lectura Saludable</h2>
       <p style="text-align:center;">
-        Lectura Saludable es un espacio creado por Mabel Padilla donde escribir es sanar, recordar y celebrar.
-        Un refugio para quienes buscan palabras que abracen.
+        Lectura Saludable es un espacio creado por Mabel Padilla, Licenciada en Educación para la Salud, donde escribir se convierte en una forma de sanar, recordar y celebrar.
+Un refugio para quienes buscan palabras que abracen y dejen huella.
       </p>
 
-      <!-- Redes sociales -->
-      <h2>Tambien podes encontrarnos en:</h2>
-<div class="social-links">
-  <!-- TikTok con SVG inline -->
-  <a href="https://www.tiktok.com/@lecturasaludable?_r=1&_t=ZM-91yLuzdyC5r" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="11" fill="#000000" />
-      <path d="M14 5v6.5a3 3 0 1 1-1.8-2.8V7.2h2.2V5z" fill="#ffffff" />
-    </svg>
-    TikTok
-  </a>
+      <h2>También podés encontrarnos en:</h2>
+      <div class="social-links">
+        <a href="https://www.tiktok.com/@lecturasaludable?_r=1&_t=ZM-91yLuzdyC5r" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="11" fill="#000000" />
+            <path d="M14 5v6.5a3 3 0 1 1-1.8-2.8V7.2h2.2V5z" fill="#ffffff" />
+          </svg>
+          TikTok
+        </a>
 
-  <a href="https://www.instagram.com/lecturasaludable/" target="_blank" rel="noopener">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" />
-    Instagram
-  </a>
+        <a href="https://www.instagram.com/lecturasaludable/" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" />
+          Instagram
+        </a>
 
-  <a href="https://wa.me/5491138171669" target="_blank" rel="noopener">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-    WhatsApp
-  </a>
-</div>
-
-  </footer>
-
+        <a href="https://wa.me/5491138171669" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- WHATSAPP FLOTANTE -->
@@ -753,7 +797,6 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Lectura Saludable">
 </a>
 
-<!-- JS menú mobile + carrusel + animaciones scroll -->
 <script>
   // Menú mobile
   (function(){
@@ -816,6 +859,18 @@
     els.forEach(e=>obs.observe(e));
   })();
 </script>
+   <footer>
+    © <span id="year"></span> Lectura saludable · Todos los derechos reservados.
+
+    <div class="footer-designed" style="margin-top:8px;">
+      <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
+        Diseñado por UmanoAI
+        <a href="https://umanoai.com.ar" target="_blank" style="display:inline-block;">
+          <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
+        </a>
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>
