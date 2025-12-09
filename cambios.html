@@ -1,11 +1,22 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
- <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png?v=2">
-<link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png?v=2">
-<link rel="apple-touch-icon" href="/icon-32.png?v=2">
-<link rel="manifest" href="/site.webmanifest?v=2">
-<meta name="theme-color" content="#ffffff">
+  <!-- FAVICONS PRINCIPALES -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+  <!-- ICONO PARA iPhone/iPad -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/android-chrome-192x192.png">
+
+  <!-- ICONOS PARA ANDROID -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+
+  <!-- MANIFEST -->
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="theme-color" content="#ffffff">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lectura Saludable · Ponemos palabras a tus sueños</title>
@@ -332,13 +343,27 @@
 
     /* SECCIÓN LANZAMIENTO */
     .launch-highlight{
-      background:linear-gradient(135deg,#1d4ed8,#7c3aed);
+      position:relative;
+      background:linear-gradient(135deg,#4b5563,#9ca3af);
       color:#f9fafb;
-      border-radius:18px;
-      padding:20px 18px;
-      box-shadow:0 18px 40px rgba(15,23,42,.35);
+      border-radius:22px;
+      padding:22px 20px;
+      box-shadow:0 18px 40px rgba(15,23,42,.4);
+      overflow:hidden;
+    }
+    .launch-highlight::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(156,163,175,.38), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(229,231,235,.45), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
     }
     .launch-layout{
+      position:relative;
+      z-index:1;
       display:flex;
       flex-wrap:wrap;
       gap:20px;
@@ -351,13 +376,22 @@
     }
     .launch-cover img{
       width:100%;
-      border-radius:16px;
-      box-shadow:0 16px 36px rgba(0,0,0,.45);
+      border-radius:18px;
+      border:4px solid rgba(255,255,255,.9);
+      box-shadow:
+        0 0 22px rgba(55,65,81,.7),
+        0 18px 36px rgba(15,23,42,.85);
       display:block;
+      background:#020617;
     }
     .launch-text{
       flex:1 1 260px;
       min-width:260px;
+      background:rgba(15,23,42,.56);
+      border-radius:18px;
+      padding:16px 18px 18px;
+      box-shadow:0 14px 32px rgba(15,23,42,.6);
+      backdrop-filter:blur(12px);
     }
     .launch-text h3{
       text-align:left;
@@ -498,6 +532,58 @@
       color:#6b7280;
     }
 
+    /* MÉTODO R.I.E. */
+    .metodo-rie{
+      background:rgba(249,250,251,.98);
+      border-radius:18px;
+      border:1px solid rgba(124,58,237,.25);
+      box-shadow:0 10px 28px rgba(15,23,42,.12);
+    }
+    .metodo-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:var(--acento-suave);
+      color:#4b5563;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:10px;
+    }
+    .metodo-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      align-items:flex-start;
+    }
+    .metodo-main{
+      flex:2 1 260px;
+      min-width:260px;
+    }
+    .metodo-side{
+      flex:1 1 220px;
+      min-width:220px;
+      background:rgba(124,58,237,.04);
+      border-radius:14px;
+      padding:12px 14px;
+      border:1px dashed rgba(124,58,237,.35);
+      font-size:14px;
+      color:#4b5563;
+    }
+    .metodo-side h3{
+      margin-top:0;
+      font-size:15px;
+      text-align:left;
+      color:#4b5563;
+    }
+    .metodo-list{
+      padding-left:18px;
+      margin:8px 0 0;
+      font-size:14px;
+    }
+
     /* Redes sociales */
     .social-links{
       margin-top:20px;
@@ -600,6 +686,9 @@
       .launch-text h3{
         text-align:left;
       }
+      .metodo-grid{
+        flex-direction:column;
+      }
     }
   </style>
 </head>
@@ -620,10 +709,11 @@
 
       <ul class="links desktop">
         <li><a href="#lanzamiento">Nuevo libro</a></li>
-        <li><a href="#talleres">Talleres</a></li>
+        <li><a href="#grupos">Grupos</a></li>
         <li><a href="#momentos">Momentos especiales</a></li>
         <li><a href="#libros">Nuestros libros</a></li>
         <li><a href="#biblioteca">Biblioteca saludable</a></li>
+        <li><a href="#metodo">Método R.I.E.</a></li>
         <li><a href="#sobre">Sobre nosotros</a></li>
       </ul>
 
@@ -637,10 +727,11 @@
     <!-- Menú mobile -->
     <div class="links mobile" id="mobileMenu" hidden>
       <a href="#lanzamiento">Nuevo libro</a>
-      <a href="#talleres">Talleres</a>
+      <a href="#grupos">Grupos</a>
       <a href="#momentos">Momentos especiales</a>
       <a href="#libros">Nuestros libros</a>
       <a href="#biblioteca">Biblioteca saludable</a>
+      <a href="#metodo">Método R.I.E.</a>
       <a href="#sobre">Sobre nosotros</a>
     </div>
   </nav>
@@ -693,13 +784,8 @@
             <div class="launch-tag">Nuevo lanzamiento · 2025</div>
             <h3>Guía para relacionarte con respeto</h3>
             <p>
-              Un libro práctico y cercano para trabajar los vínculos desde el respeto, en base a los
-              derechos y deberes humanos. Pensado para educadores, facilitadores, equipos de salud,
-              familias y cualquier persona que quiera construir relaciones más conscientes.
-            </p>
-            <p>
-              Incluye conceptos clave, disparadores de reflexión y actividades que podés llevar a tus
-              talleres, aulas, espacios comunitarios o encuentros grupales.
+              Apasionada por la educación en valores y el fortalecimiento de la dignidad humana, Mabel ha dedicado su trabajo a mostrar la cara positiva de los derechos y deberes humanos. Con un estilo claro y accesible, busca inspirar a lectores de todas las edades a aplicar estos principios en su vida cotidiana y en sus comunidades.
+              Su objetivo es sencillo pero poderoso: recordar que cada persona tiene la capacidad de transformar la sociedad desde lo cotidiano, promoviendo el respeto y el sentido común.
             </p>
             <div class="launch-cta">
               <a href="https://wa.me/+5491138171669?text=Quiero+mas+informacion+sobre+la+Guia+para+relacionarte+con+respeto" class="btn-primaria" target="_blank" rel="noopener">
@@ -715,19 +801,28 @@
     </div>
   </section>
 
-  <!-- TALLERES -->
-  <section id="talleres">
+  <!-- GRUPOS -->
+  <section id="grupos">
     <div class="seccion reveal">
-      <h2>✍️ "Encuentros para transformar rutina en inspiración."</h2>
-      <p style="text-align:center;">
-        En un mundo que nos empuja a vivir en automático, te invito a detenerte, respirar y volver a encontrarte con vos mismo.
-Mis encuentros de escritura y lectura son espacios grupales para aflojar tensiones, conectar con tus emociones y transformar el día en algo más consciente y luminoso.
+      <h2>✍️ Encuentros para conectar, compartir y transformar el día</h2>
+<p style="text-align:center;">
+  Vivimos en piloto automático y a veces necesitamos frenar un momento, respirar y volver a nosotros.
+  Mis encuentros de lectura y escritura son espacios tranquilos y acompañados, pensados para aflojar tensiones, escuchar tus emociones y sentirte parte de un grupo que también busca un rato de calma y creatividad.
+  <br><br>
+  No importa si nunca escribiste ni si sientes que no sabes cómo hacerlo.
+  Acá nadie corrige y nadie juzga: se trata de estar presente, disfrutar, descubrirte y encontrar refugio en las palabras.
+  <br><br>
+  En estos espacios, muchas asistentes coincidieron en que leer y escribir las ayuda a “reducir el estrés”, fortalecer el amor propio y cultivar relaciones más sanas. Varias expresaron que estos encuentros las acompañan en mantener una mentalidad positiva, y más de una dijo:
+</p>
 
-No se trata de escribir bien ni de ser escritor:
-se trata de disfrutar el momento, compartir con otros y descubrir el poder de las palabras como refugio, desahogo e inspiración.
+<p style="text-align:center; font-style: italic; margin-top: 8px;">
+  “Me vi reflejada en tus poesías y quiero ser ese tipo de mujer que mencionas allí. Somos mujeres cactus, somos mujeres fuertes.” — A.D.
+</p>
 
-Un tiempo para vos, lejos de la vorágine, donde escribir es sanar, leer es conectar, y el encuentro se vuelve descanso.
-      </p>
+<p style="text-align:center; margin-top: 8px;">
+  Un tiempo para vos —con personas reales, con historias y vivencias— donde escribir es alivio, leer es compañía y el encuentro se convierte en pausa, contención y luz.
+</p>
+
     </div>
   </section>
 
@@ -771,7 +866,7 @@ Un tiempo para vos, lejos de la vorágine, donde escribir es sanar, leer es cone
         <div class="libro-info">
           <h3 id="libroTitle">Guía para relacionarte con respeto</h3>
           <p id="libroDesc">
-            Un recorrido claro y accesible para aprender a vincularte desde el respeto, tomando como base los derechos y deberes humanos. Ideal para talleres, espacios educativos y trabajo con grupos.
+            Apasionada por la educación en valores y el fortalecimiento de la dignidad humana, Mabel ha dedicado su trabajo a mostrar la cara positiva de los derechos y deberes humanos. Con un estilo claro y accesible, busca inspirar a lectores de todas las edades a aplicar estos principios en su vida cotidiana y en sus comunidades. Su objetivo es sencillo pero poderoso: recordar que cada persona tiene la capacidad de transformar la sociedad desde lo cotidiano, promoviendo el respeto y el sentido común.
           </p>
           <p id="libroMeta">
             Autora: Mabel Padilla · Lanzamiento 2025
@@ -782,7 +877,7 @@ Un tiempo para vos, lejos de la vorágine, donde escribir es sanar, leer es cone
           <button class="active"
                   data-src="guia para relacionarte con respeto.jpeg"
                   data-title="Guía para relacionarte con respeto"
-                  data-desc="Un recorrido claro y accesible para aprender a vincularte desde el respeto, tomando como base los derechos y deberes humanos. Ideal para talleres, espacios educativos y trabajo con grupos."
+                  data-desc="Un recorrido claro y accesible para aprender a vincularte desde el respeto, tomando como base los derechos y deberes humanos. Ideal para grupos, espacios educativos y trabajo con comunidades."
                   data-meta="Autora: Mabel Padilla · Lanzamiento 2025">
             <img src="guia para relacionarte con respeto.jpeg" alt="Guía para relacionarte con respeto">
           </button>
@@ -845,7 +940,7 @@ Un tiempo para vos, lejos de la vorágine, donde escribir es sanar, leer es cone
     </div>
   </section>
 
-  <!-- BIBLIOTECA SALUDABLE (NUEVA SECCIÓN) -->
+  <!-- BIBLIOTECA SALUDABLE -->
   <section id="biblioteca">
     <div class="seccion reveal">
       <h2>📚 Biblioteca saludable</h2>
@@ -891,12 +986,50 @@ Un tiempo para vos, lejos de la vorágine, donde escribir es sanar, leer es cone
           <span>Antología literaria de la SADE Zona Norte con textos de Mabel.</span>
         </div>
 
-        <!-- NUEVO LIBRO EN BIBLIOTECA SALUDABLE -->
         <div class="biblio-item">
           <img src="literpazunaccc.jpeg" alt="Literpaz">
           <strong>Literpazunaccc</strong>
           <span>Obra colectiva sobre paz, lectura y salud emocional. Participación de Mabel como coautora.</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO R.I.E. -->
+  <section id="metodo">
+    <div class="seccion metodo-rie reveal">
+      <div class="metodo-tag">Método propio · Bienestar emocional</div>
+      <h2>✨ Método R.I.E.: escribir para sentirte mejor</h2>
+
+      <div class="metodo-grid">
+        <div class="metodo-main">
+          <p>
+            En Lectura Saludable tenemos un sistema propio, simple y poderoso que convierte la escritura en una experiencia de bienestar: el <strong>Método R.I.E.</strong>
+          </p>
+          <p>
+            Con este método no solo aprenderás, sino que también tu estado de ánimo se elevará y lograrás enfocar tu mente en lo positivo. La propuesta se apoya en tres ejes:
+          </p>
+          <ul class="metodo-list">
+            <li><strong>R de Reflexionar:</strong> detenerte, mirar hacia adentro y ponerle nombre a lo que sentís.</li>
+            <li><strong>I de Integrar:</strong> unir experiencias, recuerdos y emociones para darles un sentido nuevo.</li>
+            <li><strong>E de Expresar:</strong> soltar en palabras aquello que pide salir, de manera cuidada y acompañada.</li>
+          </ul>
+          <p style="margin-top:10px;">
+            El Método R.I.E. está presente en los grupos, en las lecturas guiadas y en las propuestas de escritura creativa. Cada encuentro busca que salgas un poco más liviana, con más claridad interna y con herramientas para seguir cuidando tu bienestar emocional en el día a día.
+          </p>
+        </div>
+
+        <aside class="metodo-side">
+          <h3>¿Dónde se aplica el Método R.I.E.?</h3>
+          <ul class="metodo-list">
+            <li>Grupos de lectura y escritura.</li>
+            <li>Ejercicios de bienestar emocional y autocuidado.</li>
+            <li>Procesos creativos para transformar vivencias en textos.</li>
+          </ul>
+          <p style="margin-top:10px;">
+            La idea es sencilla pero potente: que la palabra sea refugio, alivio y punto de partida para una vida más consciente.
+          </p>
+        </aside>
       </div>
     </div>
   </section>
@@ -907,7 +1040,10 @@ Un tiempo para vos, lejos de la vorágine, donde escribir es sanar, leer es cone
       <h2>🌱 Sobre Lectura Saludable</h2>
       <p style="text-align:center;">
         Lectura Saludable es un espacio creado por Mabel Padilla, Licenciada en Educación para la Salud, donde escribir se convierte en una forma de sanar, recordar y celebrar.
-Un refugio para quienes buscan palabras que abracen y dejen huella.
+        Un refugio para quienes buscan palabras que abracen y dejen huella.
+      </p>
+      <p style="text-align:center; margin-top:10px;">
+        Mabel está certificada en la <strong>Escuela Europea de Formación para Formadores de Vidroop MOL</strong> (primer modelo pedagógico de formación online). Esta formación le permite combinar recursos de bienestar emocional con herramientas pedagógicas modernas, ofreciendo encuentros y propuestas de escritura pensados para acompañar procesos personales de una manera profesional, cálida y cercana.
       </p>
 
       <h2>También podés encontrarnos en:</h2>
@@ -1000,19 +1136,29 @@ Un refugio para quienes buscan palabras que abracen y dejen huella.
     }, {threshold:0.18});
     els.forEach(e=>obs.observe(e));
   })();
-</script>
-   <footer>
-    © <span id="year"></span> Lectura saludable · Todos los derechos reservados.
 
-    <div class="footer-designed" style="margin-top:8px;">
-      <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
-        Diseñado por UmanoAI
-        <a href="https://umanoai.com.ar" target="_blank" style="display:inline-block;">
-          <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
-        </a>
-      </p>
-    </div>
-  </footer>
+  // Año dinámico en el footer
+  (function(){
+    const span = document.getElementById('year');
+    if(span) span.textContent = new Date().getFullYear();
+  })();
+</script>
+
+<footer>
+  © <span id="year"></span> Lectura saludable · Todos los derechos reservados.
+
+  <div class="footer-designed" style="margin-top:8px;">
+    <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
+      Diseñado por UmanoAI
+      <a href="https://umanoai.com.ar" target="_blank" style="display:inline-block;">
+        <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
+      </a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
 
 </body>
 </html>
