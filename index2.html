@@ -99,6 +99,29 @@
       display:inline-block;
     }
 
+    /* BADGE LANZAMIENTO EN HERO */
+    .hero-launch{
+      margin-top:8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 14px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--naranja),#ea580c);
+      color:#fff;
+      font-size:13px;
+      box-shadow:0 8px 22px rgba(0,0,0,.45);
+    }
+    .hero-launch a{
+      color:#fefce8;
+      font-weight:600;
+      text-decoration:none;
+      border-bottom:1px dotted rgba(254,252,232,.7);
+    }
+    .hero-launch a:hover{
+      opacity:.9;
+    }
+
     /* TEXTOS HERO */
     .ls header h1{
       color:#fff;
@@ -307,6 +330,68 @@
       margin-top:18px;
     }
 
+    /* SECCIÓN LANZAMIENTO */
+    .launch-highlight{
+      background:linear-gradient(135deg,#1d4ed8,#7c3aed);
+      color:#f9fafb;
+      border-radius:18px;
+      padding:20px 18px;
+      box-shadow:0 18px 40px rgba(15,23,42,.35);
+    }
+    .launch-layout{
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      align-items:center;
+      justify-content:center;
+    }
+    .launch-cover{
+      flex:0 0 260px;
+      max-width:280px;
+    }
+    .launch-cover img{
+      width:100%;
+      border-radius:16px;
+      box-shadow:0 16px 36px rgba(0,0,0,.45);
+      display:block;
+    }
+    .launch-text{
+      flex:1 1 260px;
+      min-width:260px;
+    }
+    .launch-text h3{
+      text-align:left;
+      font-size:22px;
+      margin-bottom:6px;
+    }
+    .launch-text p{
+      margin:6px 0;
+      font-size:14px;
+    }
+    .launch-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      padding:4px 10px;
+      border-radius:999px;
+      background:rgba(251,191,36,.2);
+      color:#fef3c7;
+      margin-bottom:8px;
+    }
+    .launch-cta{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .launch-cta .btn-primaria,
+    .launch-cta .btn-secundaria{
+      box-shadow:0 10px 26px rgba(0,0,0,.4);
+    }
+
     /* CARRUSEL LIBROS */
     .libros-carousel{
       display:flex;
@@ -512,6 +597,9 @@
       .libro-info{
         text-align:left;
       }
+      .launch-text h3{
+        text-align:left;
+      }
     }
   </style>
 </head>
@@ -531,6 +619,7 @@
       <div class="brand">LECTURA SALUDABLE</div>
 
       <ul class="links desktop">
+        <li><a href="#lanzamiento">Nuevo libro</a></li>
         <li><a href="#talleres">Talleres</a></li>
         <li><a href="#momentos">Momentos especiales</a></li>
         <li><a href="#libros">Nuestros libros</a></li>
@@ -547,6 +636,7 @@
 
     <!-- Menú mobile -->
     <div class="links mobile" id="mobileMenu" hidden>
+      <a href="#lanzamiento">Nuevo libro</a>
       <a href="#talleres">Talleres</a>
       <a href="#momentos">Momentos especiales</a>
       <a href="#libros">Nuestros libros</a>
@@ -581,10 +671,49 @@
       </a>
     </div>
 
+    <div class="hero-launch">
+      🎉 Nuevo lanzamiento:
+      <a href="#lanzamiento">“Guía para relacionarte con respeto”</a>
+    </div>
+
     <div class="marquesina">
       ✍️ Escribir para sanar · 📚 Libros que abrazan · 💖 Historias para siempre
     </div>
   </header>
+
+  <!-- LANZAMIENTO NUEVO LIBRO -->
+  <section id="lanzamiento">
+    <div class="seccion reveal">
+      <div class="launch-highlight">
+        <div class="launch-layout">
+          <div class="launch-cover">
+            <img src="guia-relacionarte-respeto.jpg" alt="Guía para relacionarte con respeto - Mabel Padilla">
+          </div>
+          <div class="launch-text">
+            <div class="launch-tag">Nuevo lanzamiento · 2025</div>
+            <h3>Guía para relacionarte con respeto</h3>
+            <p>
+              Un libro práctico y cercano para trabajar los vínculos desde el respeto, en base a los
+              derechos y deberes humanos. Pensado para educadores, facilitadores, equipos de salud,
+              familias y cualquier persona que quiera construir relaciones más conscientes.
+            </p>
+            <p>
+              Incluye conceptos clave, disparadores de reflexión y actividades que podés llevar a tus
+              talleres, aulas, espacios comunitarios o encuentros grupales.
+            </p>
+            <div class="launch-cta">
+              <a href="https://wa.me/+5491138171669?text=Quiero+mas+informacion+sobre+la+Guia+para+relacionarte+con+respeto" class="btn-primaria" target="_blank" rel="noopener">
+                💚 Quiero este libro
+              </a>
+              <a href="#libros" class="btn-secundaria">
+                📖 Ver todos los libros de Mabel
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- TALLERES -->
   <section id="talleres">
@@ -636,25 +765,33 @@ Un tiempo para vos, lejos de la vorágine, donde escribir es sanar, leer es cone
 
       <div class="libros-carousel">
         <div class="libros-main">
-          <img src="libro1.jpg" id="libroMain" alt="Lectura Saludable">
+          <img src="guia-relacionarte-respeto.jpg" id="libroMain" alt="Guía para relacionarte con respeto">
         </div>
 
         <div class="libro-info">
-          <h3 id="libroTitle">Lectura Saludable</h3>
+          <h3 id="libroTitle">Guía para relacionarte con respeto</h3>
           <p id="libroDesc">
-            Este libro presenta un menú de poesías de amor propio, empoderamiento femenino, arte y cultura y felicidad espiritual. Incluye actividades para realizar en grupo y compromisos para ser trabajados en clubes de lectura o reuniones con grupos.
+            Un recorrido claro y accesible para aprender a vincularte desde el respeto, tomando como base los derechos y deberes humanos. Ideal para talleres, espacios educativos y trabajo con grupos.
           </p>
           <p id="libroMeta">
-            Editorial: Grupo de Escritores Argentinos · ISBN: 978-987-757-050-2
+            Autora: Mabel Padilla · Lanzamiento 2025
           </p>
         </div>
 
         <div class="libros-thumbs">
           <button class="active"
-                  data-src="libro1.jpg"
-                  data-title="Lectura Saludable"
-                  data-desc="Este libro presenta un menú de poesías de amor propio, empoderamiento femenino, arte y cultura y felicidad espiritual. Incluye actividades para realizar en grupo y compromisos para ser trabajados en clubes de lectura o reuniones con grupos."
-                  data-meta="Editorial: Grupo de Escritores Argentinos · ISBN: 978-987-757-050-2">
+                  data-src="guia-relacionarte-respeto.jpg"
+                  data-title="Guía para relacionarte con respeto"
+                  data-desc="Un recorrido claro y accesible para aprender a vincularte desde el respeto, tomando como base los derechos y deberes humanos. Ideal para talleres, espacios educativos y trabajo con grupos."
+                  data-meta="Autora: Mabel Padilla · Lanzamiento 2025">
+            <img src="guia-relacionarte-respeto.jpg" alt="Guía para relacionarte con respeto">
+          </button>
+
+          <button
+            data-src="libro1.jpg"
+            data-title="Lectura Saludable"
+            data-desc="Este libro presenta un menú de poesías de amor propio, empoderamiento femenino, arte y cultura y felicidad espiritual. Incluye actividades para realizar en grupo y compromisos para ser trabajados en clubes de lectura o reuniones con grupos."
+            data-meta="Editorial: Grupo de Escritores Argentinos · ISBN: 978-987-757-050-2">
             <img src="libro1.jpg" alt="Lectura Saludable">
           </button>
 
@@ -879,3 +1016,4 @@ Un refugio para quienes buscan palabras que abracen y dejen huella.
 
 </body>
 </html>
+
