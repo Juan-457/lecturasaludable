@@ -1,11 +1,27 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
+  <!-- FAVICONS PRINCIPALES -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+  <!-- ICONO PARA iPhone/iPad -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/android-chrome-192x192.png">
+
+  <!-- ICONOS PARA ANDROID -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+
+  <!-- MANIFEST -->
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="theme-color" content="#ffffff">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lectura Saludable · Ponemos palabras a tus sueños</title>
   <meta name="color-scheme" content="light dark" />
-  <meta name="description" content="Lectura Saludable te acompaña a escribir: talleres de textos y poesía, y libros personalizados para casamientos, fiestas y momentos importantes.">
+  <meta name="description" content="Lectura saludable te ayuda a conectar con tu parte creativa a traves de talleres de escritura, poesía, libros personalizados para aniversarios, casamientos, fiestas y momentos importantes de tu vida, tus seres queridos.">
 
   <style>
     :root{
@@ -33,7 +49,17 @@
       z-index:0;
     }
 
-    /* VIDEO FONDO */
+    /* LOGO CENTRADO EN EL HERO (en flujo normal) */
+    .logo-fijo-centro{
+      display:block;
+      margin:0 auto 18px;
+      width:clamp(160px,22vw,260px);
+      max-width:60%;
+      opacity:0.95;
+      pointer-events:none;
+    }
+
+    /* VIDEO FONDO GENERAL (fijo para todo el sitio) */
     .bg-sections{
       position:fixed;
       inset:0;
@@ -45,17 +71,18 @@
       pointer-events:none;
     }
 
-    /* HEADER HERO */
+    /* HERO A PANTALLA COMPLETA */
     .ls header{
+      position:relative;
       min-height:100vh;
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:center;
       text-align:center;
-      position:relative;
-      padding:0 16px;
-      padding-top:80px;
+      padding:120px 16px 80px;
+      box-sizing:border-box;
+      overflow:hidden;
     }
     .ls header video{
       position:absolute;
@@ -70,10 +97,10 @@
       position:absolute;
       inset:0;
       z-index:-1;
-      background:linear-gradient(to bottom, rgba(15,23,42,.55), rgba(15,23,42,.18));
+      background:linear-gradient(to bottom, rgba(15,23,42,.7), rgba(15,23,42,.25));
     }
 
-    /* BURBUJAS */
+    /* BURBUJAS HERO */
     .hero-bubble{
       background: rgba(17,24,39,.42);
       padding:6px 14px;
@@ -83,12 +110,35 @@
       display:inline-block;
     }
 
+    /* BADGE LANZAMIENTO EN HERO */
+    .hero-launch{
+      margin-top:8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 14px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--naranja),#ea580c);
+      color:#fff;
+      font-size:13px;
+      box-shadow:0 8px 22px rgba(0,0,0,.45);
+    }
+    .hero-launch a{
+      color:#fefce8;
+      font-weight:600;
+      text-decoration:none;
+      border-bottom:1px dotted rgba(254,252,232,.7);
+    }
+    .hero-launch a:hover{
+      opacity:.9;
+    }
+
     /* TEXTOS HERO */
     .ls header h1{
       color:#fff;
       font-size:clamp(28px,5vw,50px);
       text-shadow:0 2px 14px rgba(0,0,0,.45);
-      margin:14px 0 6px;
+      margin:10px 0 6px;
     }
     .hero-slogan{
       color:#e5e7eb;
@@ -96,7 +146,7 @@
     }
     .hero-subtitle{
       max-width:640px;
-      margin:10px auto 26px;
+      margin:10px auto 22px;
       color:#e5e7eb;
       text-shadow:0 2px 10px rgba(0,0,0,.45);
       font-size:clamp(14px,3vw,18px);
@@ -108,7 +158,7 @@
       flex-wrap:wrap;
       gap:12px;
       justify-content:center;
-      margin-bottom:48px;
+      margin-bottom:18px;
     }
     .btn-primaria,
     .btn-secundaria{
@@ -141,13 +191,10 @@
       box-shadow:0 14px 30px rgba(0,0,0,.35);
     }
 
-    /* MARQUESINA HERO ABAJO */
+    /* MARQUESINA */
     .marquesina{
-      position:absolute;
-      left:50%;
-      bottom:22px;
-      transform:translateX(-50%);
-      background:rgba(15,23,42,.85);
+      margin-top:10px;
+      background:rgba(15,23,42,.9);
       color:#f9fafb;
       padding:8px 18px;
       border-radius:999px;
@@ -158,7 +205,7 @@
       box-shadow:0 8px 22px rgba(0,0,0,.45);
       backdrop-filter:blur(10px);
       max-width:92%;
-      white-space:nowrap;
+      text-wrap:balance;
     }
     @media (max-width:600px){
       .marquesina{
@@ -196,7 +243,7 @@
       text-transform:uppercase;
       font-size:12px;
       color:#111827;
-      display:none; /* oculto en escritorio */
+      display:none;
     }
 
     .links{
@@ -228,7 +275,6 @@
       width:100%;
     }
 
-    /* Hamburguesa */
     .hamburger{
       display:none;
       border:0;
@@ -242,7 +288,6 @@
       height:20px;
     }
 
-    /* Menú mobile desplegable */
     .links.mobile{
       display:none;
       flex-direction:column;
@@ -250,7 +295,7 @@
       padding:10px 16px 14px;
       background:#f9fafb;
       border-radius:0 0 16px 16px;
-      box-shadow:0 16px 30px rgba(15,23,42,.18);
+      box-shadow:0 16px 30px rgba(0,0,0,.18);
     }
     .links.mobile a{
       padding:4px 0;
@@ -270,13 +315,11 @@
       box-shadow:var(--shadow);
     }
 
-    /* TITULOS CENTRADOS */
     h2,h3{
       text-align:center;
       margin-top:0;
     }
 
-    /* ANIMACIONES SCROLL */
     .reveal{
       opacity:0;
       transform:translateY(18px);
@@ -287,7 +330,6 @@
       transform:translateY(0);
     }
 
-    /* MOMENTOS ESPECIALES */
     .momentos-especiales{
       background:var(--acento-suave);
       border:1px solid rgba(124,58,237,.35);
@@ -299,12 +341,97 @@
       margin-top:18px;
     }
 
+    /* SECCIÓN LANZAMIENTO */
+    .launch-highlight{
+      position:relative;
+      background:linear-gradient(135deg,#4b5563,#9ca3af);
+      color:#f9fafb;
+      border-radius:22px;
+      padding:22px 20px;
+      box-shadow:0 18px 40px rgba(15,23,42,.4);
+      overflow:hidden;
+    }
+    .launch-highlight::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(156,163,175,.38), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(229,231,235,.45), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .launch-layout{
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      align-items:center;
+      justify-content:center;
+    }
+    .launch-cover{
+      flex:0 0 260px;
+      max-width:280px;
+    }
+    .launch-cover img{
+      width:100%;
+      border-radius:18px;
+      border:4px solid rgba(255,255,255,.9);
+      box-shadow:
+        0 0 22px rgba(55,65,81,.7),
+        0 18px 36px rgba(15,23,42,.85);
+      display:block;
+      background:#020617;
+    }
+    .launch-text{
+      flex:1 1 260px;
+      min-width:260px;
+      background:rgba(15,23,42,.56);
+      border-radius:18px;
+      padding:16px 18px 18px;
+      box-shadow:0 14px 32px rgba(15,23,42,.6);
+      backdrop-filter:blur(12px);
+    }
+    .launch-text h3{
+      text-align:left;
+      font-size:22px;
+      margin-bottom:6px;
+    }
+    .launch-text p{
+      margin:6px 0;
+      font-size:14px;
+    }
+    .launch-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      padding:4px 10px;
+      border-radius:999px;
+      background:rgba(251,191,36,.2);
+      color:#fef3c7;
+      margin-bottom:8px;
+    }
+    .launch-cta{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .launch-cta .btn-primaria,
+    .launch-cta .btn-secundaria{
+      box-shadow:0 10px 26px rgba(0,0,0,.4);
+    }
+
     /* CARRUSEL LIBROS */
     .libros-carousel{
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:12px;
+      gap:16px;
       margin-top:18px;
     }
     .libros-main img{
@@ -319,6 +446,7 @@
       gap:8px;
       justify-content:center;
       flex-wrap:wrap;
+      margin-top:4px;
     }
     .libros-thumbs button{
       border:none;
@@ -338,7 +466,23 @@
       box-shadow:0 4px 8px rgba(0,0,0,.2);
     }
 
-    /* RESEÑAS HORIZONTAL */
+    .libro-info{
+      margin-top:8px;
+      max-width:540px;
+      text-align:left;
+    }
+    .libro-info h3{
+      margin:6px 0;
+      text-align:left;
+      font-size:18px;
+      color:#111827;
+    }
+    .libro-info p{
+      margin:4px 0;
+      font-size:14px;
+      color:#374151;
+    }
+
     .resenas-grid{
       display:flex;
       flex-wrap:wrap;
@@ -355,103 +499,122 @@
       font-size:14px;
     }
 
-    /* 🛒 MINI TIENDA */
-    .tienda{
-      margin-top:26px;
-      padding:18px 16px 20px;
-      border-radius:18px;
-      background:#f9fafb;
-      border:1px solid #e5e7eb;
-    }
-    .tienda h3{
-      margin-bottom:8px;
-    }
-    .tienda p{
-      margin-top:0;
-      font-size:14px;
-      text-align:center;
-    }
-    .tienda-grid{
+    /* BIBLIOTECA SALUDABLE */
+    .biblio-grid{
       display:flex;
       flex-wrap:wrap;
       gap:16px;
-      margin-top:14px;
+      justify-content:center;
+      margin-top:18px;
     }
-    .tienda-libros{
-      flex:1 1 220px;
-      min-width:0;
-    }
-    .tienda-libros ul{
-      list-style:none;
-      padding-left:0;
-      margin:0;
-      font-size:14px;
-    }
-    .tienda-libros li{
-      padding:6px 0;
-      border-bottom:1px dashed #e5e7eb;
-    }
-    .tag-pdf{
-      display:inline-block;
-      font-size:11px;
-      padding:2px 7px;
-      border-radius:999px;
-      background:#dbeafe;
-      color:#1d4ed8;
-      margin-left:6px;
-    }
-    .tienda-form{
-      flex:1 1 260px;
-      min-width:0;
+    .biblio-item{
+      width:min(160px,44vw);
       background:#ffffff;
-      border-radius:14px;
-      padding:14px 16px 16px;
-      border:1px solid #e5e7eb;
-      box-shadow:0 4px 10px rgba(15,23,42,.06);
-    }
-    .tienda-form label{
-      display:block;
-      font-size:13px;
-      margin-bottom:4px;
-      color:#374151;
-    }
-    .tienda-form input,
-    .tienda-form select{
-      width:100%;
-      padding:8px 10px;
-      border-radius:10px;
-      border:1px solid #d1d5db;
-      font-size:14px;
-      margin-bottom:10px;
-      font-family:inherit;
-    }
-    .tienda-form small{
-      display:block;
-      font-size:11px;
-      color:#6b7280;
-      margin-top:4px;
-    }
-    .tienda-form button{
-      width:100%;
-      margin-top:6px;
-    }
-    .tienda-alerta{
-      display:none;
-      margin-top:10px;
+      border-radius:12px;
+      padding:10px;
+      box-shadow:0 6px 14px rgba(15,23,42,.12);
       font-size:13px;
       text-align:center;
     }
-    .tienda-alerta.ok{
-      color:#16a34a;
+    .biblio-item img{
+      width:100%;
+      border-radius:10px;
+      margin-bottom:8px;
+      display:block;
     }
-    .tienda-alerta.error{
-      color:#b91c1c;
+    .biblio-item strong{
+      display:block;
+      margin-bottom:4px;
+      color:#111827;
+    }
+    .biblio-item span{
+      display:block;
+      color:#6b7280;
     }
 
-    @media (max-width:720px){
-      .tienda-grid{
-        flex-direction:column;
-      }
+    /* MÉTODO R.I.E. */
+    .metodo-rie{
+      background:rgba(249,250,251,.98);
+      border-radius:18px;
+      border:1px solid rgba(124,58,237,.25);
+      box-shadow:0 10px 28px rgba(15,23,42,.12);
+    }
+    .metodo-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:var(--acento-suave);
+      color:#4b5563;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:10px;
+    }
+    .metodo-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      align-items:flex-start;
+    }
+    .metodo-main{
+      flex:2 1 260px;
+      min-width:260px;
+    }
+    .metodo-side{
+      flex:1 1 220px;
+      min-width:220px;
+      background:rgba(124,58,237,.04);
+      border-radius:14px;
+      padding:12px 14px;
+      border:1px dashed rgba(124,58,237,.35);
+      font-size:14px;
+      color:#4b5563;
+    }
+    .metodo-side h3{
+      margin-top:0;
+      font-size:15px;
+      text-align:left;
+      color:#4b5563;
+    }
+    .metodo-list{
+      padding-left:18px;
+      margin:8px 0 0;
+      font-size:14px;
+    }
+
+    /* Redes sociales */
+    .social-links{
+      margin-top:20px;
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .social-links a{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:14px;
+      font-weight:600;
+      text-decoration:none;
+      color:#7c3aed;
+      background:#ede9fe;
+      padding:8px 16px;
+      border-radius:999px;
+      border:1px solid rgba(124,58,237,.5);
+      transition:.18s ease;
+    }
+    .social-links img,
+    .social-links svg{
+      width:22px;
+      height:22px;
+      flex-shrink:0;
+    }
+    .social-links a:hover{
+      background:#7c3aed;
+      color:#fff;
     }
 
     /* FOOTER */
@@ -462,13 +625,6 @@
       margin-top:40px;
       font-size:13px;
       color:#4b5563;
-    }
-
-    footer img{
-      height:16px;
-      vertical-align:middle;
-      margin-left:4px;
-      border-radius:4px;
     }
 
     /* WHATSAPP FLOTANTE */
@@ -508,7 +664,8 @@
       }
 
       .ls header{
-        padding-top:90px;
+        padding-top:130px;
+        padding-bottom:60px;
       }
       .hero-cta{
         flex-direction:column;
@@ -523,6 +680,15 @@
       .resena-card{
         max-width:100%;
       }
+      .libro-info{
+        text-align:left;
+      }
+      .launch-text h3{
+        text-align:left;
+      }
+      .metodo-grid{
+        flex-direction:column;
+      }
     }
   </style>
 </head>
@@ -531,7 +697,7 @@
 
 <div class="ls">
 
-  <!-- Fondo -->
+  <!-- Fondo general -->
   <video class="bg-sections" autoplay muted loop playsinline>
     <source src="fondo.mp4" type="video/mp4">
   </video>
@@ -542,9 +708,12 @@
       <div class="brand">LECTURA SALUDABLE</div>
 
       <ul class="links desktop">
-        <li><a href="#talleres">Talleres</a></li>
+        <li><a href="#lanzamiento">Nuevo libro</a></li>
+        <li><a href="#grupos">Grupos</a></li>
         <li><a href="#momentos">Momentos especiales</a></li>
         <li><a href="#libros">Nuestros libros</a></li>
+        <li><a href="#biblioteca">Biblioteca saludable</a></li>
+        <li><a href="#metodo">Método R.I.E.</a></li>
         <li><a href="#sobre">Sobre nosotros</a></li>
       </ul>
 
@@ -557,16 +726,21 @@
 
     <!-- Menú mobile -->
     <div class="links mobile" id="mobileMenu" hidden>
-      <a href="#talleres">Talleres</a>
+      <a href="#lanzamiento">Nuevo libro</a>
+      <a href="#grupos">Grupos</a>
       <a href="#momentos">Momentos especiales</a>
       <a href="#libros">Nuestros libros</a>
+      <a href="#biblioteca">Biblioteca saludable</a>
+      <a href="#metodo">Método R.I.E.</a>
       <a href="#sobre">Sobre nosotros</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <header>
-    <video autoplay muted loop playsinline poster="poster.jpg">
+    <img class="logo-fijo-centro" src="logo.png" alt="Lectura Saludable">
+
+    <video autoplay muted loop playsinline poster="poster.png">
       <source src="hero.mp4" type="video/mp4">
     </video>
 
@@ -575,7 +749,7 @@
 
     <p class="hero-subtitle">
       <span class="hero-bubble" style="display:inline-block; max-width:650px; white-space:normal; padding:8px 14px;">
-        Lectura Saludable te acompaña a escribir: talleres de textos y poesía, y libros personalizados para casamientos, fiestas y momentos importantes.
+        Lectura saludable te ayuda a conectar con tu parte creativa a traves de talleres de escritura, poesía, libros personalizados para aniversarios, casamientos, fiestas y momentos importantes de tu vida, tus seres queridos.
       </span>
     </p>
 
@@ -588,12 +762,46 @@
       </a>
     </div>
 
+    <div class="hero-launch">
+      🎉 Nuevo lanzamiento:
+      <a href="#lanzamiento">“Guía para relacionarte con respeto”</a>
+    </div>
+
     <div class="marquesina">
       ✍️ Escribir para sanar · 📚 Libros que abrazan · 💖 Historias para siempre
     </div>
   </header>
 
-<!-- TALLERES -->
+  <!-- LANZAMIENTO NUEVO LIBRO -->
+  <section id="lanzamiento">
+    <div class="seccion reveal">
+      <div class="launch-highlight">
+        <div class="launch-layout">
+          <div class="launch-cover">
+            <img src="guia para relacionarte con respeto.jpeg" alt="Guía para relacionarte con respeto - Mabel Padilla">
+          </div>
+          <div class="launch-text">
+            <div class="launch-tag">Nuevo lanzamiento · 2025</div>
+            <h3>Guía para relacionarte con respeto</h3>
+            <p>
+              Apasionada por la educación en valores y el fortalecimiento de la dignidad humana, Mabel ha dedicado su trabajo a mostrar la cara positiva de los derechos y deberes humanos. Con un estilo claro y accesible, busca inspirar a lectores de todas las edades a aplicar estos principios en su vida cotidiana y en sus comunidades.
+              Su objetivo es sencillo pero poderoso: recordar que cada persona tiene la capacidad de transformar la sociedad desde lo cotidiano, promoviendo el respeto y el sentido común.
+            </p>
+            <div class="launch-cta">
+              <a href="https://wa.me/+5491138171669?text=Quiero+mas+informacion+sobre+la+Guia+para+relacionarte+con+respeto" class="btn-primaria" target="_blank" rel="noopener">
+                💚 Quiero este libro
+              </a>
+              <a href="#libros" class="btn-secundaria">
+                📖 Ver todos los libros de Mabel
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- TALLERES -->
   <section id="talleres">
     <div class="seccion reveal">
       <h2>✍️ Talleres de escritura y poesía</h2>
@@ -665,7 +873,7 @@
     </div>
   </section>
 
-  <!-- MOMENTOS ESPECIALES (VIOLETA) -->
+  <!-- MOMENTOS ESPECIALES -->
   <section id="momentos">
     <div class="seccion momentos-especiales reveal">
       <h3>💌 Libros para momentos que se guardan para siempre</h3>
@@ -689,34 +897,65 @@
     </div>
   </section>
 
-  <!-- NUESTROS LIBROS + CARRUSEL + RESEÑAS -->
+  <!-- NUESTROS LIBROS -->
   <section id="libros">
     <div class="seccion reveal">
       <h2>📖 Nuestros libros</h2>
       <p style="text-align:center;">
-        Libros de Mabel Padilla llenos de poesía, refugio y luz para acompañar tu día a día.
+        Libros de Mabel Padilla llenos de poesía, refugio y optimismo para acompañar tu día a día.
       </p>
 
-      <!-- CARRUSEL -->
       <div class="libros-carousel">
         <div class="libros-main">
-          <img src="libro1.jpg" id="libroMain" alt="Libro de Mabel Padilla">
+          <img src="guia para relacionarte con respeto.jpeg" id="libroMain" alt="Guía para relacionarte con respeto">
+        </div>
+
+        <div class="libro-info">
+          <h3 id="libroTitle">Guía para relacionarte con respeto</h3>
+          <p id="libroDesc">
+            Apasionada por la educación en valores y el fortalecimiento de la dignidad humana, Mabel ha dedicado su trabajo a mostrar la cara positiva de los derechos y deberes humanos. Con un estilo claro y accesible, busca inspirar a lectores de todas las edades a aplicar estos principios en su vida cotidiana y en sus comunidades. Su objetivo es sencillo pero poderoso: recordar que cada persona tiene la capacidad de transformar la sociedad desde lo cotidiano, promoviendo el respeto y el sentido común.
+          </p>
+          <p id="libroMeta">
+            Autora: Mabel Padilla · Lanzamiento 2025
+          </p>
         </div>
 
         <div class="libros-thumbs">
-          <button class="active" data-src="libro1.jpg" data-title="Te cambia el estado de ánimo y te da paz">
-            <img src="libro1.jpg" alt="Libro 1">
+          <button class="active"
+                  data-src="guia para relacionarte con respeto.jpeg"
+                  data-title="Guía para relacionarte con respeto"
+                  data-desc="Un recorrido claro y accesible para aprender a vincularte desde el respeto, tomando como base los derechos y deberes humanos. Ideal para grupos, espacios educativos y trabajo con comunidades."
+                  data-meta="Autora: Mabel Padilla · Lanzamiento 2025">
+            <img src="guia para relacionarte con respeto.jpeg" alt="Guía para relacionarte con respeto">
           </button>
-          <button data-src="libro2.jpg" data-title="Salud y sanación">
-            <img src="libro2.jpg" alt="Libro 2">
+
+          <button
+            data-src="libro1.jpg"
+            data-title="Lectura Saludable"
+            data-desc="Este libro presenta un menú de poesías de amor propio, empoderamiento femenino, arte y cultura y felicidad espiritual. Incluye actividades para realizar en grupo y compromisos para ser trabajados en clubes de lectura o reuniones con grupos."
+            data-meta="Editorial: Grupo de Escritores Argentinos · ISBN: 978-987-757-050-2">
+            <img src="libro1.jpg" alt="Lectura Saludable">
           </button>
-          <button data-src="libro3.jpg" data-title="Nunca rendirse">
-            <img src="libro3.jpg" alt="Libro 3">
+
+          <button
+            data-src="libro2.jpg"
+            data-title="Versos libres para persistir"
+            data-desc="Un libro de poesía y reflexión que celebra la vida, la sanación y la persistencia en los momentos difíciles."
+            data-meta="Disponible en Amazon en formato digital y papel.">
+            <img src="libro2.jpg" alt="Versos libres para persistir">
           </button>
+
+          <button
+            data-src="libro3.jpg"
+            data-title="Del dicho al derecho en salud"
+            data-desc="Incluye un decálogo del educador para la salud como emprendedor y la incorporación de la perspectiva de los derechos humanos universales a ámbitos como la Universidad y las organizaciones públicas."
+            data-meta="Editorial: Bellas Alas · ISBN: 978-987-45665-1-5 · Año: 2014">
+            <img src="libro3.jpg" alt="Del dicho al derecho en salud">
+          </button>
+
         </div>
       </div>
 
-      <!-- RESEÑAS -->
       <h3 style="margin-top:28px;">⭐ Lo que dicen quienes leyeron</h3>
 
       <div class="resenas-grid">
@@ -738,73 +977,118 @@
 
       <p style="margin-top:14px; text-align:center; font-size:14px;">
         <a href="https://www.amazon.com/product-reviews/B0BG11RY5N/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews" target="_blank">
-          Ver reseñas del libro 1
+          Ver reseñas Lectura Saludable
         </a>
         ·
         <a href="https://www.amazon.com/Versos-libres-para-PERSISTIR-comunicARTE-ebook/dp/B0FR3XKSXS?ref_=ast_author_dp&th=1&psc=1#customerReviews" target="_blank">
-          Ver reseñas del libro 2
+          Ver reseñas Versos libres para persistir
         </a>
       </p>
+    </div>
+  </section>
 
-      <!-- 🛒 MINI TIENDA DIGITAL -->
-      <div class="tienda">
-        <h3>🛒 Comprá los libros en formato digital (PDF)</h3>
-        <p>
-          Elegí el libro, cargá tu correo y vas a ser redirigido a Mercado Pago. Una vez aprobado el pago,
-          recibirás el PDF en tu mail de forma automática.
-        </p>
+  <!-- BIBLIOTECA SALUDABLE -->
+  <section id="biblioteca">
+    <div class="seccion reveal">
+      <h2>📚 Biblioteca saludable</h2>
+      <p style="text-align:center;">
+        Una selección de libros donde Mabel participa como autora, coautora, prologuista o poeta invitada.
+        Una biblioteca para volver cuando necesites palabras que acompañen.
+      </p>
 
-        <div class="tienda-grid">
-          <!-- Lista de libros -->
-          <div class="tienda-libros">
-            <ul>
-              <li>
-                Libro 1 – “Te cambia el estado de ánimo y te da paz”
-                <span class="tag-pdf">PDF</span>
-              </li>
-              <li>
-                Libro 2 – “Salud y sanación”
-                <span class="tag-pdf">PDF</span>
-              </li>
-              <li>
-                Libro 3 – “Nunca rendirse”
-                <span class="tag-pdf">PDF</span>
-              </li>
-            </ul>
-          </div>
+      <div class="biblio-grid">
+        <div class="biblio-item">
+          <img src="lectura-saludable.jpeg" alt="Lectura saludable">
+          <strong>Lectura saludable</strong>
+          <span>Libro de poesía y actividades. Autora: Mabel Padilla.</span>
+        </div>
 
-          <!-- Formulario -->
-          <div class="tienda-form">
-            <form id="formCompraLibro">
-              <label for="nombre">Nombre</label>
-              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+        <div class="biblio-item">
+          <img src="del dicho al derecho en salud.jpeg" alt="Del dicho al derecho en salud - Bellas Alas">
+          <strong>Del dicho al derecho en salud</strong>
+          <span>Educación para la salud y derechos humanos. Autora: Mabel Padilla.</span>
+        </div>
 
-              <label for="email">Correo electrónico</label>
-              <input type="email" id="email" name="email" placeholder="tunombre@correo.com" required />
+        <div class="biblio-item">
+          <img src="del dicho al derecho en salud 2.jpeg" alt="Del dicho al derecho en salud - EAE">
+          <strong>Del dicho al derecho en salud</strong>
+          <span>Edición académica española. Investigación y educación ciudadana.</span>
+        </div>
 
-              <label for="libro">¿Qué libro querés comprar?</label>
-              <select id="libro" name="libroId" required>
-                <option value="" disabled selected>Elegí una opción</option>
-                <option value="LIBRO1">Libro 1 – Te cambia el estado de ánimo y te da paz</option>
-                <option value="LIBRO2">Libro 2 – Salud y sanación</option>
-                <option value="LIBRO3">Libro 3 – Nunca rendirse</option>
-              </select>
+        <div class="biblio-item">
+          <img src="cartas para cuando ya sea demasiado tarde.jpeg" alt="Cartas para cuando ya sea demasiado tarde">
+          <strong>Cartas para cuando ya sea demasiado tarde</strong>
+          <span>Prólogo de Mabel Padilla en la compilación de Hernán Casciari.</span>
+        </div>
 
-              <small>
-                Al continuar vas a ir a Mercado Pago. Guardamos tu correo solo para enviarte el libro
-                y el comprobante.
-              </small>
+        <div class="biblio-item">
+          <img src="palabra-provocadora.jpeg" alt="La palabra provocada">
+          <strong>La palabra provocada</strong>
+          <span>Antología poética argentina. Participación de Mabel como poeta.</span>
+        </div>
 
-              <button type="submit" class="btn-secundaria">
-                💳 Comprar con Mercado Pago
-              </button>
+        <div class="biblio-item">
+          <img src="entrelineas.jpeg" alt="Entre líneas">
+          <strong>Entre líneas</strong>
+          <span>Antología literaria de la SADE Zona Norte con textos de Mabel.</span>
+        </div>
 
-              <div id="tiendaMensaje" class="tienda-alerta"></div>
-            </form>
-          </div>
+        <div class="biblio-item">
+          <img src="literpazunaccc.jpeg" alt="Literpaz">
+          <strong>Literpazunaccc</strong>
+          <span>Obra colectiva sobre paz, lectura y salud emocional. Participación de Mabel como coautora.</span>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- MÉTODO R.I.E. -->
+  <section id="metodo">
+    <div class="seccion metodo-rie reveal">
+      <div class="metodo-tag">Método propio · Bienestar emocional</div>
+      <h2>✨ Método R.I.E.: escribir para sentirte mejor</h2>
+
+      <div class="metodo-grid">
+        <div class="metodo-main">
+        <p>
+  En Lectura Saludable tenemos un sistema propio, simple y poderoso que convierte la escritura en una experiencia de bienestar: el <strong>Método R.I.E.</strong>
+</p>
+
+<p>
+  Con este método no solo aprenderás, sino que también tu estado de ánimo se elevará y lograrás enfocar tu mente en lo positivo.
+</p>
+
+<p>
+  El lema de la creación del Método se centra en lo que significa “poesía”. Etimológicamente proviene del griego ποίησις (poiesis), que es la «acción de hacer» o «creación». De esta manera, a través del método se invita a las personas a crear con un enfoque muy especial que marca la diferencia: este método usa las capacidades que ya tenés, como la de observar y la de comunicar.
+</p>
+
+<p>
+ Por eso con <strong>Método R.I.E.</strong> vas a poder:
+</p>
+
+<ul class="metodo-list">
+  <li><strong>R de Recuperar:</strong> recuperar tus capacidades para poder expresar mediante el arte.</li>
+  <li><strong>I de Imaginar:</strong> imaginar, usando tu creatividad, para focalizarte en cosas positivas.</li>
+  <li><strong>E de Ejercitar:</strong> ejercitar el observar y escribir sobre cualquier tema que te interese.</li>
+</ul>
+
+<p>
+  El propósito al usar el método en los grupos es fomentar entornos saludables y productivos, donde la palabra se vuelve una herramienta concreta de bienestar emocional.
+</p>
+
+        </div>
+
+        <aside class="metodo-side">
+          <h3>¿Dónde se aplica el Método R.I.E.?</h3>
+          <ul class="metodo-list">
+            <li>Grupos de lectura y escritura.</li>
+            <li>Procesos creativos para transformar vivencias en textos.</li>
+          </ul>
+          <p style="margin-top:10px;">
+            La idea es sencilla pero potente: que la palabra sea refugio, alivio y punto de partida para una vida más consciente.
+          </p>
+        </aside>
+      </div>
     </div>
   </section>
 
@@ -813,22 +1097,35 @@
     <div class="seccion reveal">
       <h2>🌱 Sobre Lectura Saludable</h2>
       <p style="text-align:center;">
-        Lectura Saludable es un espacio creado por Mabel Padilla donde escribir es sanar, recordar y celebrar.
-        Un refugio para quienes buscan palabras que abracen.
+        Lectura Saludable es un espacio creado por Mabel Padilla, Licenciada en Educación para la Salud, donde escribir se convierte en una forma de sanar, recordar y celebrar.
+        Un refugio para quienes buscan palabras que abracen y dejen huella.
       </p>
+      <p style="text-align:center; margin-top:10px;">
+        Mabel está certificada en la <strong>Escuela Europea de Formación para Formadores de Vidroop MOL</strong> (primer modelo pedagógico de formación online). Esta formación le permite combinar recursos de bienestar emocional con herramientas pedagógicas modernas, ofreciendo encuentros y propuestas de escritura pensados para acompañar procesos personales de una manera profesional, cálida y cercana.
+      </p>
+
+      <h2>También podés encontrarnos en:</h2>
+      <div class="social-links">
+        <a href="https://www.tiktok.com/@lecturasaludable?_r=1&_t=ZM-91yLuzdyC5r" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="11" fill="#000000" />
+            <path d="M14 5v6.5a3 3 0 1 1-1.8-2.8V7.2h2.2V5z" fill="#ffffff" />
+          </svg>
+          TikTok
+        </a>
+
+        <a href="https://www.instagram.com/lecturasaludable/" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" />
+          Instagram
+        </a>
+
+        <a href="https://wa.me/5491138171669" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+          WhatsApp
+        </a>
+      </div>
     </div>
   </section>
-
-  <!-- FOOTER -->
-  <footer>
-    © 2025 Lectura Saludable · Todos los derechos reservados.
-    <br />
-    Diseñado por
-    <a href="https://umanoai.com" target="_blank" rel="noopener">
-      UmanoAI <img src="umanoai.png" alt="UmanoAI">
-    </a>
-  </footer>
-
 </div>
 
 <!-- WHATSAPP FLOTANTE -->
@@ -836,7 +1133,6 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Lectura Saludable">
 </a>
 
-<!-- JS menú mobile + carrusel + animaciones scroll + tienda -->
 <script>
   // Menú mobile
   (function(){
@@ -856,18 +1152,27 @@
     });
   })();
 
-  // Carrusel de libros
+  // Carrusel de libros + info dinámica
   (function(){
     const main = document.getElementById('libroMain');
     const thumbs = document.querySelectorAll('.libros-thumbs button');
+    const titleEl = document.getElementById('libroTitle');
+    const descEl  = document.getElementById('libroDesc');
+    const metaEl  = document.getElementById('libroMeta');
+
     if(!main || !thumbs.length) return;
 
     thumbs.forEach(b=>{
       b.addEventListener('click', ()=>{
         thumbs.forEach(x=>x.classList.remove('active'));
         b.classList.add('active');
-        main.src = b.dataset.src;
+
+        if (b.dataset.src)  main.src = b.dataset.src;
         if (b.dataset.title) main.alt = b.dataset.title;
+
+        if (titleEl) titleEl.textContent = b.dataset.title || '';
+        if (descEl)  descEl.textContent  = b.dataset.desc  || '';
+        if (metaEl)  metaEl.textContent  = b.dataset.meta  || '';
       });
     });
   })();
@@ -890,64 +1195,25 @@
     els.forEach(e=>obs.observe(e));
   })();
 
-  // 🛒 Lógica mini tienda -> llama a Power Automate para crear el pago
+  // Año dinámico en el footer
   (function(){
-    const form = document.getElementById('formCompraLibro');
-    const msg = document.getElementById('tiendaMensaje');
-    if(!form) return;
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (!msg) return;
-
-      msg.style.display = 'block';
-      msg.className = 'tienda-alerta';
-      msg.textContent = 'Creando el enlace de pago...';
-
-      const nombre = document.getElementById('nombre')?.value?.trim();
-      const email = document.getElementById('email')?.value?.trim();
-      const libroId = document.getElementById('libro')?.value;
-
-      if(!nombre || !email || !libroId){
-        msg.classList.add('error');
-        msg.textContent = 'Por favor completá todos los datos.';
-        return;
-      }
-
-      try{
-        const res = await fetch('PON_AQUI_LA_URL_DE_TU_FLOW', {
-          method:'POST',
-          headers:{
-            'Content-Type':'application/json'
-          },
-          body: JSON.stringify({
-            nombre,
-            email,
-            libroId
-          })
-        });
-
-        if(!res.ok){
-          throw new Error('Error HTTP ' + res.status);
-        }
-
-        const data = await res.json();
-        if(data && data.init_point){
-          msg.classList.add('ok');
-          msg.textContent = 'Redirigiendo a Mercado Pago...';
-          window.location.href = data.init_point;
-        } else {
-          msg.classList.add('error');
-          msg.textContent = 'No pudimos generar el enlace de pago. Intentalo de nuevo más tarde.';
-        }
-      } catch(err){
-        console.error(err);
-        msg.classList.add('error');
-        msg.textContent = 'Ocurrió un error al conectar con el sistema de pagos.';
-      }
-    });
+    const span = document.getElementById('year');
+    if(span) span.textContent = new Date().getFullYear();
   })();
 </script>
+
+<footer>
+  © <span id="year"></span> Lectura saludable · Todos los derechos reservados.
+
+  <div class="footer-designed" style="margin-top:8px;">
+    <p style="display:flex; justify-content:center; align-items:center; gap:6px; margin:0;">
+      Diseñado por UmanoAI
+      <a href="https://umanoai.com.ar" target="_blank" style="display:inline-block;">
+        <img src="umanoai.png" alt="UmanoAI" style="height:18px;">
+      </a>
+    </p>
+  </div>
+</footer>
 
 </body>
 </html>
