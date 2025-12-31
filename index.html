@@ -648,6 +648,125 @@
       height:28px;
     }
 
+    /* ===== TALLERES (TABLA LIMPIA) ===== */
+    .talleres-intro{
+      text-align:center;
+      margin:0 auto 14px;
+      max-width:760px;
+      color:#374151;
+      font-size:14px;
+    }
+    .talleres-table-wrap{
+      margin-top:14px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(124,58,237,.22);
+      box-shadow:0 10px 26px rgba(15,23,42,.10);
+      background:#fff;
+    }
+    table.talleres-table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      font-size:14px;
+    }
+    .talleres-table thead th{
+      text-align:left;
+      padding:12px 14px;
+      background:linear-gradient(135deg, rgba(124,58,237,.12), rgba(124,58,237,.06));
+      color:#111827;
+      border-bottom:1px solid rgba(124,58,237,.18);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .talleres-table tbody td{
+      vertical-align:top;
+      padding:12px 14px;
+      border-bottom:1px solid #eef2f7;
+      color:#111827;
+    }
+    .talleres-table tbody tr:last-child td{
+      border-bottom:0;
+    }
+    .talleres-table tbody tr:nth-child(even){
+      background:rgba(249,250,251,.85);
+    }
+    .taller-nombre{
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+      font-size:13px;
+      color:#111827;
+    }
+    .taller-descripcion{
+      color:#374151;
+      line-height:1.55;
+    }
+    .taller-modalidad{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(124,58,237,.10);
+      border:1px solid rgba(124,58,237,.22);
+      color:#5b21b6;
+      font-weight:700;
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .talleres-cta{
+      margin-top:16px;
+      display:flex;
+      justify-content:center;
+    }
+
+    /* Responsivo: tabla a tarjetas */
+    @media (max-width:768px){
+      .talleres-table-wrap{
+        border-radius:14px;
+      }
+      .talleres-table thead{
+        display:none;
+      }
+      .talleres-table,
+      .talleres-table tbody,
+      .talleres-table tr,
+      .talleres-table td{
+        display:block;
+        width:100%;
+      }
+      .talleres-table tbody tr{
+        background:#fff;
+        border-bottom:1px solid #eef2f7;
+      }
+      .talleres-table tbody tr:nth-child(even){
+        background:#fff;
+      }
+      .talleres-table tbody td{
+        border-bottom:0;
+        padding:10px 14px;
+      }
+      .talleres-table tbody td::before{
+        content:attr(data-label);
+        display:block;
+        font-size:11px;
+        letter-spacing:.08em;
+        text-transform:uppercase;
+        color:#6b7280;
+        margin-bottom:6px;
+        font-weight:700;
+      }
+      .talleres-table tbody td:first-child{
+        padding-top:14px;
+      }
+      .talleres-table tbody td:last-child{
+        padding-bottom:14px;
+      }
+    }
+    /* ===== FIN TALLERES ===== */
+
     /* MOBILE */
     @media (max-width:768px){
       nav .nav-inner{
@@ -709,6 +828,7 @@
 
       <ul class="links desktop">
         <li><a href="#lanzamiento">Nuevo libro</a></li>
+        <li><a href="#talleres">Talleres</a></li>
         <li><a href="#grupos">Grupos</a></li>
         <li><a href="#momentos">Momentos especiales</a></li>
         <li><a href="#libros">Nuestros libros</a></li>
@@ -717,7 +837,7 @@
         <li><a href="#sobre">Sobre nosotros</a></li>
       </ul>
 
-      <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+      <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu" type="button">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -727,6 +847,7 @@
     <!-- Menú mobile -->
     <div class="links mobile" id="mobileMenu" hidden>
       <a href="#lanzamiento">Nuevo libro</a>
+      <a href="#talleres">Talleres</a>
       <a href="#grupos">Grupos</a>
       <a href="#momentos">Momentos especiales</a>
       <a href="#libros">Nuestros libros</a>
@@ -798,6 +919,128 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- TALLERES (TABLA) -->
+  <section id="talleres">
+    <div class="seccion reveal">
+      <h2>📖 Talleres</h2>
+      <p class="talleres-intro">
+        Propuestas para compartir, aprender y transformar el día a día a través de la escritura y la lectura.
+      </p>
+
+      <div class="talleres-table-wrap" role="region" aria-label="Tabla de talleres">
+        <table class="talleres-table">
+          <thead>
+            <tr>
+              <th style="width:26%;">Taller</th>
+              <th>¿De qué se trata?</th>
+              <th style="width:18%;">Modalidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Taller">
+                <div class="taller-nombre">REUNIONES CON PROPOSITO</div>
+              </td>
+              <td data-label="¿De qué se trata?">
+                <div class="taller-descripcion">
+                  Si eres una lider que siempre reune mujeres y queres hacer algo especial y no sabes como hacer que el encuentro fluya, este es tu taller.
+                  En la reunion a traves de la escritura y lectura se conectaran las mujeres con su proposito.
+                </div>
+              </td>
+              <td data-label="Modalidad">
+                <span class="taller-modalidad">Presencial</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Taller">
+                <div class="taller-nombre">CLINICA DE ESCRITURA</div>
+              </td>
+              <td data-label="¿De qué se trata?">
+                <div class="taller-descripcion">
+                  Este taller es para quienes deseen iniciarse en la escritura y se aplica el método R.I.E.
+                  Aprenderán los pasos del método y practicarán escribir con este metodo.
+                </div>
+              </td>
+              <td data-label="Modalidad">
+                <span class="taller-modalidad">Presencial</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Taller">
+                <div class="taller-nombre">MERIENDA LITERARIA</div>
+              </td>
+              <td data-label="¿De qué se trata?">
+                <div class="taller-descripcion">
+                  El plan perfecto para compartir con amigas y llevarse un recuerdo único: POESÍA para compartir.
+                  En el taller aprenderán a construir versos para poesías y van a poder experimentar el escribir a mano como un antídoto a las prisas tecnológicas
+                  y leer a otra persona como una forma de comunicar y escuchar.
+                </div>
+              </td>
+              <td data-label="Modalidad">
+                <span class="taller-modalidad">Presencial</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Taller">
+                <div class="taller-nombre">PAUSA SALUDABLE EMPRESARIAL</div>
+              </td>
+              <td data-label="¿De qué se trata?">
+                <div class="taller-descripcion">
+                  Este taller se hace en el ambito de la empresa que lo solicite. Es ideal para grupos de mujeres que desean experimentar una pausa para desconectarse de la tecnologia,
+                  poner la atencion en algo positivo que les de bienestar. Esta comprobado cientificamente que la escritura a mano y en grupo fortalece la salud y las emociones.
+                </div>
+              </td>
+              <td data-label="Modalidad">
+                <span class="taller-modalidad">Presencial</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Taller">
+                <div class="taller-nombre">CARTAS TERAPEÚTICAS</div>
+              </td>
+              <td data-label="¿De qué se trata?">
+                <div class="taller-descripcion">
+                  Ideal para grupos de mujeres que quieran comunicarse a traves de las cartas, sobre todo cuando sienten que no pueden decir o expresar algo.
+                </div>
+              </td>
+              <td data-label="Modalidad">
+                <span class="taller-modalidad">Presencial</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Taller">
+                <div class="taller-nombre">SER MUJER CACTUS</div>
+              </td>
+              <td data-label="¿De qué se trata?">
+                <div class="taller-descripcion">
+                  ¿Te sientes sola? ¿Sientes que no sabes como identificar cuales son tus capacidades? Este taller es para vos.
+                  A traves de la escritura y la lectura vas a experimentar lo que significan las cualidades de ser mujer cactus.
+                  Practicaras cada una de ellas y te llevaras de regalo un souvenir de mujer cactus con ejercicios simples para practicar y fortalecer esas capacidades.
+                </div>
+              </td>
+              <td data-label="Modalidad">
+                <span class="taller-modalidad">Presencial</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="talleres-cta">
+        <a href="https://wa.me/+5491138171669?text=Quiero%20mas%20informacion%20sobre%20los%20talleres" class="btn-primaria" target="_blank" rel="noopener">
+          💚 Quiero más info de talleres
+        </a>
+      </div>
+
+      <!-- spacer -->
     </div>
   </section>
 
@@ -878,7 +1121,8 @@
                   data-src="guia para relacionarte con respeto.jpeg"
                   data-title="Guía para relacionarte con respeto"
                   data-desc="Un recorrido claro y accesible para aprender a vincularte desde el respeto, tomando como base los derechos y deberes humanos. Ideal para grupos, espacios educativos y trabajo con comunidades."
-                  data-meta="Autora: Mabel Padilla · Lanzamiento 2025">
+                  data-meta="Autora: Mabel Padilla · Lanzamiento 2025"
+                  type="button">
             <img src="guia para relacionarte con respeto.jpeg" alt="Guía para relacionarte con respeto">
           </button>
 
@@ -886,7 +1130,8 @@
             data-src="libro1.jpg"
             data-title="Lectura Saludable"
             data-desc="Este libro presenta un menú de poesías de amor propio, empoderamiento femenino, arte y cultura y felicidad espiritual. Incluye actividades para realizar en grupo y compromisos para ser trabajados en clubes de lectura o reuniones con grupos."
-            data-meta="Editorial: Grupo de Escritores Argentinos · ISBN: 978-987-757-050-2">
+            data-meta="Editorial: Grupo de Escritores Argentinos · ISBN: 978-987-757-050-2"
+            type="button">
             <img src="libro1.jpg" alt="Lectura Saludable">
           </button>
 
@@ -894,7 +1139,8 @@
             data-src="libro2.jpg"
             data-title="Versos libres para persistir"
             data-desc="Un libro de poesía y reflexión que celebra la vida, la sanación y la persistencia en los momentos difíciles."
-            data-meta="Disponible en Amazon en formato digital y papel.">
+            data-meta="Disponible en Amazon en formato digital y papel."
+            type="button">
             <img src="libro2.jpg" alt="Versos libres para persistir">
           </button>
 
@@ -902,7 +1148,8 @@
             data-src="libro3.jpg"
             data-title="Del dicho al derecho en salud"
             data-desc="Incluye un decálogo del educador para la salud como emprendedor y la incorporación de la perspectiva de los derechos humanos universales a ámbitos como la Universidad y las organizaciones públicas."
-            data-meta="Editorial: Bellas Alas · ISBN: 978-987-45665-1-5 · Año: 2014">
+            data-meta="Editorial: Bellas Alas · ISBN: 978-987-45665-1-5 · Año: 2014"
+            type="button">
             <img src="libro3.jpg" alt="Del dicho al derecho en salud">
           </button>
 
