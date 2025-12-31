@@ -648,132 +648,122 @@
       height:28px;
     }
 
-    /* ===== TALLERES (NUEVO) ===== */
-    .talleres-toolbar{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:center;
-      margin:14px 0 6px;
-    }
-    .talleres-toolbar input,
-    .talleres-toolbar select{
-      width:min(340px,100%);
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid #e5e7eb;
-      outline:none;
+    /* ===== TALLERES (TABLA LIMPIA) ===== */
+    .talleres-intro{
+      text-align:center;
+      margin:0 auto 14px;
+      max-width:760px;
+      color:#374151;
       font-size:14px;
-      background:#fff;
-      color:#111827;
-      box-shadow:0 6px 14px rgba(15,23,42,.06);
     }
-    .talleres-grid{
+    .talleres-table-wrap{
       margin-top:14px;
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:12px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(124,58,237,.22);
+      box-shadow:0 10px 26px rgba(15,23,42,.10);
+      background:#fff;
     }
-    .taller-card{
-      background:#ffffff;
-      border-radius:14px;
-      border:1px solid #e5e7eb;
-      padding:14px 14px 12px;
-      box-shadow:0 10px 22px rgba(15,23,42,.08);
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      min-height:170px;
+    table.talleres-table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      font-size:14px;
     }
-    .taller-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .taller-title{
-      margin:0;
-      font-size:16px;
-      line-height:1.25;
+    .talleres-table thead th{
+      text-align:left;
+      padding:12px 14px;
+      background:linear-gradient(135deg, rgba(124,58,237,.12), rgba(124,58,237,.06));
       color:#111827;
-    }
-    .taller-badge{
-      flex:0 0 auto;
-      font-size:11px;
+      border-bottom:1px solid rgba(124,58,237,.18);
+      font-size:12px;
       letter-spacing:.08em;
       text-transform:uppercase;
-      padding:4px 10px;
-      border-radius:999px;
-      background:rgba(124,58,237,.10);
-      color:#5b21b6;
-      border:1px solid rgba(124,58,237,.25);
-      white-space:nowrap;
     }
-    .taller-desc{
-      margin:0;
-      font-size:13.5px;
-      color:#374151;
+    .talleres-table tbody td{
+      vertical-align:top;
+      padding:12px 14px;
+      border-bottom:1px solid #eef2f7;
+      color:#111827;
     }
-    .taller-meta{
-      margin:0;
+    .talleres-table tbody tr:last-child td{
+      border-bottom:0;
+    }
+    .talleres-table tbody tr:nth-child(even){
+      background:rgba(249,250,251,.85);
+    }
+    .taller-nombre{
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.02em;
       font-size:13px;
-      color:#4b5563;
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px 10px;
+      color:#111827;
     }
-    .taller-meta span{
+    .taller-descripcion{
+      color:#374151;
+      line-height:1.55;
+    }
+    .taller-modalidad{
       display:inline-flex;
       align-items:center;
       gap:6px;
-      padding:4px 10px;
+      padding:6px 10px;
       border-radius:999px;
-      background:#f3f4f6;
-      border:1px solid #e5e7eb;
+      background:rgba(124,58,237,.10);
+      border:1px solid rgba(124,58,237,.22);
+      color:#5b21b6;
+      font-weight:700;
+      font-size:12px;
+      white-space:nowrap;
     }
-    .taller-cta{
-      margin-top:auto;
+    .talleres-cta{
+      margin-top:16px;
       display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
+      justify-content:center;
     }
-    .taller-price{
-      font-weight:700;
-      color:#111827;
-      font-size:14px;
-    }
-    .taller-cta a{
-      text-decoration:none;
-      font-weight:700;
-      font-size:13px;
-      padding:9px 12px;
-      border-radius:999px;
-      background:linear-gradient(135deg,#22c55e,#16a34a);
-      color:#fff;
-      box-shadow:0 10px 24px rgba(22,163,74,.35);
-      border:2px solid transparent;
-      transition:.18s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-    .taller-cta a:hover{
-      transform:translateY(-2px);
-      box-shadow:0 14px 30px rgba(0,0,0,.25);
-    }
-    .taller-empty{
-      margin-top:14px;
-      text-align:center;
-      color:#6b7280;
-      font-size:14px;
-    }
-    @media (max-width:920px){
-      .talleres-grid{grid-template-columns:repeat(2, minmax(0, 1fr));}
-    }
-    @media (max-width:520px){
-      .talleres-grid{grid-template-columns:1fr;}
+
+    /* Responsivo: tabla a tarjetas */
+    @media (max-width:768px){
+      .talleres-table-wrap{
+        border-radius:14px;
+      }
+      .talleres-table thead{
+        display:none;
+      }
+      .talleres-table,
+      .talleres-table tbody,
+      .talleres-table tr,
+      .talleres-table td{
+        display:block;
+        width:100%;
+      }
+      .talleres-table tbody tr{
+        background:#fff;
+        border-bottom:1px solid #eef2f7;
+      }
+      .talleres-table tbody tr:nth-child(even){
+        background:#fff;
+      }
+      .talleres-table tbody td{
+        border-bottom:0;
+        padding:10px 14px;
+      }
+      .talleres-table tbody td::before{
+        content:attr(data-label);
+        display:block;
+        font-size:11px;
+        letter-spacing:.08em;
+        text-transform:uppercase;
+        color:#6b7280;
+        margin-bottom:6px;
+        font-weight:700;
+      }
+      .talleres-table tbody td:first-child{
+        padding-top:14px;
+      }
+      .talleres-table tbody td:last-child{
+        padding-bottom:14px;
+      }
     }
     /* ===== FIN TALLERES ===== */
 
@@ -932,32 +922,125 @@
     </div>
   </section>
 
-  <!-- TALLERES (NUEVO) -->
+  <!-- TALLERES (TABLA) -->
   <section id="talleres">
     <div class="seccion reveal">
       <h2>🧠 Talleres</h2>
-      <p style="text-align:center;">
-        Elegí el taller que mejor se adapte a vos. Si querés reservar tu lugar o hacer una consulta, escribinos por WhatsApp.
+      <p class="talleres-intro">
+        Propuestas para compartir, aprender y transformar el día a día a través de la escritura y la lectura.
       </p>
 
-      <div class="talleres-toolbar" aria-label="Filtros de talleres">
-        <input id="talleresSearch" type="search" placeholder="Buscar por nombre o palabra clave..." aria-label="Buscar talleres">
-        <select id="talleresModalidad" aria-label="Filtrar por modalidad">
-          <option value="all">Todas las modalidades</option>
-          <option value="presencial">Presencial</option>
-          <option value="online">Online</option>
-          <option value="hibrido">Híbrido</option>
-        </select>
+      <div class="talleres-table-wrap" role="region" aria-label="Tabla de talleres">
+        <table class="talleres-table">
+          <thead>
+            <tr>
+              <th style="width:26%;">Taller</th>
+              <th>¿De qué se trata?</th>
+              <th style="width:18%;">Modalidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Taller">
+                <div class="taller-nombre">REUNIONES CON PROPOSITO</div>
+              </td>
+              <td data-label="¿De qué se trata?">
+                <div class="taller-descripcion">
+                  Si eres una lider que siempre reune mujeres y queres hacer algo especial y no sabes como hacer que el encuentro fluya, este es tu taller.
+                  En la reunion a traves de la escritura y lectura se conectaran las mujeres con su proposito.
+                </div>
+              </td>
+              <td data-label="Modalidad">
+                <span class="taller-modalidad">Fechas especiales</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Taller">
+                <div class="taller-nombre">CLINICA DE ESCRITURA</div>
+              </td>
+              <td data-label="¿De qué se trata?">
+                <div class="taller-descripcion">
+                  Este taller es para quienes deseen iniciarse en la escritura y se aplica el método R.I.E.
+                  Aprenderán los pasos del método y practicarán escribir con este metodo.
+                </div>
+              </td>
+              <td data-label="Modalidad">
+                <span class="taller-modalidad">sabados</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Taller">
+                <div class="taller-nombre">MERIENDA LITERARIA</div>
+              </td>
+              <td data-label="¿De qué se trata?">
+                <div class="taller-descripcion">
+                  El plan perfecto para compartir con amigas y llevarse un recuerdo único: POESÍA para compartir.
+                  En el taller aprenderán a construir versos para poesías y van a poder experimentar el escribir a mano como un antídoto a las prisas tecnológicas
+                  y leer a otra persona como una forma de comunicar y escuchar.
+                </div>
+              </td>
+              <td data-label="Modalidad">
+                <span class="taller-modalidad">Sabados y feriados</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Taller">
+                <div class="taller-nombre">PAUSA SALUDABLE EMPRESARIAL</div>
+              </td>
+              <td data-label="¿De qué se trata?">
+                <div class="taller-descripcion">
+                  Este taller se hace en el ambito de la empresa que lo solicite. Es ideal para grupos de mujeres que desean experimentar una pausa para desconectarse de la tecnologia,
+                  poner la atencion en algo positivo que les de bienestar. Esta comprobado cientificamente que la escritura a mano y en grupo fortalece la salud y las emociones.
+                </div>
+              </td>
+              <td data-label="Modalidad">
+                <span class="taller-modalidad">Dias especiales, aniversarios</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Taller">
+                <div class="taller-nombre">CARTAS TERAPEÚTICAS</div>
+              </td>
+              <td data-label="¿De qué se trata?">
+                <div class="taller-descripcion">
+                  Ideal para grupos de mujeres que quieran comunicarse a traves de las cartas, sobre todo cuando sienten que no pueden decir o expresar algo.
+                </div>
+              </td>
+              <td data-label="Modalidad">
+                <span class="taller-modalidad">a demanda</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Taller">
+                <div class="taller-nombre">SER MUJER CACTUS</div>
+              </td>
+              <td data-label="¿De qué se trata?">
+                <div class="taller-descripcion">
+                  ¿Te sientes sola? ¿Sientes que no sabes como identificar cuales son tus capacidades? Este taller es para vos.
+                  A traves de la escritura y la lectura vas a experimentar lo que significan las cualidades de ser mujer cactus.
+                  Practicaras cada una de ellas y te llevaras de regalo un souvenir de mujer cactus con ejercicios simples para practicar y fortalecer esas capacidades.
+                </div>
+              </td>
+              <td data-label="Modalidad">
+                <span class="taller-modalidad">Dias especiales, aniversarios</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="talleres-grid" id="talleresGrid" aria-live="polite"></div>
-      <div class="taller-empty" id="talleresEmpty" hidden>No encontramos talleres con esos filtros.</div>
+      <div class="talleres-cta">
+        <a href="https://wa.me/+5491138171669?text=Quiero%20mas%20informacion%20sobre%20los%20talleres" class="btn-primaria" target="_blank" rel="noopener">
+          💚 Quiero más info de talleres
+        </a>
+      </div>
 
-      <!-- TODO: Acá van los talleres del Excel que mencionás.
-           En este chat NO tengo el archivo Excel adjunto, así que dejé el módulo listo:
-           - Pegá la data en el array TALLERES (abajo en el <script>) y se renderiza sola.
-           - Si en tu Excel hay columnas distintas, adaptá los campos.
-      -->
+      <!-- spacer -->
     </div>
   </section>
 
@@ -972,7 +1055,7 @@
   No importa si nunca escribiste ni si sientes que no sabes cómo hacerlo.
   Acá nadie corrige y nadie juzga: se trata de estar presente, disfrutar, descubrirte y encontrar refugio en las palabras.
   <br><br>
-  En estos espacios, muchas asistentes coincidieron en que leer y escribir las ayuda a “reducir el estrés”, fortalecer el amor propio y cultivar relaciones más sanas. Varias expresaron en que estos encuentros las acompañan en mantener una mentalidad positiva, y más de una dijo:
+  En estos espacios, muchas asistentes coincidieron en que leer y escribir las ayuda a “reducir el estrés”, fortalecer el amor propio y cultivar relaciones más sanas. Varias expresaron que estos encuentros las acompañan en mantener una mentalidad positiva, y más de una dijo:
 </p>
 
 <p style="text-align:center; font-style: italic; margin-top: 8px;">
@@ -1294,138 +1377,6 @@
     });
   })();
 
-  // ===== Talleres (NUEVO): render desde data =====
-  (function(){
-    const grid = document.getElementById('talleresGrid');
-    const empty = document.getElementById('talleresEmpty');
-    const search = document.getElementById('talleresSearch');
-    const modalidad = document.getElementById('talleresModalidad');
-    if(!grid || !empty || !search || !modalidad) return;
-
-    // TODO: Pegá acá los talleres del Excel.
-    // Campos esperados por ítem:
-    // { nombre, descripcion, modalidad, dia, hora, duracion, cupos, precio, whatsappText }
-    // modalidad: "presencial" | "online" | "hibrido"
-    const TALLERES = [
-      {
-        nombre: "Taller de escritura creativa (ejemplo)",
-        descripcion: "Un espacio para escribir sin juicio, con consignas simples y acompañamiento.",
-        modalidad: "online",
-        dia: "A confirmar",
-        hora: "A confirmar",
-        duracion: "A confirmar",
-        cupos: "A confirmar",
-        precio: "Consultar",
-        whatsappText: "Quiero%20info%20del%20Taller%20de%20escritura%20creativa"
-      }
-      // TODO: Agregar más filas del Excel aquí.
-    ];
-
-    function norm(s){
-      return (s || "").toString().trim().toLowerCase();
-    }
-
-    function badgeText(mod){
-      if(mod === "presencial") return "Presencial";
-      if(mod === "online") return "Online";
-      if(mod === "hibrido") return "Híbrido";
-      return "Taller";
-    }
-
-    function render(list){
-      grid.innerHTML = "";
-      if(!list.length){
-        empty.hidden = false;
-        return;
-      }
-      empty.hidden = true;
-
-      const frag = document.createDocumentFragment();
-      list.forEach(item=>{
-        const card = document.createElement('article');
-        card.className = "taller-card";
-
-        const title = document.createElement('h3');
-        title.className = "taller-title";
-        title.textContent = item.nombre || "Taller";
-
-        const badge = document.createElement('div');
-        badge.className = "taller-badge";
-        badge.textContent = badgeText(norm(item.modalidad));
-
-        const top = document.createElement('div');
-        top.className = "taller-top";
-        top.appendChild(title);
-        top.appendChild(badge);
-
-        const desc = document.createElement('p');
-        desc.className = "taller-desc";
-        desc.textContent = item.descripcion || "";
-
-        const meta = document.createElement('p');
-        meta.className = "taller-meta";
-
-        function addMeta(label, value){
-          if(!value) return;
-          const sp = document.createElement('span');
-          sp.textContent = `${label}: ${value}`;
-          meta.appendChild(sp);
-        }
-        addMeta("Día", item.dia);
-        addMeta("Hora", item.hora);
-        addMeta("Duración", item.duracion);
-        addMeta("Cupos", item.cupos);
-
-        const cta = document.createElement('div');
-        cta.className = "taller-cta";
-
-        const price = document.createElement('div');
-        price.className = "taller-price";
-        price.textContent = item.precio ? item.precio : "Consultar";
-
-        const wa = document.createElement('a');
-        const msg = item.whatsappText ? item.whatsappText : ("Quiero%20mas%20informacion%20sobre%20" + encodeURIComponent(item.nombre || "este%20taller"));
-        wa.href = `https://wa.me/+5491138171669?text=${msg}`;
-        wa.target = "_blank";
-        wa.rel = "noopener";
-        wa.setAttribute('aria-label', `Consultar por WhatsApp: ${item.nombre || "taller"}`);
-        wa.textContent = "💚 Consultar";
-
-        cta.appendChild(price);
-        cta.appendChild(wa);
-
-        card.appendChild(top);
-        card.appendChild(desc);
-        if(meta.childNodes.length) card.appendChild(meta);
-        card.appendChild(cta);
-
-        frag.appendChild(card);
-      });
-
-      grid.appendChild(frag);
-    }
-
-    function applyFilters(){
-      const q = norm(search.value);
-      const m = norm(modalidad.value);
-
-      const filtered = TALLERES.filter(t=>{
-        const txt = (norm(t.nombre) + " " + norm(t.descripcion));
-        const matchQ = !q || txt.includes(q);
-        const mod = norm(t.modalidad);
-        const matchM = (m === "all") || (mod === m);
-        return matchQ && matchM;
-      });
-
-      render(filtered);
-    }
-
-    search.addEventListener('input', applyFilters);
-    modalidad.addEventListener('change', applyFilters);
-
-    render(TALLERES);
-  })();
-
   // Animaciones on scroll
   (function(){
     const els = document.querySelectorAll('.reveal');
@@ -1466,4 +1417,3 @@
 
 </body>
 </html>
-
